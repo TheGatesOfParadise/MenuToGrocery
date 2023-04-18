@@ -12,14 +12,23 @@ struct ContentView: View {
         TabView {
             SearchView()
                 .tabItem {
-                    Label("Search", systemImage: "search")
+                    Label("Search", systemImage: "magnifyingglass")
                 }
             
-           Text("search")
+           Text("Mean Plan")
                 .tabItem {
-                    Label("Mean Plan", systemImage: "tuningfork")
+                  //  Label("Mean Plan",
+                   //       image: "local_dining")
+                    
+                    Label { Text("Mean Plan") .font(.largeTitle.lowercaseSmallCaps()) } icon: { Image("local_dining") .resizable() .frame(width: 30, height: 30) .clipShape(Circle()) }
+                    
                 }
-            Text("grocery list")
+            
+            Text("Favorite")
+                 .tabItem {
+                     Label("Favorite", systemImage: "heart")
+                 }
+            Text("Grocery list")
                  .tabItem {
                      Label("Grocery List", systemImage: "list.dash")
                  }
