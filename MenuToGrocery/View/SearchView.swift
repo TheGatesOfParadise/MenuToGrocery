@@ -1,0 +1,187 @@
+//
+//  SearchView.swift
+//  Unit 9 Content
+//
+//  Created by Mom macbook air on 3/29/23.
+//
+
+import SwiftUI
+
+struct SearchView: View {
+    @ObservedObject var viewModel = SearchViewModel.shared
+    @State var recipeSearchPhrase = ""
+    @State var selectedCuisineOption = 0
+    let cuisineOptions = ["empty", "American", "Asian", "British"]
+    @State var selectedMealOption = 0
+    let mealOptions = ["empty", "Dinner", "Lunch", "Breakfast","Snack"]
+    @State var singleMenuSheetIsPresented = false
+    @State var selectedRecipe : Recipe =  Recipe.sample()
+    
+    var body: some View {
+        VStack(alignment: .center) {
+            HStack {
+                TextField("Enter recipe name", text: $recipeSearchPhrase)
+                    .padding(.leading, 50)
+                
+                Button(action: {
+                    viewModel.getRecipe(search: recipeSearchPhrase,
+                                        cuisineType: selectedCuisineOption == 0 ? "" : cuisineOptions[selectedCuisineOption],
+                    mealType: selectedMealOption == 0 ? "" : mealOptions[selectedMealOption])
+                },
+                       label: {
+                    Text("Search")
+                        .bold()
+                })
+                .padding(.trailing, 30)
+                .disabled(recipeSearchPhrase == "")
+            }
+            .padding(.top, 10)
+            .padding(.bottom,10)
+            .border(.blue)
+            .padding(30)
+            
+            HStack {
+                Text("Cuisine stype:")
+                    .padding(.leading, 40)
+                Spacer()
+                Picker(selection: $selectedCuisineOption, label: Text(cuisineOptions[selectedCuisineOption])) {
+                    ForEach(0..<cuisineOptions.count) { index in
+                        Text(cuisineOptions[index]).tag(index)
+                    }
+                }
+                .pickerStyle(.menu)
+                .frame(width: 200)
+            }
+            
+            HStack {
+                Text("Meal stype:")
+                    .padding(.leading, 40)
+                Spacer()
+                Picker(selection: $selectedMealOption, label: Text(mealOptions[selectedMealOption])) {
+                    ForEach(0..<mealOptions.count) { index in
+                        Text(mealOptions[index]).tag(index)
+                    }
+                }
+                .pickerStyle(.menu)
+                .frame(width: 200)
+            }
+            
+            Spacer()
+            
+            //if viewModel.dishName != "" {
+                List{
+                    ForEach(viewModel.result.hits) { hit in
+                        smallRecipeView(item: hit)
+                        .onTapGesture {
+                            selectedRecipe = hit.recipe
+                            singleMenuSheetIsPresented.toggle()
+                        }
+                    }
+                }
+            //}
+        }
+        .sheet(isPresented: $singleMenuSheetIsPresented) {
+            singleRecipeView(recipe: selectedRecipe)
+        }
+    }
+}
+
+struct smallRecipeView: View {
+    let item : Hit
+
+    var body: some View {
+        
+        HStack {
+            AsyncImage(
+                url: URL(string: "\(item.recipe.image)"),
+                content: { image in
+                    image.resizable()
+                         .aspectRatio(contentMode: .fit)
+                         .frame(maxWidth: 100, maxHeight: 100)
+                },
+                placeholder: {
+                    Text("Loading...")
+                        .frame(maxWidth: 100, maxHeight: 100)
+                }
+            )
+            .padding()
+            
+            Spacer()
+            VStack {
+                Text("\(item.recipe.label)")
+                    .bold()
+                Text("Cuisine: \(item.recipe.cuisineType[0])") //TODO: check if this optional field
+                Text("Calories: \(Int(item.recipe.calories))")
+               
+            }
+            Spacer()
+        }
+        .frame(width: UIScreen.screenWidth - 20)
+        .border(.gray, width: 5)
+
+    }
+}
+
+struct singleRecipeView: View {
+    let recipe: Recipe
+    var body: some View {
+        
+        VStack {
+            HStack {
+                Button("Save to Meal Plan") {
+                           //print("Button pressed!")
+                            //close sheet, back to search screen
+                       }
+               .buttonStyle(GrowingButton())
+                
+                Image(systemName: "heart")
+                    .resizable()
+                    .foregroundColor(.red)
+                    .frame(width: 35, height: 35)
+                    .padding(.leading, 20)
+            }
+            
+            Spacer()
+            
+            Text("\(recipe.label)")
+                .bold()
+            
+            AsyncImage(
+                url: URL(string: "\(recipe.image)"),
+                content: { image in
+                    image.resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: 100, maxHeight: 100)
+                },
+                placeholder: {
+                    Text("Loading...")
+                        .frame(maxWidth: 100, maxHeight: 100)
+                }
+            )
+            .padding()
+            Text("Cuisine: \(recipe.cuisineType[0])") //TODO: check if this optional field
+            Text("Calories: \(Int(recipe.calories))")
+            
+            Spacer()
+        }
+    }
+}
+
+struct SearchView_Previews: PreviewProvider {
+    static var previews: some View {
+        SearchView()
+    }
+}
+
+
+struct GrowingButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding()
+            .background(.blue)
+            .foregroundColor(.white)
+            .clipShape(Capsule())
+            .scaleEffect(configuration.isPressed ? 1.2 : 1)
+            .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
+    }
+}

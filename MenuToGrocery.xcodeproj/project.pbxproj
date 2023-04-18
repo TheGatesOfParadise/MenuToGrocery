@@ -11,11 +11,13 @@
 		FD164FD629ECFCC100A9F5A8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD164FD529ECFCC100A9F5A8 /* ContentView.swift */; };
 		FD164FD829ECFCC200A9F5A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD164FD729ECFCC200A9F5A8 /* Assets.xcassets */; };
 		FD164FDB29ECFCC200A9F5A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD164FDA29ECFCC200A9F5A8 /* Preview Assets.xcassets */; };
-		FD164FE729ECFD2500A9F5A8 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD164FE329ECFD2500A9F5A8 /* LandingView.swift */; };
+		FD164FE729ECFD2500A9F5A8 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD164FE329ECFD2500A9F5A8 /* SearchView.swift */; };
 		FD164FE829ECFD2500A9F5A8 /* SearchRecipeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD164FE429ECFD2500A9F5A8 /* SearchRecipeResponse.swift */; };
-		FD164FE929ECFD2500A9F5A8 /* LaningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD164FE529ECFD2500A9F5A8 /* LaningViewModel.swift */; };
+		FD164FE929ECFD2500A9F5A8 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD164FE529ECFD2500A9F5A8 /* SearchViewModel.swift */; };
 		FD164FEA29ECFD2500A9F5A8 /* EdamamNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD164FE629ECFD2500A9F5A8 /* EdamamNetworkManager.swift */; };
 		FD164FED29EDE30900A9F5A8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD164FEC29EDE30900A9F5A8 /* Extensions.swift */; };
+		FD164FF329EDEF8E00A9F5A8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FD164FF229EDEF8E00A9F5A8 /* README.md */; };
+		FD164FF529EE3AB600A9F5A8 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD164FF429EE3AB600A9F5A8 /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,11 +26,13 @@
 		FD164FD529ECFCC100A9F5A8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FD164FD729ECFCC200A9F5A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD164FDA29ECFCC200A9F5A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		FD164FE329ECFD2500A9F5A8 /* LandingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
+		FD164FE329ECFD2500A9F5A8 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		FD164FE429ECFD2500A9F5A8 /* SearchRecipeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRecipeResponse.swift; sourceTree = "<group>"; };
-		FD164FE529ECFD2500A9F5A8 /* LaningViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaningViewModel.swift; sourceTree = "<group>"; };
+		FD164FE529ECFD2500A9F5A8 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		FD164FE629ECFD2500A9F5A8 /* EdamamNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdamamNetworkManager.swift; sourceTree = "<group>"; };
 		FD164FEC29EDE30900A9F5A8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FD164FF229EDEF8E00A9F5A8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		FD164FF429EE3AB600A9F5A8 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,15 +65,17 @@
 		FD164FD229ECFCC100A9F5A8 /* MenuToGrocery */ = {
 			isa = PBXGroup;
 			children = (
+				FD164FF229EDEF8E00A9F5A8 /* README.md */,
+				FD164FF129EDEC7600A9F5A8 /* NetworkManager */,
 				FD164FF029EDEC4900A9F5A8 /* ViewModel */,
 				FD164FEF29EDEC4200A9F5A8 /* Model */,
 				FD164FEE29EDEC3700A9F5A8 /* View */,
 				FD164FEB29EDE2F600A9F5A8 /* Extension */,
 				FD164FD329ECFCC100A9F5A8 /* MenuToGroceryApp.swift */,
-				FD164FD529ECFCC100A9F5A8 /* ContentView.swift */,
 				FD164FE229ECFD2500A9F5A8 /* Homework */,
 				FD164FD729ECFCC200A9F5A8 /* Assets.xcassets */,
 				FD164FD929ECFCC200A9F5A8 /* Preview Content */,
+				FD164FF429EE3AB600A9F5A8 /* TestView.swift */,
 			);
 			path = MenuToGrocery;
 			sourceTree = "<group>";
@@ -100,7 +106,8 @@
 		FD164FEE29EDEC3700A9F5A8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FD164FE329ECFD2500A9F5A8 /* LandingView.swift */,
+				FD164FD529ECFCC100A9F5A8 /* ContentView.swift */,
+				FD164FE329ECFD2500A9F5A8 /* SearchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -116,8 +123,7 @@
 		FD164FF029EDEC4900A9F5A8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				FD164FE529ECFD2500A9F5A8 /* LaningViewModel.swift */,
-				FD164FF129EDEC7600A9F5A8 /* NetworkManager */,
+				FD164FE529ECFD2500A9F5A8 /* SearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -188,6 +194,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD164FF329EDEF8E00A9F5A8 /* README.md in Resources */,
 				FD164FDB29ECFCC200A9F5A8 /* Preview Assets.xcassets in Resources */,
 				FD164FD829ECFCC200A9F5A8 /* Assets.xcassets in Resources */,
 			);
@@ -200,10 +207,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD164FE929ECFD2500A9F5A8 /* LaningViewModel.swift in Sources */,
-				FD164FE729ECFD2500A9F5A8 /* LandingView.swift in Sources */,
+				FD164FE929ECFD2500A9F5A8 /* SearchViewModel.swift in Sources */,
+				FD164FE729ECFD2500A9F5A8 /* SearchView.swift in Sources */,
 				FD164FD629ECFCC100A9F5A8 /* ContentView.swift in Sources */,
 				FD164FD429ECFCC100A9F5A8 /* MenuToGroceryApp.swift in Sources */,
+				FD164FF529EE3AB600A9F5A8 /* TestView.swift in Sources */,
 				FD164FEA29ECFD2500A9F5A8 /* EdamamNetworkManager.swift in Sources */,
 				FD164FE829ECFD2500A9F5A8 /* SearchRecipeResponse.swift in Sources */,
 				FD164FED29EDE30900A9F5A8 /* Extensions.swift in Sources */,

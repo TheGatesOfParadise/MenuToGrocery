@@ -3,12 +3,12 @@ import Foundation
 import Combine
 import MapKit
 
-class LandingViewModel: ObservableObject {
+class SearchViewModel: ObservableObject {
     
     private var cancellables = Set<AnyCancellable>()
     @Published var geoCode = "..."
     @Published var result = RecipeResponse.sample()
-    static let shared = LandingViewModel()
+    static let shared = SearchViewModel()
     @Published var dishName = ""
     
     private init() {
@@ -16,7 +16,7 @@ class LandingViewModel: ObservableObject {
     
     
     //MARK: AccuWeather API services
-    func getRecipe(search: String) {
+    func getRecipe(search: String, cuisineType: String?, mealType: String?) {
                 
         /*
          https://api.edamam.com/api/recipes/v2?type=public&
@@ -31,14 +31,22 @@ class LandingViewModel: ObservableObject {
          calories=100-300&
          imageSize=THUMBNAIL
          */
-        let query:[String:String] = ["beta": "false",
+        var query:[String:String] = ["beta": "false",
                                      "q":search,
                                      "ingr":"5-8",
                                      "diet":"high-protein",
-                                     "cuisineType":"American",
-                                     "mealType":"Dinner",
+                                     //"cuisineType":"American",
+                                     //"mealType":"Dinner",
                                      "calories":"100-300",
                                      "imageSize":"THUMBNAIL"]
+        if let t = cuisineType, !t.isEmpty {
+            query["cuisineType"] = cuisineType
+        }
+        
+        if let t = cuisineType, !t.isEmpty {
+            query["mealType"] = mealType
+        }
+        
         EdamamNetworkManager.shared.getRecipe(endpoint: "\(EdamamNetworkManager.shared.recipeURL)",
                                           query: query,
                                           type: RecipeResponse.self)

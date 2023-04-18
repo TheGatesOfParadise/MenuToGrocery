@@ -73,6 +73,10 @@ struct Recipe: Codable {
     let cuisineType, mealType, dishType: [String]
     let totalNutrients, totalDaily: [String: Total]
     let digest: [Digest]
+    
+    static func sample() -> Recipe {
+        return RecipeResponse.sample().hits[0].recipe
+    }
 }
 
 // MARK: - Digest
