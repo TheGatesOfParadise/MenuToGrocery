@@ -10,12 +10,12 @@ import SwiftUI
 struct SearchView: View {
     @ObservedObject var viewModel = SearchViewModel.shared
     @State var recipeSearchPhrase = ""
-    @State var selectedCuisineOption = 0
+    @State var selectedCuisineType = "empty"
     let cuisineOptions = ["empty", "American", "Asian", "British"]
-    @State var selectedMealOption = 0
+    @State var selectedMealType = "empty"
     let mealOptions = ["empty", "Dinner", "Lunch", "Breakfast","Snack"]
     @State var singleMenuSheetIsPresented = false
-    @State var selectedRecipe : Recipe =  Recipe.sample()
+    @State var selectedRecipe : Recipe =  Recipe.sample(index:0)
     
     var body: some View {
         VStack(alignment: .center) {
@@ -25,8 +25,8 @@ struct SearchView: View {
                 
                 Button(action: {
                     viewModel.getRecipe(search: recipeSearchPhrase,
-                                        cuisineType: selectedCuisineOption == 0 ? "" : cuisineOptions[selectedCuisineOption],
-                    mealType: selectedMealOption == 0 ? "" : mealOptions[selectedMealOption])
+                                        cuisineType: selectedCuisineType,
+                                        mealType: selectedMealType)
                 },
                        label: {
                     Text("Search")
@@ -41,25 +41,28 @@ struct SearchView: View {
             .padding(30)
             
             HStack {
-                Text("Cuisine stype:")
+                Text("Cuisine stype:\(selectedCuisineType)")
                     .padding(.leading, 40)
                 Spacer()
-                Picker(selection: $selectedCuisineOption, label: Text(cuisineOptions[selectedCuisineOption])) {
-                    ForEach(0..<cuisineOptions.count) { index in
-                        Text(cuisineOptions[index]).tag(index)
+                
+                Picker("Cuisine Type", selection: $selectedCuisineType) {
+                    ForEach(cuisineOptions, id: \.self) {
+                        Text($0)
                     }
                 }
                 .pickerStyle(.menu)
                 .frame(width: 200)
             }
             
+           
             HStack {
-                Text("Meal stype:")
+                Text("Meal stype:\(selectedMealType)")
                     .padding(.leading, 40)
                 Spacer()
-                Picker(selection: $selectedMealOption, label: Text(mealOptions[selectedMealOption])) {
-                    ForEach(0..<mealOptions.count) { index in
-                        Text(mealOptions[index]).tag(index)
+                
+                Picker("Meal Type", selection: $selectedMealType) {
+                    ForEach(mealOptions, id: \.self) {
+                        Text($0)
                     }
                 }
                 .pickerStyle(.menu)

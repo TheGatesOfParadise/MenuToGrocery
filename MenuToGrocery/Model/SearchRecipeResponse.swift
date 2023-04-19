@@ -57,7 +57,9 @@ struct SelfClass: Codable {
 }
 
 // MARK: - Recipe
-struct Recipe: Codable {
+///Add ID Property on Struct Fetched From JSON comes from this post: https://stackoverflow.com/questions/70998275/add-id-property-on-struct-fetched-from-json
+struct Recipe: Codable, Identifiable {
+    let id = UUID()
     let uri: String
     let label: String
     let image: String
@@ -65,7 +67,7 @@ struct Recipe: Codable {
     let source: String
     let url: String
     let shareAs: String
-    let yield: Int
+    let yield: Double
     let dietLabels, healthLabels, cautions, ingredientLines: [String]
     let ingredients: [Ingredient]
     let calories, totalWeight: Double
@@ -74,8 +76,19 @@ struct Recipe: Codable {
     let totalNutrients, totalDaily: [String: Total]
     let digest: [Digest]
     
-    static func sample() -> Recipe {
-        return RecipeResponse.sample().hits[0].recipe
+    enum CodingKeys: String, CodingKey {
+        case uri, label, image, source, url, shareAs
+        case images
+        case yield, totalTime
+        case dietLabels, healthLabels, cautions, ingredientLines, cuisineType, mealType, dishType
+        case ingredients
+        case calories, totalWeight
+        case totalNutrients, totalDaily
+        case digest
+       }
+    
+    static func sample(index: Int) -> Recipe {
+        return RecipeResponse.sample().hits[index].recipe
     }
 }
 
@@ -125,7 +138,7 @@ struct Ingredient: Codable {
     let food: String
     let weight: Double
     let foodCategory, foodID: String
-    let image: String
+    let image: String?
 
     enum CodingKeys: String, CodingKey {
         case text, quantity, measure, food, weight, foodCategory
@@ -1065,7 +1078,7 @@ let recipeResponseJson = """
         "totalWeight": 4172.0922981250005,
         "totalTime": 0,
         "cuisineType": [
-          "american"
+          "chinese"
         ],
         "mealType": [
           "lunch/dinner"
@@ -1849,7 +1862,7 @@ let recipeResponseJson = """
         "totalWeight": 4177.792298124857,
         "totalTime": 0,
         "cuisineType": [
-          "american"
+          "french"
         ],
         "mealType": [
           "lunch/dinner"

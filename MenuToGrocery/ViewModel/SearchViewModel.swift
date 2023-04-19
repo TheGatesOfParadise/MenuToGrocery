@@ -1,7 +1,6 @@
 
 import Foundation
 import Combine
-import MapKit
 
 class SearchViewModel: ObservableObject {
     
@@ -34,16 +33,16 @@ class SearchViewModel: ObservableObject {
         var query:[String:String] = ["beta": "false",
                                      "q":search,
                                      "ingr":"5-8",
-                                     "diet":"high-protein",
+                                     //"diet":"high-protein",
                                      //"cuisineType":"American",
                                      //"mealType":"Dinner",
                                      "calories":"100-300",
                                      "imageSize":"THUMBNAIL"]
-        if let t = cuisineType, !t.isEmpty {
+        if let t = cuisineType, !t.isEmpty, t != "empty" {
             query["cuisineType"] = cuisineType
         }
         
-        if let t = cuisineType, !t.isEmpty {
+        if let t = mealType, !t.isEmpty, t != "empty" {
             query["mealType"] = mealType
         }
         
