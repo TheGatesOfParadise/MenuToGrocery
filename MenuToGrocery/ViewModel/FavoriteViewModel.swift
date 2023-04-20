@@ -8,17 +8,16 @@
 import Foundation
 
 class FavoriteViewModel: ObservableObject {
-   /*
-    @Published var mealPlan: MealPlan = MealPlan.sample()
-    static let shared = MealPlanViewModel()
+    
+    @Published var favorite: MealPlan = MealPlan.sample()
+    static let shared = FavoriteViewModel()
     
     private init() {
     }
     
     
-    func getMealPlan() {
+    func getFavorites() {
         
     }
-   */
 }
 

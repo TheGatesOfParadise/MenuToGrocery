@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct SearchView: View {
-    @ObservedObject var viewModel = SearchViewModel.shared
+    @ObservedObject var searchViewModel = SearchViewModel.shared
+    @ObservedObject var mealViewModel = MealPlanViewModel.shared
+    @ObservedObject var favoriteViewModel = FavoriteViewModel.shared
+    
     @State var recipeSearchPhrase = ""
     @State var selectedCuisineType = "empty"
     let cuisineOptions = ["empty", "American", "Asian", "British"]
@@ -24,7 +27,7 @@ struct SearchView: View {
                     .padding(.leading, 50)
                 
                 Button(action: {
-                    viewModel.getRecipe(search: recipeSearchPhrase,
+                    searchViewModel.getRecipe(search: recipeSearchPhrase,
                                         cuisineType: selectedCuisineType,
                                         mealType: selectedMealType)
                 },
@@ -71,9 +74,9 @@ struct SearchView: View {
             
             Spacer()
             
-            //if viewModel.dishName != "" {
+            //if searchViewModel.dishName != "" {
                 List{
-                    ForEach(viewModel.result.hits) { hit in
+                    ForEach(searchViewModel.result.hits) { hit in
                         smallRecipeView(item: hit)
                         .onTapGesture {
                             selectedRecipe = hit.recipe
@@ -113,7 +116,7 @@ struct smallRecipeView: View {
             VStack {
                 Text("\(item.recipe.label)")
                     .bold()
-                Text("Cuisine: \(item.recipe.cuisineType[0])") //TODO: check if this optional field
+                Text("Cuisine: \(item.recipe.mainCuisineType)") //TODO: check if this optional field
                 Text("Calories: \(Int(item.recipe.calories))")
                
             }
@@ -143,6 +146,7 @@ struct singleRecipeView: View {
                     .frame(width: 35, height: 35)
                     .padding(.leading, 20)
             }
+            .padding(.top, 15)
             
             Spacer()
             
@@ -162,7 +166,7 @@ struct singleRecipeView: View {
                 }
             )
             .padding()
-            Text("Cuisine: \(recipe.cuisineType[0])") //TODO: check if this optional field
+            Text("Cuisine: \(recipe.mainCuisineType)") //TODO: check if this optional field
             Text("Calories: \(Int(recipe.calories))")
             
             Spacer()

@@ -16,9 +16,9 @@ struct MealPlanView: View {
             Text("Meal Plan")
                 .bold()
             
-            ForEach(viewModel.mealPlan.recipeList) { cuisine in
+            ForEach(viewModel.mealPlan.cuisineTypes) { cuisine in
                 VStack{
-                    Text("\(cuisine.cuisineType)")
+                    Text("\(cuisine.id.rawValue)")
                         .bold()
                     HStack {
                         ForEach(cuisine.recipes) { r in

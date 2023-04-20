@@ -58,7 +58,14 @@ struct SelfClass: Codable {
 
 // MARK: - Recipe
 ///Add ID Property on Struct Fetched From JSON comes from this post: https://stackoverflow.com/questions/70998275/add-id-property-on-struct-fetched-from-json
-struct Recipe: Codable, Identifiable {
+struct Recipe: Codable, Identifiable, Equatable {
+    static func == (lhs: Recipe, rhs: Recipe) -> Bool {
+        lhs.uri == rhs.uri &&
+        lhs.label == rhs.label &&
+        lhs.url == rhs.url &&
+        lhs.image == rhs.image
+    }
+    
     let id = UUID()
     let uri: String
     let label: String
@@ -89,6 +96,21 @@ struct Recipe: Codable, Identifiable {
     
     static func sample(index: Int) -> Recipe {
         return RecipeResponse.sample().hits[index].recipe
+    }
+    
+    var mainCuisineType: String {
+        return cuisineType[0]
+    }
+    
+    func equalTo(_ anotherRecipe: Recipe) -> Bool {
+        if uri == anotherRecipe.uri &&
+            label == anotherRecipe.label &&
+            url == anotherRecipe.url &&
+            image == anotherRecipe.image {
+            return true
+        } else {
+            return false
+        }
     }
 }
 
