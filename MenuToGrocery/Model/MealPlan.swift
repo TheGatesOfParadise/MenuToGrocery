@@ -23,6 +23,7 @@ enum CuisineType: String {
     case indian
     case italian
     case caribbean
+    case world
 }
 
 ///Represent recipes belong to the same cuisine type
@@ -88,57 +89,10 @@ struct MealPlan {
                                      RecipeByCuisineType.sampleFrenchFood()])
     }
     
-    ///Check if a cuisine is in the meal plan, if it's true, then return the recipe list that belong to the cuisine type
-    ///In paremeter : `cuisine` -- the cuisine type to be checked
-    ///Return: `RecipeByCuisineType` -- optional.  Only if the cuisine is in the meal plan, return a list of recipes, otherwise return nil
-    func hasCuisine(_ cuisine: String) -> RecipeByCuisineType? {
-        guard let cuisineEnum = CuisineType(rawValue: cuisine) else {
-            return nil
-        }
-                
-        for recipeByCuisine in cuisineTypes {
-            if  recipeByCuisine.id == cuisineEnum {
-                return recipeByCuisine
-            } else {
-                return nil
-            }
-        }
-        return nil
+    static func empty() -> MealPlan {
+        return MealPlan(cuisineTypes: [RecipeByCuisineType]())
     }
-   
-    func hasRecipe (_ recipe: Recipe) -> Bool {
-        guard let recipeByCuisineType = hasCuisine(recipe.mainCuisineType) else {
-            return false
-        }
-        
-        if recipeByCuisineType.has(recipe) {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    mutating func remove(_ cuisine: String) {
-        cuisineTypes.removeAll(where: {$0.id.rawValue == cuisine})
-    }
-    
-    mutating func removeRecipe (_ recipe: Recipe) {
-        remove(recipe.mainCuisineType)
-        var recipeByCuisineType = hasCuisine(recipe.mainCuisineType)
-        recipeByCuisineType?.remove(recipe)
-        cuisineTypes.append(recipeByCuisineType!) //TODO, check !
-    }
-    
-    func addRecipe(_ recipe: Recipe) {
-        if !hasRecipe(recipe) {
-            //add it
-        }
-    }
-        
-    mutating func emptyRecipe() {
-        cuisineTypes.removeAll()
-    }
-        
+
     
 }
 

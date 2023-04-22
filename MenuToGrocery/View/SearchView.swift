@@ -9,16 +9,17 @@ import SwiftUI
 
 struct SearchView: View {
     @ObservedObject var searchViewModel = SearchViewModel.shared
-    @ObservedObject var mealViewModel = MealPlanViewModel.shared
-    @ObservedObject var favoriteViewModel = FavoriteViewModel.shared
+    //@ObservedObject var mealViewModel = MealPlanViewModel.shared
+    //@ObservedObject var favoriteViewModel = FavoriteViewModel.shared
     
     @State var recipeSearchPhrase = ""
     @State var selectedCuisineType = "empty"
     let cuisineOptions = ["empty", "American", "Asian", "British"]
     @State var selectedMealType = "empty"
     let mealOptions = ["empty", "Dinner", "Lunch", "Breakfast","Snack"]
-    @State var singleMenuSheetIsPresented = false
-    @State var selectedRecipe : Recipe =  Recipe.sample(index:0)
+    //@State var singleMenuSheetIsPresented = false
+    @State private var selectedRecipe : Recipe? = nil
+    //@State private var singleMenuSheetIsPresented: String? = nil
     
     var body: some View {
         VStack(alignment: .center) {
@@ -80,21 +81,21 @@ struct SearchView: View {
                         smallRecipeView(item: hit)
                         .onTapGesture {
                             selectedRecipe = hit.recipe
-                            singleMenuSheetIsPresented.toggle()
+                            //singleMenuSheetIsPresented.toggle()
                         }
                     }
                 }
             //}
         }
-        .sheet(isPresented: $singleMenuSheetIsPresented) {
-            singleRecipeView(recipe: selectedRecipe)
+        .sheet(item: $selectedRecipe) { item in     // activated on selected item
+            singleRecipeView(recipe: item)   //TODO: !
         }
     }
 }
 
 struct smallRecipeView: View {
     let item : Hit
-
+   
     var body: some View {
         
         HStack {
@@ -124,19 +125,20 @@ struct smallRecipeView: View {
         }
         .frame(width: UIScreen.screenWidth - 20)
         .border(.gray, width: 5)
-
     }
 }
 
 struct singleRecipeView: View {
+    @ObservedObject var searchViewModel = SearchViewModel.shared
+    @ObservedObject var mealViewModel = MealPlanViewModel.shared
     let recipe: Recipe
     var body: some View {
         
         VStack {
             HStack {
                 Button("Save to Meal Plan") {
-                           //print("Button pressed!")
-                            //close sheet, back to search screen
+                        print("Save to mean plan Button pressed!")
+                        mealViewModel.add(recipe)
                        }
                .buttonStyle(GrowingButton())
                 
