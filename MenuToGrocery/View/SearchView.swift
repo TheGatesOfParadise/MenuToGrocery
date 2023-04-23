@@ -18,7 +18,7 @@ struct SearchView: View {
     @State var selectedMealType = "empty"
     let mealOptions = ["empty", "Dinner", "Lunch", "Breakfast","Snack"]
     //@State var singleMenuSheetIsPresented = false
-    @State private var selectedRecipe : Recipe? = nil
+    @State var selectedRecipe : Recipe? = nil
     //@State private var singleMenuSheetIsPresented: String? = nil
     
     var body: some View {
@@ -45,7 +45,7 @@ struct SearchView: View {
             .padding(30)
             
             HStack {
-                Text("Cuisine stype:\(selectedCuisineType)")
+                Text("Cuisine stype:")
                     .padding(.leading, 40)
                 Spacer()
                 
@@ -60,7 +60,7 @@ struct SearchView: View {
             
            
             HStack {
-                Text("Meal stype:\(selectedMealType)")
+                Text("Meal stype:")
                     .padding(.leading, 40)
                 Spacer()
                 
@@ -88,8 +88,10 @@ struct SearchView: View {
             //}
         }
         .sheet(item: $selectedRecipe) { item in     // activated on selected item
-            singleRecipeView(recipe: item)   //TODO: !
+            RecipeView(recipe: item)   //TODO: !
+                .presentationDetents([.large])
         }
+       
     }
 }
 
@@ -125,54 +127,6 @@ struct smallRecipeView: View {
         }
         .frame(width: UIScreen.screenWidth - 20)
         .border(.gray, width: 5)
-    }
-}
-
-struct singleRecipeView: View {
-    @ObservedObject var searchViewModel = SearchViewModel.shared
-    @ObservedObject var mealViewModel = MealPlanViewModel.shared
-    let recipe: Recipe
-    var body: some View {
-        
-        VStack {
-            HStack {
-                Button("Save to Meal Plan") {
-                        print("Save to mean plan Button pressed!")
-                        mealViewModel.add(recipe)
-                       }
-               .buttonStyle(GrowingButton())
-                
-                Image(systemName: "heart")
-                    .resizable()
-                    .foregroundColor(.red)
-                    .frame(width: 35, height: 35)
-                    .padding(.leading, 20)
-            }
-            .padding(.top, 15)
-            
-            Spacer()
-            
-            Text("\(recipe.label)")
-                .bold()
-            
-            AsyncImage(
-                url: URL(string: "\(recipe.image)"),
-                content: { image in
-                    image.resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: 100, maxHeight: 100)
-                },
-                placeholder: {
-                    Text("Loading...")
-                        .frame(maxWidth: 100, maxHeight: 100)
-                }
-            )
-            .padding()
-            Text("Cuisine: \(recipe.mainCuisineType)") //TODO: check if this optional field
-            Text("Calories: \(Int(recipe.calories))")
-            
-            Spacer()
-        }
     }
 }
 

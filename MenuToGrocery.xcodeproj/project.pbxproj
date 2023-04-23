@@ -24,6 +24,7 @@
 		FD164FFD29EF756100A9F5A8 /* MealPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD164FFC29EF756100A9F5A8 /* MealPlan.swift */; };
 		FD164FFF29EF76CB00A9F5A8 /* MealPlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD164FFE29EF76CB00A9F5A8 /* MealPlanViewModel.swift */; };
 		FD16500129EF9C4500A9F5A8 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16500029EF9C4500A9F5A8 /* FavoriteViewModel.swift */; };
+		FD16500329F4D91000A9F5A8 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16500229F4D91000A9F5A8 /* RecipeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		FD164FFC29EF756100A9F5A8 /* MealPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlan.swift; sourceTree = "<group>"; };
 		FD164FFE29EF76CB00A9F5A8 /* MealPlanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanViewModel.swift; sourceTree = "<group>"; };
 		FD16500029EF9C4500A9F5A8 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
+		FD16500229F4D91000A9F5A8 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				FD164FF629EF74C300A9F5A8 /* MealPlanView.swift */,
 				FD164FF829EF74DB00A9F5A8 /* FavoriteView.swift */,
 				FD164FFA29EF750700A9F5A8 /* GroceryView.swift */,
+				FD16500229F4D91000A9F5A8 /* RecipeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				FD164FE829ECFD2500A9F5A8 /* SearchRecipeResponse.swift in Sources */,
 				FD164FF929EF74DB00A9F5A8 /* FavoriteView.swift in Sources */,
 				FD164FED29EDE30900A9F5A8 /* Extensions.swift in Sources */,
+				FD16500329F4D91000A9F5A8 /* RecipeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

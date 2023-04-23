@@ -16,10 +16,19 @@ class MealPlanViewModel: ObservableObject {
     }
     
         
-    func add(_ recipe: Recipe) {
-        if !has(recipe) {
-            mealPlan.cuisineTypes.append(RecipeByCuisineType(id: CuisineType(rawValue: recipe.mainCuisineType)! , recipes: [recipe]))
+    func add(_ recipe: Recipe?) {
+        guard let recipe =  recipe else {return}
+        
+        for i in 0..<mealPlan.cuisineTypes.count {
+            if  recipe.mainCuisineType == mealPlan.cuisineTypes[i].id.rawValue {
+                // add recipe to recipeByCuisine.recipes
+                mealPlan.cuisineTypes[i].recipes.append(recipe)
+                //break for loop and return
+                return
+            }
         }
+        
+        mealPlan.cuisineTypes.append(RecipeByCuisineType(id: CuisineType(rawValue: recipe.mainCuisineType)! , recipes: [recipe]))
     }
     
     
@@ -58,11 +67,22 @@ class MealPlanViewModel: ObservableObject {
         
     }
     
-    func removeRecipe (_ recipe: Recipe) {
-        remove(recipe.mainCuisineType)
-        var recipeByCuisineType = hasCuisine(recipe.mainCuisineType)
-        recipeByCuisineType?.remove(recipe)
-        mealPlan.cuisineTypes.append(recipeByCuisineType!) //TODO, check !
+    func remove (_ recipe: Recipe) {
+        for i in 1..<mealPlan.cuisineTypes.count {
+            if  recipe.mainCuisineType == mealPlan.cuisineTypes[i].id.rawValue {
+                // remove recipe from recipeByCuisine.recipes
+                mealPlan.cuisineTypes[i].recipes.removeAll(where : {$0 == recipe})
+                
+                //if nothing left for a cuisine type, remove the type entirely
+                if mealPlan.cuisineTypes[i].recipes.count == 0 {
+                    remove( mealPlan.cuisineTypes[i].id.rawValue)
+                }
+                
+                //break for loop and return
+                return
+            }
+        }
+        
     }
     
 

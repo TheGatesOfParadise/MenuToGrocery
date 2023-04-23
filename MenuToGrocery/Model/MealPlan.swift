@@ -37,7 +37,7 @@ struct RecipeByCuisineType: Identifiable, Equatable {
     
     ///sample Chinese recipes
     static func sampleChineseFood() -> RecipeByCuisineType {
-        return RecipeByCuisineType(id: CuisineType.chinese, recipes: [Recipe.sample(index: 1)])
+        return RecipeByCuisineType(id: CuisineType.chinese, recipes: [Recipe.sample(index: 1),Recipe.sample(index: 1), Recipe.sample(index: 1)])
     }
     
     ///Compare two cuisine by name
@@ -47,12 +47,12 @@ struct RecipeByCuisineType: Identifiable, Equatable {
     
     ///sample Ameircan recipes
     static func sampleAmericanFood() -> RecipeByCuisineType {
-        return RecipeByCuisineType(id: CuisineType.american, recipes: [Recipe.sample(index: 0)])
+        return RecipeByCuisineType(id: CuisineType.american, recipes: [Recipe.sample(index: 0),Recipe.sample(index: 1),Recipe.sample(index: 2)])
     }
     
     ///sample French recipes
     static func sampleFrenchFood() -> RecipeByCuisineType {
-        return RecipeByCuisineType(id: CuisineType.french, recipes: [Recipe.sample(index: 2)])
+        return RecipeByCuisineType(id: CuisineType.french, recipes: [Recipe.sample(index: 2),Recipe.sample(index: 2),Recipe.sample(index: 2)])
     }
     
     ///check if a recipe is in this cuisine

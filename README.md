@@ -8,7 +8,9 @@ ToDo#############
 3. generate grocery list
 4. save to firebase
 5. use NSCache to store image
-
+6. some operations in recipeByCuisineType, should it be in VM?
+7. check all ! 
+8. test remove funciton in mealplan
 
 
 #############

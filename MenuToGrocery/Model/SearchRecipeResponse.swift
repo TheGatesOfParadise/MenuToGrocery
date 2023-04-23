@@ -26,6 +26,10 @@ struct RecipeResponse: Codable {
         let recipe:RecipeResponse = try! decoder.decode(RecipeResponse.self, from: jsonData)
         return recipe
     }
+    
+    static func empty() -> RecipeResponse {
+        return RecipeResponse(from: 0, to: 0, count: 0, links: RecipeResponseLinks(), hits: [Hit]())
+    }
 }
 
 // MARK: - Hit
@@ -153,7 +157,8 @@ struct Large: Codable {
 }
 
 // MARK: - Ingredient
-struct Ingredient: Codable {
+struct Ingredient: Codable,Identifiable {
+    let id = UUID()
     let text: String
     let quantity: Double
     let measure: String?
