@@ -36,18 +36,7 @@ class MealPlanViewModel: ObservableObject {
     ///In paremeter : `cuisine` -- the cuisine type to be checked
     ///Return: `RecipeByCuisineType` -- optional.  Only if the cuisine is in the meal plan, return a list of recipes, otherwise return nil
     func hasCuisine(_ type: String) -> RecipeByCuisineType? {
-        guard let cuisineEnum = CuisineType(rawValue: type) else {
-            return nil
-        }
-                
-        for recipeByCuisine in mealPlan.cuisineTypes {
-            if  recipeByCuisine.id == cuisineEnum {
-                return recipeByCuisine
-            } else {
-                return nil
-            }
-        }
-        return nil
+        return mealPlan.cuisineTypes.first(where: {$0.id.rawValue == type})
     }
    
     func has(_ recipe: Recipe) -> Bool {
@@ -68,7 +57,7 @@ class MealPlanViewModel: ObservableObject {
     }
     
     func remove (_ recipe: Recipe) {
-        for i in 1..<mealPlan.cuisineTypes.count {
+        for i in 0..<mealPlan.cuisineTypes.count {
             if  recipe.mainCuisineType == mealPlan.cuisineTypes[i].id.rawValue {
                 // remove recipe from recipeByCuisine.recipes
                 mealPlan.cuisineTypes[i].recipes.removeAll(where : {$0 == recipe})

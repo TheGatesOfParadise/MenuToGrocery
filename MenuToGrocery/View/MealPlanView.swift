@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+let recipeWidth = 120.0
+let deleteSignWidth = 15.0
+
 struct MealPlanView: View {
     @ObservedObject var viewModel = MealPlanViewModel.shared
     @State var selectedRecipe : Recipe? = nil
@@ -14,61 +17,82 @@ struct MealPlanView: View {
         
         VStack{
             Text("Meal Plan")
-                //.font(.custom("AmericanTypewriter-Bold", fixedSize: 36))
+            //.font(.custom("AmericanTypewriter-Bold", fixedSize: 36))
                 .font(.system(size: 36, weight: .heavy, design: .rounded))
                 .padding()
             
-            ForEach(viewModel.mealPlan.cuisineTypes) { cuisine in
-                VStack (alignment: .leading){
-                    //cuisine type
-                    Text("\(cuisine.id.rawValue.capitalized)")
-                        .font(.system(size: 24, weight: .semibold))
-                    
-                    //recipes belong to the cuisine
-                    ScrollView(.horizontal) {
-                        HStack(spacing: 20) {
-                            ForEach(cuisine.recipes) { r in
-                                ZStack{
-                                    VStack (alignment: .leading){
+            ScrollView(.vertical) {
+                ForEach(viewModel.mealPlan.cuisineTypes) { cuisine in
+                    VStack (alignment: .leading){
+                        //cuisine type
+                        Text("\(cuisine.id.rawValue.capitalized)")
+                            .font(.system(size: 24, weight: .semibold))
+                        
+                        //recipes belong to the cuisine
+                        ScrollView(.horizontal) {
+                            HStack(spacing: 20) {
+                                ForEach(cuisine.recipes) { r in
+                                    
+                                    VStack {
                                         Text("\(r.label)")
-                                            .font(.system(size: 20))
-                                        AsyncImage(
-                                            url: URL(string: "\(r.image)"),
-                                            content: { image in
-                                                image.resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                                    .frame(maxWidth: 100, maxHeight: 100)
-                                                
-                                            },
-                                            placeholder: {
-                                                Text("Loading...")
-                                                    .frame(maxWidth: 100, maxHeight: 100)
-                                                
+                                            .font(.system(size: 12))
+                                            //.fixedSize(horizontal: false, vertical: false)
+                                            .frame(width: recipeWidth, height: 20)
+                                            .truncationMode(.tail)
+                                            
+                                        ZStack{
+                                            AsyncImage(
+                                                url: URL(string: "\(r.images.small.url)"),
+                                                content: { image in
+                                                    image.resizable()
+                                                        .aspectRatio(contentMode: .fit)
+                                                        .frame(maxWidth: recipeWidth, maxHeight: recipeWidth)
+                                                    
+                                                },
+                                                placeholder: {
+                                                    Text("Loading...")
+                                                        .frame(maxWidth: recipeWidth, maxHeight: recipeWidth)
+                                                    
+                                                }
+                                            )
+                                            
+                                            //delete button
+                                            VStack{
+                                                HStack{
+                                                    Spacer()
+                                                    Button(action: {
+                                                        viewModel.remove(r)
+                                                    },
+                                                           label: {
+                                                        Image(systemName: "multiply")
+                                                            .resizable()
+                                                            .frame(width:deleteSignWidth, height:deleteSignWidth)
+                                                            .foregroundColor(Color.white)
+                                                        
+                                                    })
+                                                    .background(.blue.opacity(0.6))
+                                                    .cornerRadius(40)
+                                                    //.padding(.bottom, 10)
+                                                    .shadow(color: Color.black.opacity(0.3),
+                                                            radius: 3,
+                                                            x: 3,
+                                                            y: 3)
+                                                }
+                                                Spacer()
                                             }
-                                        )
-                                        .border(.pink, width: 5)
+                                            .frame(width: recipeWidth, height: recipeWidth)
+                                            //.border(.green, width: 1)
+                                        }
                                     }
+                                    //.frame(width: 150, height: 150)
+                                    //.border(.blue, width: 1)
                                     .onTapGesture {
                                         selectedRecipe = r
                                     }
-                                    .border(.green, width: 5)
                                     
-                                    //delete button
-                                    VStack{
-                                        HStack{
-                                            Spacer()
-                                            Button(action: {
-                                                viewModel.remove(r)
-                                            },
-                                                   label: {
-                                                Image(systemName: "multiply")})
-                                            
-                                        }
-                                        Spacer()
-                                    }
+                                    
                                 }
-                                .border(.blue, width: 5)
-                                .frame(width: 250, height: 250)
+                                .frame(width: recipeWidth+5, height: recipeWidth+55)
                             }
                         }
                     }

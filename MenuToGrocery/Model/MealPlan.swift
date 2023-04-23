@@ -24,6 +24,8 @@ enum CuisineType: String {
     case italian
     case caribbean
     case world
+    case kosher
+    case mediterranean
 }
 
 ///Represent recipes belong to the same cuisine type

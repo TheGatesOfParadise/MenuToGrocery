@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+let roundCircleButtonWidth = 30.0
+
 struct RecipeView: View {
     //@ObservedObject var searchViewModel = SearchViewModel.shared
     @ObservedObject var mealViewModel = MealPlanViewModel.shared
@@ -17,20 +19,41 @@ struct RecipeView: View {
         
         VStack {
             HStack {
-                Button("Save to Meal Plan") {
-                        mealViewModel.add(recipe)
-                        dismiss()
-                       }
-               .buttonStyle(GrowingButton())
-               .disabled(mealViewModel.has(recipe))
+                Button(action: {
+                    mealViewModel.add(recipe)
+                    dismiss()
+                    
+                }, label: {
+                    Image("mealPlan")
+                        .resizable()
+                        .frame(width:roundCircleButtonWidth, height: roundCircleButtonWidth)
+                        .foregroundColor(.red)
+                        .clipShape(Circle())
+                        
+                })
+                .padding(5)
+                .background(mealViewModel.has(recipe) ? .gray : .red)
+                .foregroundColor(.white)
+                .disabled(mealViewModel.has(recipe))
+                .clipShape(Circle())
                 
-                Image(systemName: "heart")
-                    .resizable()
-                    .foregroundColor(.red)
-                    .frame(width: 35, height: 30)
-                    .padding(.leading, 20)
+                Button(action: {
+                    //favortieMale.add(recipe)
+                    dismiss()
+                    
+                }, label: {
+                    Image(systemName: "heart")
+                        .resizable()
+                        .foregroundColor(.white)
+                        .frame(width: roundCircleButtonWidth - 6, height: roundCircleButtonWidth - 6)
+                })
+                .padding(6)
+                .background(mealViewModel.has(recipe) ? .gray : .red)
+                .foregroundColor(.white)
+                .disabled(mealViewModel.has(recipe))
+                .clipShape(Circle())
             }
-            .padding(.top, 15)
+            .padding(.top, 10)
             
             Text("\(recipe.label)")
                 .font(.system(size: 36, weight: .heavy, design: .rounded))
@@ -71,14 +94,33 @@ struct RecipeView: View {
             
             Spacer()
             
+            
+            
             Button("Instructions") {
                     
                     //mealViewModel.add(recipe)
                    }
-           .buttonStyle(GrowingButton())
+           .buttonStyle(BackgroundButton(isDisabled: false))
             
             Spacer()
         }
+    }
+}
+
+struct BackgroundButton: ButtonStyle {
+    var isDisabled = false
+    var backGroundColor: Color = .blue
+    var shape: any Shape = Rectangle()
+    
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding()
+            .background(isDisabled ? .gray : backGroundColor)
+            .foregroundColor(.white)
+            .disabled(isDisabled)
+            //.clipShape(shape)
+            //.scaleEffect(configuration.isPressed ? 1.1 : 1)
+            //.animation(.easeOut(duration: 0.2), value: configuration.isPressed)
     }
 }
 
