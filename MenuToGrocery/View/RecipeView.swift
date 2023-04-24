@@ -86,7 +86,7 @@ struct RecipeView: View {
                             Text(ingredient.text.capitalized)
                                 .foregroundColor(.blue)
                                 .fixedSize(horizontal: false, vertical: true)
-                            
+                    /*
                             Text(String(format: "%.2f", ingredient.quantity))
                                 .foregroundColor(.purple)
                             
@@ -101,7 +101,7 @@ struct RecipeView: View {
                             Text(ingredient.foodCategory)
                                 .foregroundColor(.red)
                             Text(ingredient.foodID)
-                                .foregroundColor(.black)
+                                .foregroundColor(.black) */
                         }
                     }
                 }

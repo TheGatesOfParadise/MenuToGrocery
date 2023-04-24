@@ -60,24 +60,6 @@ struct RecipeByCuisineType: Identifiable, Equatable {
     }
     
 }
-
-
-struct MealPlan {
-    var cuisineTypes: [RecipeByCuisineType]
-    
-    static func sample() -> MealPlan {
-        return MealPlan(cuisineTypes: [RecipeByCuisineType.sampleAmericanFood(),
-                                     RecipeByCuisineType.sampleChineseFood(),
-                                     RecipeByCuisineType.sampleFrenchFood()])
-    }
-    
-    static func empty() -> MealPlan {
-        return MealPlan(cuisineTypes: [RecipeByCuisineType]())
-    }
-
-    
-}
-
 struct FavoritRecipes {
     var recipeList: [RecipeByCuisineType]
     

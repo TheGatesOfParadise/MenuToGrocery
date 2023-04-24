@@ -9,7 +9,7 @@ import Foundation
 
 class FavoriteViewModel: ObservableObject {
     
-    @Published var favorite: MealPlan = MealPlan.sample()
+    @Published var favorite: FavoritRecipes = FavoritRecipes.sample()
     static let shared = FavoriteViewModel()
     
     private init() {

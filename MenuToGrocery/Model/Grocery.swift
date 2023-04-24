@@ -14,6 +14,21 @@ struct GroceryItem : Identifiable {
     let quantity: Double
     let measure: String?
     let recipe: Recipe
+    
+    var quantityDisplay: String {
+        
+        //if quantity is an integer
+        if floor(quantity) == quantity {
+            if floor(quantity) == 0 {
+                return ""
+            } else {
+                return String(Int(floor(quantity)))
+            }
+        } else {
+            return String(format: "%.1f", quantity)
+        }
+    }
+    
 
     func toString() -> String {
         //return String("\(name)  \(quantity)  \(measure ?? "") for \(recipe.label)")
