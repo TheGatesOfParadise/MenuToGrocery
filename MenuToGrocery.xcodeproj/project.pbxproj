@@ -25,6 +25,8 @@
 		FD164FFF29EF76CB00A9F5A8 /* MealPlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD164FFE29EF76CB00A9F5A8 /* MealPlanViewModel.swift */; };
 		FD16500129EF9C4500A9F5A8 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16500029EF9C4500A9F5A8 /* FavoriteViewModel.swift */; };
 		FD16500329F4D91000A9F5A8 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16500229F4D91000A9F5A8 /* RecipeView.swift */; };
+		FD16500529F6046500A9F5A8 /* Grocery.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16500429F6046500A9F5A8 /* Grocery.swift */; };
+		FD16500729F60DF900A9F5A8 /* GroceryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16500629F60DF900A9F5A8 /* GroceryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,8 @@
 		FD164FFE29EF76CB00A9F5A8 /* MealPlanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanViewModel.swift; sourceTree = "<group>"; };
 		FD16500029EF9C4500A9F5A8 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		FD16500229F4D91000A9F5A8 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
+		FD16500429F6046500A9F5A8 /* Grocery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery.swift; sourceTree = "<group>"; };
+		FD16500629F60DF900A9F5A8 /* GroceryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +139,7 @@
 			children = (
 				FD164FE429ECFD2500A9F5A8 /* SearchRecipeResponse.swift */,
 				FD164FFC29EF756100A9F5A8 /* MealPlan.swift */,
+				FD16500429F6046500A9F5A8 /* Grocery.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				FD164FE529ECFD2500A9F5A8 /* SearchViewModel.swift */,
+				FD16500629F60DF900A9F5A8 /* GroceryViewModel.swift */,
 				FD164FFE29EF76CB00A9F5A8 /* MealPlanViewModel.swift */,
 				FD16500029EF9C4500A9F5A8 /* FavoriteViewModel.swift */,
 			);
@@ -231,11 +237,13 @@
 				FD164FE929ECFD2500A9F5A8 /* SearchViewModel.swift in Sources */,
 				FD164FE729ECFD2500A9F5A8 /* SearchView.swift in Sources */,
 				FD164FD629ECFCC100A9F5A8 /* ContentView.swift in Sources */,
+				FD16500529F6046500A9F5A8 /* Grocery.swift in Sources */,
 				FD164FFD29EF756100A9F5A8 /* MealPlan.swift in Sources */,
 				FD164FD429ECFCC100A9F5A8 /* MenuToGroceryApp.swift in Sources */,
 				FD164FF529EE3AB600A9F5A8 /* TestView.swift in Sources */,
 				FD16500129EF9C4500A9F5A8 /* FavoriteViewModel.swift in Sources */,
 				FD164FFB29EF750700A9F5A8 /* GroceryView.swift in Sources */,
+				FD16500729F60DF900A9F5A8 /* GroceryViewModel.swift in Sources */,
 				FD164FEA29ECFD2500A9F5A8 /* EdamamNetworkManager.swift in Sources */,
 				FD164FFF29EF76CB00A9F5A8 /* MealPlanViewModel.swift in Sources */,
 				FD164FF729EF74C300A9F5A8 /* MealPlanView.swift in Sources */,

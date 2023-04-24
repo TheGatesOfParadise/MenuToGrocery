@@ -82,10 +82,26 @@ struct RecipeView: View {
                 // 1
                 Section("Ingredients") {
                     ForEach(recipe.ingredients) { ingredient in
-                        HStack{
+                        VStack{
                             Text(ingredient.text.capitalized)
                                 .foregroundColor(.blue)
                                 .fixedSize(horizontal: false, vertical: true)
+                            
+                            Text(String(format: "%.2f", ingredient.quantity))
+                                .foregroundColor(.purple)
+                            
+                            Text(ingredient.measure ?? "empty")
+                                .foregroundColor(.brown)
+                            
+                            Text(ingredient.food)
+                                .foregroundColor(.pink)
+                            
+                            Text(String(format: "%.2f", ingredient.weight))
+                                .foregroundColor(.green)
+                            Text(ingredient.foodCategory)
+                                .foregroundColor(.red)
+                            Text(ingredient.foodID)
+                                .foregroundColor(.black)
                         }
                     }
                 }

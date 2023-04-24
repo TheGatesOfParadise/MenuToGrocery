@@ -6,7 +6,7 @@ class SearchViewModel: ObservableObject {
     
     private var cancellables = Set<AnyCancellable>()
     @Published var geoCode = "..."
-    @Published var result = RecipeResponse.sample()
+    @Published var result = RecipeResponse.empty()
     static let shared = SearchViewModel()
     @Published var dishName = ""
     
