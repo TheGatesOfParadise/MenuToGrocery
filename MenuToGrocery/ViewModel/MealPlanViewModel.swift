@@ -20,7 +20,7 @@ class MealPlanViewModel: ObservableObject {
         guard let recipe =  recipe else {return}
         
         for i in 0..<mealPlan.cuisineTypes.count {
-            if  recipe.mainCuisineType == mealPlan.cuisineTypes[i].id.rawValue {
+            if  recipe.mainCuisineType == mealPlan.cuisineTypes[i].id {
                 // add recipe to recipeByCuisine.recipes
                 mealPlan.cuisineTypes[i].recipes.append(recipe)
                 //break for loop and return
@@ -28,7 +28,7 @@ class MealPlanViewModel: ObservableObject {
             }
         }
         
-        mealPlan.cuisineTypes.append(RecipeByCuisineType(id: CuisineType(rawValue: recipe.mainCuisineType)! , recipes: [recipe]))
+        mealPlan.cuisineTypes.append(RecipeByCuisineType(id: recipe.mainCuisineType , recipes: [recipe]))
     }
     
     
@@ -36,7 +36,7 @@ class MealPlanViewModel: ObservableObject {
     ///In paremeter : `cuisine` -- the cuisine type to be checked
     ///Return: `RecipeByCuisineType` -- optional.  Only if the cuisine is in the meal plan, return a list of recipes, otherwise return nil
     func hasCuisine(_ type: String) -> RecipeByCuisineType? {
-        return mealPlan.cuisineTypes.first(where: {$0.id.rawValue == type})
+        return mealPlan.cuisineTypes.first(where: {$0.id == type})
     }
    
     func has(_ recipe: Recipe) -> Bool {
@@ -52,19 +52,19 @@ class MealPlanViewModel: ObservableObject {
     }
     
     func remove(_ cuisine: String) {
-        mealPlan.cuisineTypes.removeAll(where: {$0.id.rawValue == cuisine})
+        mealPlan.cuisineTypes.removeAll(where: {$0.id == cuisine})
         
     }
     
     func remove (_ recipe: Recipe) {
         for i in 0..<mealPlan.cuisineTypes.count {
-            if  recipe.mainCuisineType == mealPlan.cuisineTypes[i].id.rawValue {
+            if  recipe.mainCuisineType == mealPlan.cuisineTypes[i].id {
                 // remove recipe from recipeByCuisine.recipes
                 mealPlan.cuisineTypes[i].recipes.removeAll(where : {$0 == recipe})
                 
                 //if nothing left for a cuisine type, remove the type entirely
                 if mealPlan.cuisineTypes[i].recipes.count == 0 {
-                    remove( mealPlan.cuisineTypes[i].id.rawValue)
+                    remove( mealPlan.cuisineTypes[i].id)
                 }
                 
                 //break for loop and return

@@ -9,8 +9,7 @@ import SwiftUI
 
 struct SearchView: View {
     @ObservedObject var searchViewModel = SearchViewModel.shared
-    //@ObservedObject var mealViewModel = MealPlanViewModel.shared
-    //@ObservedObject var favoriteViewModel = FavoriteViewModel.shared
+
     
     @State var recipeSearchPhrase = ""
     @State var selectedCuisineType = "empty"
@@ -75,55 +74,88 @@ struct SearchView: View {
             
             Spacer()
             
-            //if searchViewModel.dishName != "" {
                 List{
                     ForEach(searchViewModel.result.hits) { hit in
-                        smallRecipeView(item: hit)
-                        .onTapGesture {
-                            selectedRecipe = hit.recipe
-                            //singleMenuSheetIsPresented.toggle()
-                        }
+                        smallRecipeView(item: hit, selectedRecipe: $selectedRecipe)
                     }
                 }
-            //}
         }
         .sheet(item: $selectedRecipe) { item in     // activated on selected item
             RecipeView(recipe: item)   //TODO: !
                 .presentationDetents([.large])
         }
-       
     }
 }
 
 struct smallRecipeView: View {
+    @ObservedObject var mealViewModel = MealPlanViewModel.shared
+    @ObservedObject var favoriteViewModel = FavoriteViewModel.shared
     let item : Hit
-   
+    @Binding var selectedRecipe: Recipe?
+    
     var body: some View {
         
         HStack {
-            AsyncImage(
-                url: URL(string: "\(item.recipe.image)"),
-                content: { image in
-                    image.resizable()
-                         .aspectRatio(contentMode: .fit)
-                         .frame(maxWidth: 100, maxHeight: 100)
-                },
-                placeholder: {
-                    Text("Loading...")
-                        .frame(maxWidth: 100, maxHeight: 100)
+            HStack {
+                AsyncImage(
+                    url: URL(string: "\(item.recipe.image)"),
+                    content: { image in
+                        image.resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: 100, maxHeight: 100)
+                    },
+                    placeholder: {
+                        Text("Loading...")
+                            .frame(maxWidth: 100, maxHeight: 100)
+                    }
+                )
+                .padding()
+                
+                Spacer()
+                VStack {
+                    Text("\(item.recipe.label)")
+                        .bold()
+                    Text("Cuisine: \(item.recipe.mainCuisineType)") //TODO: check if this optional field
+                    Text("Calories: \(Int(item.recipe.calories))")
+                    
                 }
-            )
-            .padding()
-            
-            Spacer()
-            VStack {
-                Text("\(item.recipe.label)")
-                    .bold()
-                Text("Cuisine: \(item.recipe.mainCuisineType)") //TODO: check if this optional field
-                Text("Calories: \(Int(item.recipe.calories))")
-               
+                Spacer()
             }
-            Spacer()
+            .onTapGesture {
+                selectedRecipe = item.recipe
+            }
+            
+            
+            VStack {
+                Button(action: {
+                    mealViewModel.add(item.recipe)
+                }, label: {
+                    Image(mealViewModel.has(item.recipe) ? "mealPlan" : "mealPlan_green")
+                        .resizable()
+                        .frame(width:roundCircleButtonWidth, height: roundCircleButtonWidth)
+                        //.foregroundColor(.red)
+                        .clipShape(Circle())
+                        
+                })
+                .padding(1)
+                //.background(mealViewModel.has(item.recipe) ? .gray : .red)
+                //.foregroundColor(.white)
+                .disabled(mealViewModel.has(item.recipe))
+                .clipShape(Circle())
+                
+                Button(action: {
+                    //favortieMale.add(recipe)
+                }, label: {
+                    Image(systemName: mealViewModel.has(item.recipe) ? "heart.fill" : "heart")
+                        .resizable()
+                        .foregroundColor(mealViewModel.has(item.recipe) ? .red : .green)
+                        .frame(width: roundCircleButtonWidth - 6, height: roundCircleButtonWidth - 6)
+                })
+                .padding(1)
+                .disabled(mealViewModel.has(item.recipe))
+            }
+            .padding(.trailing, 10)
+            
         }
         .frame(width: UIScreen.screenWidth - 20)
         .border(.gray, width: 5)

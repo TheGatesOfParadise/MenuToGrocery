@@ -25,7 +25,7 @@ struct MealPlanView: View {
                 ForEach(viewModel.mealPlan.cuisineTypes) { cuisine in
                     VStack (alignment: .leading){
                         //cuisine type
-                        Text("\(cuisine.id.rawValue.capitalized)")
+                        Text("\(cuisine.id.capitalized)")
                             .font(.system(size: 24, weight: .semibold))
                         
                         //recipes belong to the cuisine
