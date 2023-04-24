@@ -13,13 +13,32 @@ let deleteSignWidth = 15.0
 struct MealPlanView: View {
     @ObservedObject var viewModel = MealPlanViewModel.shared
     @State var selectedRecipe : Recipe? = nil
+    @State var alertPresented = false
     var body: some View {
         
         VStack{
-            Text("Meal Plan")
-            //.font(.custom("AmericanTypewriter-Bold", fixedSize: 36))
-                .font(.system(size: 36, weight: .heavy, design: .rounded))
-                .padding()
+            HStack {
+                Text("Meal Plan")
+                //.font(.custom("AmericanTypewriter-Bold", fixedSize: 36))
+                    .font(.system(size: 36, weight: .heavy, design: .rounded))
+                    .padding()
+                
+                Button(action: {
+                    alertPresented.toggle()
+                }, label: {
+                    Text("Empty")
+                        .bold()
+                })
+                .disabled(viewModel.mealPlan.cuisineTypes.count == 0)
+                .alert(isPresented: $alertPresented, content: {
+                    Alert(title: Text("Are you sure to empty meal plan?"),
+                primaryButton: .default(Text("Yes"),action: {
+                        viewModel.emptyRecipe()
+                    }),
+                secondaryButton: .cancel(Text("Cancel")))
+                })
+                
+            }
             
             ScrollView(.vertical) {
                 ForEach(viewModel.mealPlan.cuisineTypes) { cuisine in
