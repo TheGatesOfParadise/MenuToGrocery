@@ -12,13 +12,32 @@ struct GroceryView: View {
     @ObservedObject var groceryViewModel = GroceryViewModel.shared
     @State var isOn = false  //TODO
     @State var selectedRecipe : Recipe? = nil
+    @State var alertPresented = false
     
     var body: some View {
         //ScrollView{
             VStack {
+                HStack{
+                    Text("Grocery List")
+                        .font(.system(size: 36, weight: .heavy, design: .rounded))
+                        .padding()
+                    
+                    Button(action: {
+                        alertPresented.toggle()
+                    }, label: {
+                        Text("Empty")
+                            .bold()
+                    })
+                    .disabled(groceryViewModel.groceryList.count == 0)
+                    .alert(isPresented: $alertPresented, content: {
+                        Alert(title: Text("Are you sure to empty grocery list?"),
+                              primaryButton: .default(Text("Yes"),action: {
+                            groceryViewModel.empty()
+                        }),
+                              secondaryButton: .cancel(Text("Cancel")))
+                    })
+                }
                 
-                Text("Grocery List")
-                    .font(.system(size: 36, weight: .heavy, design: .rounded))
                 List{
                     ForEach(groceryViewModel.groceryList) { category in
                         Section("\(category.name)") {

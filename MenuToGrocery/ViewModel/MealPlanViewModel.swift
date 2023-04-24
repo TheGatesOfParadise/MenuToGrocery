@@ -9,8 +9,8 @@ import Foundation
 
 class MealPlanViewModel: ObservableObject {
     
-    //@Published var mealPlan = [Recipe]()
-    @Published var mealPlan = [Recipe.sample(index: 1)]
+    @Published var mealPlan = [Recipe]()
+    //@Published var mealPlan = [Recipe.sample(index: 1)]
     static let shared = MealPlanViewModel()
     
     private init() {

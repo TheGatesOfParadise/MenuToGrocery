@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchView: View {
     @ObservedObject var searchViewModel = SearchViewModel.shared
-
+    
     
     @State var recipeSearchPhrase = ""
     @State var selectedCuisineType = "empty"
@@ -24,12 +24,12 @@ struct SearchView: View {
         VStack(alignment: .center) {
             HStack {
                 TextField("Enter recipe name", text: $recipeSearchPhrase)
-                    .padding(.leading, 50)
+                    .padding(.leading, 5)
                 
                 Button(action: {
                     searchViewModel.getRecipe(search: recipeSearchPhrase,
-                                        cuisineType: selectedCuisineType,
-                                        mealType: selectedMealType)
+                                              cuisineType: selectedCuisineType,
+                                              mealType: selectedMealType)
                 },
                        label: {
                     Text("Search")
@@ -57,7 +57,7 @@ struct SearchView: View {
                 .frame(width: 200)
             }
             
-           
+            
             HStack {
                 Text("Meal stype:")
                     .padding(.leading, 40)
@@ -74,11 +74,11 @@ struct SearchView: View {
             
             Spacer()
             
-                List{
-                    ForEach(searchViewModel.result.hits) { hit in
-                        smallRecipeView(item: hit, selectedRecipe: $selectedRecipe)
-                    }
+            List{
+                ForEach(searchViewModel.result.hits) { hit in
+                    smallRecipeView(item: hit, selectedRecipe: $selectedRecipe)
                 }
+            }
         }
         .sheet(item: $selectedRecipe) { item in     // activated on selected item
             RecipeView(recipe: item)   //TODO: !
@@ -88,8 +88,6 @@ struct SearchView: View {
 }
 
 struct smallRecipeView: View {
-    @ObservedObject var mealViewModel = MealPlanViewModel.shared
-    @ObservedObject var favoriteViewModel = FavoriteViewModel.shared
     let item : Hit
     @Binding var selectedRecipe: Recipe?
     
@@ -125,40 +123,55 @@ struct smallRecipeView: View {
                 selectedRecipe = item.recipe
             }
             
-            
             VStack {
-                Button(action: {
-                    mealViewModel.add(item.recipe)
-                }, label: {
-                    Image(mealViewModel.has(item.recipe) ? "mealPlan" : "mealPlan_green")
-                        .resizable()
-                        .frame(width:roundCircleButtonWidth, height: roundCircleButtonWidth)
-                        //.foregroundColor(.red)
-                        .clipShape(Circle())
-                        
-                })
-                .padding(1)
-                //.background(mealViewModel.has(item.recipe) ? .gray : .red)
-                //.foregroundColor(.white)
-                .disabled(mealViewModel.has(item.recipe))
-                .clipShape(Circle())
-                
-                Button(action: {
-                    //favortieMale.add(recipe)
-                }, label: {
-                    Image(systemName: mealViewModel.has(item.recipe) ? "heart.fill" : "heart")
-                        .resizable()
-                        .foregroundColor(mealViewModel.has(item.recipe) ? .red : .green)
-                        .frame(width: roundCircleButtonWidth - 6, height: roundCircleButtonWidth - 6)
-                })
-                .padding(1)
-                .disabled(mealViewModel.has(item.recipe))
+                AddToMealPlanAndFavoriteButtons(recipe: item.recipe)
             }
             .padding(.trailing, 10)
-            
         }
         .frame(width: UIScreen.screenWidth - 20)
         .border(.gray, width: 5)
+    }
+}
+
+struct AddToMealPlanAndFavoriteButtons: View {
+    @ObservedObject var mealViewModel = MealPlanViewModel.shared
+    @ObservedObject var favoriteViewModel = FavoriteViewModel.shared
+    let recipe: Recipe
+    
+    var body: some View {
+        //add to meal plan button
+        Button(action: {
+            if mealViewModel.has(recipe) {
+                mealViewModel.remove(recipe)
+            } else {
+                mealViewModel.add(recipe)
+            }
+        }, label: {
+            Image(mealViewModel.has(recipe) ? "mealPlan" : "mealPlan_green")
+                .resizable()
+                .frame(width:roundCircleButtonWidth, height: roundCircleButtonWidth)
+                .clipShape(Circle())
+            
+        })
+        .buttonStyle(.borderless)
+        .padding(1)
+        .clipShape(Circle())
+        
+        //add to favorite button
+        Button(action: {
+            if favoriteViewModel.has(recipe) {
+                favoriteViewModel.remove(recipe)
+            } else {
+                favoriteViewModel.add(recipe)
+            }
+        }, label: {
+            Image(systemName: favoriteViewModel.has(recipe) ? "heart.fill" : "heart")
+                .resizable()
+                .foregroundColor(favoriteViewModel.has(recipe) ? .red : .green)
+                .frame(width: roundCircleButtonWidth - 6, height: roundCircleButtonWidth - 6)
+        })
+        .buttonStyle(.borderless)
+        .padding(1)
     }
 }
 

@@ -10,19 +10,22 @@ import SwiftUI
 let roundCircleButtonWidth = 30.0
 
 struct RecipeView: View {
-    //@ObservedObject var searchViewModel = SearchViewModel.shared
+    @ObservedObject var favoriteViewModel = FavoriteViewModel.shared
     @ObservedObject var mealViewModel = MealPlanViewModel.shared
-    @Environment(\.dismiss) var dismiss
+    //@Environment(\.dismiss) var dismiss
     
     var recipe: Recipe
     var body: some View {
         
         VStack {
             HStack {
+     /*           //add to meal plan button
                 Button(action: {
-                    mealViewModel.add(recipe)
-                    dismiss()
-                    
+                    if mealViewModel.has(recipe) {
+                        mealViewModel.remove(recipe)
+                    } else {
+                        mealViewModel.add(recipe)
+                    }
                 }, label: {
                     Image("mealPlan")
                         .resizable()
@@ -37,10 +40,13 @@ struct RecipeView: View {
                 .disabled(mealViewModel.has(recipe))
                 .clipShape(Circle())
                 
+                //add to favorites button
                 Button(action: {
-                    //favortieMale.add(recipe)
-                    dismiss()
-                    
+                    if favoriteViewModel.has(recipe) {
+                        favoriteViewModel.remove(recipe)
+                    } else {
+                        favoriteViewModel.add(recipe)
+                    }
                 }, label: {
                     Image(systemName: "heart")
                         .resizable()
@@ -48,10 +54,12 @@ struct RecipeView: View {
                         .frame(width: roundCircleButtonWidth - 6, height: roundCircleButtonWidth - 6)
                 })
                 .padding(6)
-                .background(mealViewModel.has(recipe) ? .gray : .red)
+                .background(favoriteViewModel.has(recipe) ? .gray : .red)
                 .foregroundColor(.white)
-                .disabled(mealViewModel.has(recipe))
+                //.disabled(favoriteViewModel.has(recipe))
                 .clipShape(Circle())
+      */
+                AddToMealPlanAndFavoriteButtons(recipe: recipe)
             }
             .padding(.top, 10)
             
@@ -75,7 +83,6 @@ struct RecipeView: View {
                 }
             )
             .padding()
-            
             
     
             List {
@@ -113,9 +120,8 @@ struct RecipeView: View {
             
             
             Button("Instructions") {
-                    
-                    //mealViewModel.add(recipe)
-                   }
+                    //TODO: show recipe instruciton
+            }
            .buttonStyle(BackgroundButton(isDisabled: false))
             
             Spacer()

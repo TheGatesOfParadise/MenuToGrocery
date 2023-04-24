@@ -13,7 +13,7 @@ import Foundation
 ///       `recipes`  -- an array of recipes
 struct RecipeByCuisineType: Identifiable, Equatable {
 
-    
+    //id is the cuisine type
     let id:  String
     var recipes: [Recipe]
     

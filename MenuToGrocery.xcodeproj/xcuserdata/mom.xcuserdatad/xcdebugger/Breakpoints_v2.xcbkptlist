@@ -87,47 +87,79 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E3C6C638-8E96-4263-AF36-26B1EABD8EA8"
+            uuid = "8314F514-68D8-453F-B4C3-13681A84E47D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MenuToGrocery/Model/MealPlan.swift"
+            filePath = "MenuToGrocery/ViewModel/FavoriteViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "has(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C9C302EC-1C34-4CD7-A039-A0F1AF11DE09"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MenuToGrocery/ViewModel/MealPlanViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "add(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D58C6127-C5C1-4AE9-BB29-3E93C4894AFE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MenuToGrocery/ViewModel/FavoriteViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "add(_:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "E3C6C638-8E96-4263-AF36-26B1EABD8EA8 - 3d7144792aff94ac"
+                  uuid = "D58C6127-C5C1-4AE9-BB29-3E93C4894AFE - e9ec2393c314f4e7"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "MenuToGrocery.RecipeByCuisineType.has(MenuToGrocery.Recipe) -&gt; Swift.Bool"
+                  symbolName = "MenuToGrocery.FavoriteViewModel.add(Swift.Optional&lt;MenuToGrocery.Recipe&gt;) -&gt; ()"
                   moduleName = "MenuToGrocery"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mom/XCodeProject/SwiftUI/Meimei_509/Term%20C/MenuToGrocery/MenuToGrocery/Model/MealPlan.swift"
+                  urlString = "file:///Users/mom/XCodeProject/SwiftUI/Meimei_509/Term%20C/MenuToGrocery/MenuToGrocery/ViewModel/FavoriteViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "272">
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "252">
                </Location>
                <Location
-                  uuid = "E3C6C638-8E96-4263-AF36-26B1EABD8EA8 - 3d7144792aff9519"
+                  uuid = "D58C6127-C5C1-4AE9-BB29-3E93C4894AFE - e9ec2393c314f4e7"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "MenuToGrocery.RecipeByCuisineType.has(MenuToGrocery.Recipe) -&gt; Swift.Bool"
+                  symbolName = "MenuToGrocery.FavoriteViewModel.add(Swift.Optional&lt;MenuToGrocery.Recipe&gt;) -&gt; ()"
                   moduleName = "MenuToGrocery"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mom/XCodeProject/SwiftUI/Meimei_509/Term%20C/MenuToGrocery/MenuToGrocery/Model/MealPlan.swift"
+                  urlString = "file:///Users/mom/XCodeProject/SwiftUI/Meimei_509/Term%20C/MenuToGrocery/MenuToGrocery/ViewModel/FavoriteViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "308">
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "1212">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -135,17 +167,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "739764D8-B144-46BC-85A3-272D2736B863"
+            uuid = "35A9C82F-C81C-47F4-A84E-53476ACEF4F6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MenuToGrocery/View/RecipeView.swift"
+            filePath = "MenuToGrocery/View/SearchView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "body"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0BDC6B01-21CC-4314-8F6C-390E642CB390"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MenuToGrocery/ViewModel/MealPlanViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "add(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
