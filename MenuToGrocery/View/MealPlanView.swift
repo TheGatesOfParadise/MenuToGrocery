@@ -6,14 +6,19 @@
 //
 
 import SwiftUI
-
 let recipeWidth = 120.0
 let deleteSignWidth = 15.0
 
+let layout = [
+    GridItem(.flexible(minimum: 100)),
+    GridItem(.flexible(minimum: 100)),
+    GridItem(.flexible(minimum: 100))
+]
+
 struct MealPlanView: View {
     @ObservedObject var viewModel = MealPlanViewModel.shared
-    @State var selectedRecipe : Recipe? = nil
     @State var alertPresented = false
+    
     var body: some View {
         
         VStack{
@@ -29,103 +34,97 @@ struct MealPlanView: View {
                     Text("Empty")
                         .bold()
                 })
-                .disabled(viewModel.mealPlan.cuisineTypes.count == 0)
+                .disabled(viewModel.mealPlan.count == 0)
                 .alert(isPresented: $alertPresented, content: {
                     Alert(title: Text("Are you sure to empty meal plan?"),
-                primaryButton: .default(Text("Yes"),action: {
+                          primaryButton: .default(Text("Yes"),action: {
                         viewModel.emptyRecipe()
                     }),
-                secondaryButton: .cancel(Text("Cancel")))
+                          secondaryButton: .cancel(Text("Cancel")))
                 })
-                
             }
-            
-            ScrollView(.vertical) {
-                ForEach(viewModel.mealPlan.cuisineTypes) { cuisine in
-                    VStack (alignment: .leading){
-                        //cuisine type
-                        Text("\(cuisine.id.capitalized)")
-                            .font(.system(size: 24, weight: .semibold))
-                        
-                        //recipes belong to the cuisine
-                        ScrollView(.horizontal) {
-                            HStack(spacing: 20) {
-                                ForEach(cuisine.recipes) { r in
-                                    
-                                    VStack {
-                                        Text("\(r.label)")
-                                            .font(.system(size: 12))
-                                            //.fixedSize(horizontal: false, vertical: false)
-                                            .frame(width: recipeWidth, height: 20)
-                                            .truncationMode(.tail)
-                                            
-                                        ZStack{
-                                            AsyncImage(
-                                                url: URL(string: "\(r.images.small.url)"),
-                                                content: { image in
-                                                    image.resizable()
-                                                        .aspectRatio(contentMode: .fit)
-                                                        .frame(maxWidth: recipeWidth, maxHeight: recipeWidth)
-                                                    
-                                                },
-                                                placeholder: {
-                                                    Text("Loading...")
-                                                        .frame(maxWidth: recipeWidth, maxHeight: recipeWidth)
-                                                    
-                                                }
-                                            )
-                                            
-                                            //delete button
-                                            VStack{
-                                                HStack{
-                                                    Spacer()
-                                                    Button(action: {
-                                                        viewModel.remove(r)
-                                                    },
-                                                           label: {
-                                                        Image(systemName: "multiply")
-                                                            .resizable()
-                                                            .frame(width:deleteSignWidth, height:deleteSignWidth)
-                                                            .foregroundColor(Color.white)
-                                                        
-                                                    })
-                                                    .background(.blue.opacity(0.6))
-                                                    .cornerRadius(40)
-                                                    //.padding(.bottom, 10)
-                                                    .shadow(color: Color.black.opacity(0.3),
-                                                            radius: 3,
-                                                            x: 3,
-                                                            y: 3)
-                                                }
-                                                Spacer()
-                                            }
-                                            .frame(width: recipeWidth, height: recipeWidth)
-                                            //.border(.green, width: 1)
-                                        }
-                                    }
-                                    //.frame(width: 150, height: 150)
-                                    //.border(.blue, width: 1)
-                                    .onTapGesture {
-                                        selectedRecipe = r
-                                    }
-                                    
-                                    
-                                }
-                                .frame(width: recipeWidth+5, height: recipeWidth+55)
+            RecipeGrid()
+
+        }
+    }
+}
+
+struct RecipeGrid:  View {
+    @ObservedObject var viewModel = MealPlanViewModel.shared
+    @State var selectedRecipe : Recipe? = nil
+    
+    var body: some View {
+        ScrollView(.vertical) {
+            LazyVGrid(columns: layout, content: {
+                ForEach(viewModel.mealPlan, id: \.self) { recipe in
+                    VStack {
+                        Text("\(recipe.label)")
+                            .font(.system(size: 12))
+                            .frame(width: recipeWidth, height: 20)
+                            .truncationMode(.tail)
+                        RecipeSquareView(recipe:recipe)
+                            .onTapGesture {
+                                selectedRecipe = recipe
                             }
-                        }
+                    }
+                    .sheet(item: $selectedRecipe) { item in     // activated on selected item
+                        RecipeView(recipe: item)   //TODO: !
+                            .presentationDetents([.large])
                     }
                 }
-                .padding([.leading,.trailing], 15)
-                
-            }
-            
-            Spacer()
-            Spacer()
+            })
         }
-        .sheet(item: $selectedRecipe) { item in     // activated on selected item
-            RecipeView(recipe: item)   //TODO: !
-                .presentationDetents([.large])
+        
+        
+        
+        
+    }
+}
+
+struct RecipeSquareView: View {
+    @ObservedObject var viewModel = MealPlanViewModel.shared
+    let recipe: Recipe
+    var body: some View {
+        ZStack{
+            AsyncImage(
+                url: URL(string: "\(recipe.images.small.url)"),
+                content: { image in
+                    image.resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: recipeWidth, maxHeight: recipeWidth)
+                    
+                },
+                placeholder: {
+                    Text("Loading...")
+                        .frame(maxWidth: recipeWidth, maxHeight: recipeWidth)
+                }
+            )
+            
+            //delete sign
+            VStack{
+                HStack{
+                    Spacer()
+                    Button(action: {
+                        viewModel.remove(recipe)
+                    },
+                           label: {
+                        Image(systemName: "multiply")
+                            .resizable()
+                            .frame(width:deleteSignWidth, height:deleteSignWidth)
+                            .foregroundColor(Color.white)
+                        
+                    })
+                    .background(.blue.opacity(0.6))
+                    .cornerRadius(40)
+                    //.padding(.bottom, 10)
+                    .shadow(color: Color.black.opacity(0.3),
+                            radius: 3,
+                            x: 3,
+                            y: 3)
+                }
+                Spacer()
+            }
+            .frame(width: recipeWidth, height: recipeWidth)
         }
     }
 }

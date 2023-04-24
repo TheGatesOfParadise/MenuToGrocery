@@ -8,12 +8,6 @@
 import Foundation
 
 
-enum RecipeAction: String {
-    case add
-    case remove
-    case check
-}
-
 ///Represent recipes belong to the same cuisine type
 ///property `id` -  unique cuisine type
 ///       `recipes`  -- an array of recipes
@@ -91,6 +85,10 @@ struct FavoritRecipes {
         return FavoritRecipes(recipeList: [RecipeByCuisineType.sampleAmericanFood(),
                                            RecipeByCuisineType.sampleChineseFood(),
                                            RecipeByCuisineType.sampleFrenchFood()])
+    }
+    
+    static func empty() -> FavoritRecipes {
+        return FavoritRecipes(recipeList: [RecipeByCuisineType]())
     }
 }
 
