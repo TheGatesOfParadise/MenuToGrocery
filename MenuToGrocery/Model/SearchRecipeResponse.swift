@@ -120,13 +120,13 @@ struct Recipe: Codable, Identifiable, Equatable {
 
 // add this to make your struct conform to Hashable
 extension Recipe: Hashable {
-        func hash(into hasher: inout Hasher) {
-            hasher.combine(uri)
-            hasher.combine(label)
-            hasher.combine(url)
-            hasher.combine(image)
-        }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(uri)
+        hasher.combine(label)
+        hasher.combine(url)
+        hasher.combine(image)
     }
+}
 
 // MARK: - Digest
 struct Digest: Codable {

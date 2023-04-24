@@ -142,10 +142,10 @@
             filePath = "MenuToGrocery/ViewModel/MealPlanViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "remove(_:)"
-            landmarkType = "7">
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "MealPlanViewModel"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "48E0D1DC-7021-4A8E-8125-BD2F3269D9FB - 5288806e8b95247b"
@@ -206,10 +206,10 @@
             filePath = "MenuToGrocery/ViewModel/MealPlanViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "has(_:)"
-            landmarkType = "7">
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "MealPlanViewModel"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "28DDA193-2186-4A6E-98E3-11CDBE538E4D - 851ba726fdb5a0b5"

@@ -27,20 +27,12 @@ class MealPlanViewModel: ObservableObject {
     ///Check if a cuisine is in the meal plan, if it's true, then return the recipe list that belong to the cuisine type
     ///In paremeter : `cuisine` -- the cuisine type to be checked
     ///Return: `RecipeByCuisineType` -- optional.  Only if the cuisine is in the meal plan, return a list of recipes, otherwise return nil
- /*   func hasCuisine(_ type: String) -> RecipeByCuisineType? {
-        return mealPlan.cuisineTypes.first(where: {$0.id == type})
-    }
-*/
+    ///TODO; 
     func has(_ recipe: Recipe) -> Bool {
         return mealPlan.contains(recipe)
     }
 
-    /*
-    func remove(_ cuisine: String) {
-        mealPlan.cuisineTypes.removeAll(where: {$0.id == cuisine})
-        
-    }
-   */
+
     func remove (_ recipe: Recipe) {
         mealPlan.removeAll(where: {$0 == recipe})
     }
