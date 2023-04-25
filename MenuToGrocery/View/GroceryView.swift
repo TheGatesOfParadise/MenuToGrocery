@@ -42,24 +42,28 @@ struct GroceryView: View {
                     ForEach(groceryViewModel.groceryList) { category in
                         Section("\(category.name)") {
                             VStack (alignment: .leading){
+                     
                                 ForEach(category.groceryItems) {item in
-                                    Toggle(isOn: $isOn) {
+                                   
                                         HStack{
-                                                
+                                            Button(action: {
+                                                groceryViewModel.toggle(item)
+                                            },
+                                                   label: {Image(systemName: item.bought ? "checkmark.square.fill" : "square")
+                                            })
+                                            .buttonStyle(.borderless)
+                                            
                                             Text(item.name)
                                             Spacer()
                                             Text(item.quantityDisplay)
-                                                
                                             Text(item.measure ?? "")
                                         }
-                                        .foregroundColor(.black)
-                                        .onTapGesture {
-                                            selectedRecipe = item.recipe
-                                        }
+                                    
+                                    .foregroundColor(.black)
+                                    .onTapGesture {
+                                        selectedRecipe = item.recipe
                                     }
-                                    .toggleStyle(iOSCheckboxToggleStyle())
                                 }
-
                             }
                         }
                     }
@@ -67,10 +71,8 @@ struct GroceryView: View {
                 }
                 Spacer()
             }
-        //}
         .onAppear{
-            groceryViewModel.translateMealPlan(mealviewModel.mealPlan)
-            //groceryViewModel.add(Recipe.sample(index: 0))
+            groceryViewModel.sortAndClean()
         }
         .sheet(item: $selectedRecipe) { item in     // activated on selected item
             RecipeView(recipe: item)   //TODO: !

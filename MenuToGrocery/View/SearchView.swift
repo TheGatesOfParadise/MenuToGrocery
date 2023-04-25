@@ -133,9 +133,12 @@ struct smallRecipeView: View {
     }
 }
 
+///single out this view not only for  reduce redundacy of code between search view and recipe view
+///it also helps to centralize the location where mealplan and grocery list are updated
 struct AddToMealPlanAndFavoriteButtons: View {
     @ObservedObject var mealViewModel = MealPlanViewModel.shared
     @ObservedObject var favoriteViewModel = FavoriteViewModel.shared
+    @ObservedObject var groceryViewModel = GroceryViewModel.shared
     let recipe: Recipe
     
     var body: some View {
@@ -143,11 +146,13 @@ struct AddToMealPlanAndFavoriteButtons: View {
         Button(action: {
             if mealViewModel.has(recipe) {
                 mealViewModel.remove(recipe)
+                groceryViewModel.remove(recipe)
             } else {
                 mealViewModel.add(recipe)
+                groceryViewModel.add(recipe)
             }
         }, label: {
-            Image(mealViewModel.has(recipe) ? "mealPlan" : "mealPlan_green")
+            Image(mealViewModel.has(recipe) ? "mealPlan_red" : "mealPlan_green")
                 .resizable()
                 .frame(width:roundCircleButtonWidth, height: roundCircleButtonWidth)
                 .clipShape(Circle())
@@ -163,6 +168,7 @@ struct AddToMealPlanAndFavoriteButtons: View {
                 favoriteViewModel.remove(recipe)
             } else {
                 favoriteViewModel.add(recipe)
+                
             }
         }, label: {
             Image(systemName: favoriteViewModel.has(recipe) ? "heart.fill" : "heart")

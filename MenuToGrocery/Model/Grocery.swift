@@ -14,6 +14,7 @@ struct GroceryItem : Identifiable {
     let quantity: Double
     let measure: String?
     let recipe: Recipe
+    var bought: Bool = false
     
     var quantityDisplay: String {
         
