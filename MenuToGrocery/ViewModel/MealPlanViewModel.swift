@@ -6,23 +6,23 @@
 //
 
 import Foundation
+import Combine
 
 class MealPlanViewModel: ObservableObject {
-    
+    @Published var mealRepository = FirebaseRepository()
     @Published var mealPlan = [Recipe]()
     //@Published var mealPlan = [Recipe.sample(index: 1)]
     static let shared = MealPlanViewModel()
     
     private init() {
     }
-    
         
     func add(_ recipe: Recipe?) {
         guard let recipe =  recipe else {return}
 
         mealPlan.append(recipe)
+        mealRepository.add(recipe) //TODO:check 
     }
-    
     
     ///Check if a cuisine is in the meal plan, if it's true, then return the recipe list that belong to the cuisine type
     ///In paremeter : `cuisine` -- the cuisine type to be checked
@@ -32,16 +32,11 @@ class MealPlanViewModel: ObservableObject {
         return mealPlan.contains(recipe)
     }
 
-
     func remove (_ recipe: Recipe) {
         mealPlan.removeAll(where: {$0 == recipe})
     }
     
-
-        
     func emptyRecipe() {
         mealPlan.removeAll()
     }
-        
-    
 }

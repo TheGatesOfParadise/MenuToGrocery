@@ -39,7 +39,7 @@ struct FavoriteView: View {
                 ForEach(viewModel.favorites) { cuisine in
                     VStack (alignment: .leading){
                         //cuisine type
-                        Text("\(cuisine.id.capitalized)")
+                        Text("\(cuisine.cuisineType.capitalized)")
                             .font(.system(size: 24, weight: .semibold))
                         
                         //recipes belong to the cuisine

@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
-struct GroceryItem : Identifiable {
+struct GroceryItem : Identifiable, Codable{
     let id = UUID()
     let category: String
     let name: String
@@ -15,6 +16,16 @@ struct GroceryItem : Identifiable {
     let measure: String?
     let recipe: Recipe
     var bought: Bool = false
+    
+    enum CodingKeys: CodingKey {
+        case id
+        case category
+        case name
+        case quantity
+        case measure
+        case recipe
+        case bought
+    }
     
     var quantityDisplay: String {
         
@@ -57,10 +68,16 @@ struct GroceryItem : Identifiable {
     }
 }
 
-struct GroceryCategory: Identifiable {
-    let id = UUID()
+struct GroceryCategory: Identifiable, Codable {
+    @DocumentID var id: String?
     let name: String
     var groceryItems: [GroceryItem]
+    
+    enum CodingKeys: CodingKey {
+        case id
+        case name
+        case groceryItems
+    }
     
     static func sampleVegetable() -> GroceryCategory {
         return GroceryCategory(name: "vegetables", groceryItems: [GroceryItem.onion(),GroceryItem.garlic()])

@@ -6,42 +6,46 @@
 //
 
 import Foundation
-
+import FirebaseFirestoreSwift
 
 ///Represent recipes belong to the same cuisine type
 ///property `id` -  unique cuisine type
 ///       `recipes`  -- an array of recipes
-struct RecipeByCuisineType: Identifiable, Equatable {
-
-    //id is the cuisine type
-    let id:  String
+struct RecipeByCuisineType: Identifiable, Equatable, Codable {
+    @DocumentID var id: String?
+    let cuisineType:  String
     var recipes: [Recipe]
+    
+    enum CodingKeys: CodingKey {
+        case cuisineType
+        case recipes
+    }
     
     ///sample Chinese recipes
     static func sampleChineseFood() -> RecipeByCuisineType {
-        return RecipeByCuisineType(id: "chinese", recipes: [Recipe.sample(index: 1),Recipe.sample(index: 1), Recipe.sample(index: 1)])
+        return RecipeByCuisineType(cuisineType: "chinese", recipes: [Recipe.sample(index: 1),Recipe.sample(index: 1), Recipe.sample(index: 1)])
     }
     
     ///Compare two cuisine by name
     static func == (lhs: RecipeByCuisineType, rhs: RecipeByCuisineType) -> Bool {
-        lhs.id == rhs.id
+        lhs.cuisineType == rhs.cuisineType
     }
     
     ///sample Ameircan recipes
     static func sampleAmericanFood() -> RecipeByCuisineType {
-        return RecipeByCuisineType(id: "american", recipes: [Recipe.sample(index: 0),Recipe.sample(index: 1),Recipe.sample(index: 2)])
+        return RecipeByCuisineType(cuisineType: "american", recipes: [Recipe.sample(index: 0),Recipe.sample(index: 1),Recipe.sample(index: 2)])
     }
     
     ///sample French recipes
     static func sampleFrenchFood() -> RecipeByCuisineType {
-        return RecipeByCuisineType(id: "french", recipes: [Recipe.sample(index: 2),Recipe.sample(index: 2),Recipe.sample(index: 2)])
+        return RecipeByCuisineType(cuisineType: "french", recipes: [Recipe.sample(index: 2),Recipe.sample(index: 2),Recipe.sample(index: 2)])
     }
     
     ///check if a recipe is in this cuisine
     ///In parameter `recipe` -- the recipe to be checked
     ///Return `Bool` -- if recipe is in this cuisine, return true, otherwise return false
     func has(_ recipe: Recipe) -> Bool {
-        if  recipe.mainCuisineType.compare(id, options: .caseInsensitive) == .orderedSame {
+        if  recipe.mainCuisineType.compare(cuisineType, options: .caseInsensitive) == .orderedSame {
             for recipeFromMealPlan in recipes {
                 if recipeFromMealPlan == recipe {
                     return true
@@ -60,6 +64,9 @@ struct RecipeByCuisineType: Identifiable, Equatable {
     }
     
 }
+
+typealias Mealplan = [Recipe]
+
 struct FavoritRecipes {
     var recipeList: [RecipeByCuisineType]
     

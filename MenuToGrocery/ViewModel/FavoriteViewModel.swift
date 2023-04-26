@@ -8,7 +8,7 @@
 import Foundation
 
 class FavoriteViewModel: ObservableObject {
-    
+    @Published var favoritesRepository = FirebaseRepository()
     @Published var favorites = [RecipeByCuisineType]()
     /*@Published var favorites = [RecipeByCuisineType.sampleFrenchFood(),
                                RecipeByCuisineType.sampleChineseFood(),
@@ -27,7 +27,7 @@ class FavoriteViewModel: ObservableObject {
         guard let recipe =  recipe else {return}
         
         for i in 0..<favorites.count {
-            if  recipe.mainCuisineType == favorites[i].id {
+            if  recipe.mainCuisineType == favorites[i].cuisineType {
                 // add recipe to recipeByCuisine.recipes
                 favorites[i].recipes.append(recipe)
                 //break for loop and return
@@ -35,7 +35,10 @@ class FavoriteViewModel: ObservableObject {
             }
         }
         
-        favorites.append(RecipeByCuisineType(id: recipe.mainCuisineType , recipes: [recipe]))
+        
+        favorites.append(RecipeByCuisineType(cuisineType: recipe.mainCuisineType , recipes: [recipe]))
+        
+        favoritesRepository.add(RecipeByCuisineType(cuisineType: recipe.mainCuisineType , recipes: [recipe])) //TODO: pure test for firebase
     }
     
     
@@ -43,7 +46,7 @@ class FavoriteViewModel: ObservableObject {
     ///In paremeter : `cuisine` -- the cuisine type to be checked
     ///Return: `RecipeByCuisineType` -- optional.  Only if the cuisine is in the favorite meals, return a list of recipes, otherwise return nil
     func hasCuisine(_ type: String) -> RecipeByCuisineType? {
-        return favorites.first(where: {$0.id == type})
+        return favorites.first(where: {$0.cuisineType == type})
     }
    
     func has(_ recipe: Recipe) -> Bool {
@@ -59,19 +62,19 @@ class FavoriteViewModel: ObservableObject {
     }
     
     func remove(_ cuisine: String) {
-        favorites.removeAll(where: {$0.id == cuisine})
+        favorites.removeAll(where: {$0.cuisineType == cuisine})
         
     }
     
     func remove (_ recipe: Recipe) {
         for i in 0..<favorites.count {
-            if  recipe.mainCuisineType == favorites[i].id {
+            if  recipe.mainCuisineType == favorites[i].cuisineType {
                 // remove recipe from recipeByCuisine.recipes
                 favorites[i].recipes.removeAll(where : {$0 == recipe})
                 
                 //if nothing left for a cuisine type, remove the type entirely
                 if favorites[i].recipes.count == 0 {
-                    remove( favorites[i].id)
+                    remove( favorites[i].cuisineType)
                 }
                 
                 //break for loop and return

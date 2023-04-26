@@ -5,7 +5,9 @@ ToDo#############
 4. save to firebase
 5. use NSCache to store image
 7. check all ! 
-12. instructions
+12. instructions for recipe
+13. simplify recipe class
+14. update firebase by recipe/small item
 
 
 
