@@ -37,7 +37,7 @@ class GroceryViewModel: ObservableObject {
             }
         }
         
-        groceryList.append(GroceryCategory(name: grocery.category, groceryItems: [grocery]))
+        groceryList.append(GroceryCategory(name: grocery.category, groceryItems: [grocery])) //TODO: test of firebase
     }
     
     func remove(_ grocery: GroceryItem) {

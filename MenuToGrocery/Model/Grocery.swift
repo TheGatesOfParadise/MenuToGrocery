@@ -69,7 +69,7 @@ struct GroceryItem : Identifiable, Codable{
 }
 
 struct GroceryCategory: Identifiable, Codable {
-    @DocumentID var id: String?
+    @DocumentID var id: String? = UUID().uuidString
     let name: String
     var groceryItems: [GroceryItem]
     

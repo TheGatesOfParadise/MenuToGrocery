@@ -21,7 +21,7 @@ class MealPlanViewModel: ObservableObject {
         guard let recipe =  recipe else {return}
 
         mealPlan.append(recipe)
-        mealRepository.add(recipe) //TODO:check 
+        //mealRepository.add(recipe) //TODO:check
     }
     
     ///Check if a cuisine is in the meal plan, if it's true, then return the recipe list that belong to the cuisine type
@@ -33,10 +33,13 @@ class MealPlanViewModel: ObservableObject {
     }
 
     func remove (_ recipe: Recipe) {
+        mealRepository.removeFromMealPlan(recipe)
         mealPlan.removeAll(where: {$0 == recipe})
     }
     
     func emptyRecipe() {
+        mealRepository.emptyMealPlan()
         mealPlan.removeAll()
+        
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 class FavoriteViewModel: ObservableObject {
-    @Published var favoritesRepository = FirebaseRepository()
+    //@Published var favoritesRepository = FirebaseRepository()
     @Published var favorites = [RecipeByCuisineType]()
     /*@Published var favorites = [RecipeByCuisineType.sampleFrenchFood(),
                                RecipeByCuisineType.sampleChineseFood(),
@@ -38,7 +38,7 @@ class FavoriteViewModel: ObservableObject {
         
         favorites.append(RecipeByCuisineType(cuisineType: recipe.mainCuisineType , recipes: [recipe]))
         
-        favoritesRepository.add(RecipeByCuisineType(cuisineType: recipe.mainCuisineType , recipes: [recipe])) //TODO: pure test for firebase
+       // favoritesRepository.add(RecipeByCuisineType(cuisineType: recipe.mainCuisineType , recipes: [recipe])) //TODO: pure test for firebase
     }
     
     

@@ -30,18 +30,20 @@ class FirebaseRepository: ObservableObject {
             }
             .assign(to: \.userId, on: self)
             .store(in: &cancellables)
-        
+
         authenticationService.$user
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.getMealPlan()
+                self?.getFavorites()
+                self?.getGroceryList()
             }
             .store(in: &cancellables)
     }
     
     func getMealPlan() {
       store.collection(mealPlanPath)
-        .whereField("userId", isEqualTo: userId)
+        //.whereField("userId", isEqualTo: userId)
         .addSnapshotListener { querySnapshot, error in
           if let error = error {
             print("Error getting cards: \(error.localizedDescription)")
@@ -56,7 +58,7 @@ class FirebaseRepository: ObservableObject {
     
     func getFavorites() {
       store.collection(favoritesPath)
-        .whereField("userId", isEqualTo: userId)
+        //.whereField("userId", isEqualTo: userId)
         .addSnapshotListener { querySnapshot, error in
           if let error = error {
             print("Error getting cards: \(error.localizedDescription)")
@@ -71,7 +73,7 @@ class FirebaseRepository: ObservableObject {
     
     func getGroceryList() {
       store.collection(groceryListPath)
-        .whereField("userId", isEqualTo: userId)
+        //.whereField("userId", isEqualTo: userId)
         .addSnapshotListener { querySnapshot, error in
           if let error = error {
             print("Error getting cards: \(error.localizedDescription)")
@@ -157,5 +159,10 @@ class FirebaseRepository: ObservableObject {
         }
       }
     }
- 
+    
+    func emptyMealPlan(){
+        for recipe in mealPlan{
+            removeFromMealPlan(recipe)
+        }
+    }
 }

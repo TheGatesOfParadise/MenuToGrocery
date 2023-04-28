@@ -71,7 +71,7 @@ struct Recipe: Codable, Identifiable, Equatable {
         lhs.image == rhs.image
     }
     
-    @DocumentID var id: String?
+    @DocumentID var id: String? = UUID().uuidString
     let uri: String
     let label: String
     let image: String

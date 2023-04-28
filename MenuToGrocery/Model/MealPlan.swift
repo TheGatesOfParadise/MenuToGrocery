@@ -84,3 +84,13 @@ struct FavoritRecipes {
 struct Groceries {
     var items: [Ingredient]
 }
+
+//testing firebase
+
+struct Card: Identifiable, Codable {
+  @DocumentID var id: String? = UUID().uuidString
+  var question: String
+  var answer: String
+  var successful: Bool = true
+  var userId: String?
+}
