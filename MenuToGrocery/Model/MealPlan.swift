@@ -17,6 +17,7 @@ struct RecipeByCuisineType: Identifiable, Equatable, Codable {
     var recipes: [Recipe]
     
     enum CodingKeys: CodingKey {
+        case id
         case cuisineType
         case recipes
     }
@@ -83,14 +84,4 @@ struct FavoritRecipes {
 
 struct Groceries {
     var items: [Ingredient]
-}
-
-//testing firebase
-
-struct Card: Identifiable, Codable {
-  @DocumentID var id: String? = UUID().uuidString
-  var question: String
-  var answer: String
-  var successful: Bool = true
-  var userId: String?
 }

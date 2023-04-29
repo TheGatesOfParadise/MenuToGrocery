@@ -19,46 +19,6 @@ struct RecipeView: View {
         
         VStack {
             HStack {
-     /*           //add to meal plan button
-                Button(action: {
-                    if mealViewModel.has(recipe) {
-                        mealViewModel.remove(recipe)
-                    } else {
-                        mealViewModel.add(recipe)
-                    }
-                }, label: {
-                    Image("mealPlan")
-                        .resizable()
-                        .frame(width:roundCircleButtonWidth, height: roundCircleButtonWidth)
-                        .foregroundColor(.red)
-                        .clipShape(Circle())
-                        
-                })
-                .padding(5)
-                .background(mealViewModel.has(recipe) ? .gray : .red)
-                .foregroundColor(.white)
-                .disabled(mealViewModel.has(recipe))
-                .clipShape(Circle())
-                
-                //add to favorites button
-                Button(action: {
-                    if favoriteViewModel.has(recipe) {
-                        favoriteViewModel.remove(recipe)
-                    } else {
-                        favoriteViewModel.add(recipe)
-                    }
-                }, label: {
-                    Image(systemName: "heart")
-                        .resizable()
-                        .foregroundColor(.white)
-                        .frame(width: roundCircleButtonWidth - 6, height: roundCircleButtonWidth - 6)
-                })
-                .padding(6)
-                .background(favoriteViewModel.has(recipe) ? .gray : .red)
-                .foregroundColor(.white)
-                //.disabled(favoriteViewModel.has(recipe))
-                .clipShape(Circle())
-      */
                 AddToMealPlanAndFavoriteButtons(recipe: recipe)
             }
             .padding(.top, 10)

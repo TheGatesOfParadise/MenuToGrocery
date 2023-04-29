@@ -16,7 +16,6 @@ class MealPlanViewModel: ObservableObject {
     private var cancellables: Set<AnyCancellable> = []
     
     private init() {
-        
         mealRepository.$mealPlan.map { recipes in
           recipes.map(RecipeViewModel.init)
         }
@@ -27,8 +26,7 @@ class MealPlanViewModel: ObservableObject {
     func add(_ recipe: Recipe?) {
         guard let recipe =  recipe else {return}
 
-        //mealPlan.append(recipe)
-        mealRepository.add(recipe) //TODO:check
+        mealRepository.add(recipe)
     }
     
     ///Check if a cuisine is in the meal plan, if it's true, then return the recipe list that belong to the cuisine type
@@ -45,13 +43,9 @@ class MealPlanViewModel: ObservableObject {
         if let existingRecipe = recipes.first(where: {$0 == recipe}) {
             mealRepository.removeFromMealPlan(existingRecipe)
         }
-        
-        //mealPlan.removeAll(where: {$0 == recipe})
     }
     
     func emptyRecipe() {
         mealRepository.emptyMealPlan()
-        //mealPlan.removeAll()
-        
     }
 }

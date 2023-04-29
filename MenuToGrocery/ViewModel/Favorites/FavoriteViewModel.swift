@@ -6,39 +6,40 @@
 //
 
 import Foundation
+import Combine
 
 class FavoriteViewModel: ObservableObject {
     @Published var favoritesRepository = FirebaseRepository()
-    @Published var favorites = [RecipeByCuisineType]()
-    /*@Published var favorites = [RecipeByCuisineType.sampleFrenchFood(),
-                               RecipeByCuisineType.sampleChineseFood(),
-                               RecipeByCuisineType.sampleAmericanFood()]
-     */
+    @Published var favorites = [RecipeByCuisineTypeViewModel]()
     static let shared = FavoriteViewModel()
+    private var cancellables: Set<AnyCancellable> = []
     
     private init() {
+        favoritesRepository.$favorites.map { favorites in
+            favorites.map(RecipeByCuisineTypeViewModel.init)
+        }
+        .assign(to: \.favorites, on: self)
+        .store(in: &cancellables)
     }
     
     func getFavorites() {
         
     }
-        
+    
     func add(_ recipe: Recipe?) {
         guard let recipe =  recipe else {return}
         
         for i in 0..<favorites.count {
-            if  recipe.mainCuisineType == favorites[i].cuisineType {
+            if  recipe.mainCuisineType == favorites[i].recipeByCuisineType.cuisineType {
                 // add recipe to recipeByCuisine.recipes
-                favorites[i].recipes.append(recipe)
-                //break for loop and return
+                favorites[i].recipeByCuisineType.recipes.append(recipe)
+                favoritesRepository.updateFavoritesWith(favorites[i].recipeByCuisineType)
                 return
             }
         }
         
-        
-        favorites.append(RecipeByCuisineType(cuisineType: recipe.mainCuisineType , recipes: [recipe]))
-        
-       // favoritesRepository.add(RecipeByCuisineType(cuisineType: recipe.mainCuisineType , recipes: [recipe])) //TODO: pure test for firebase
+        //favorites.append(RecipeByCuisineType(cuisineType: recipe.mainCuisineType , recipes: [recipe]))
+        favoritesRepository.add(RecipeByCuisineType(cuisineType: recipe.mainCuisineType , recipes: [recipe]))
     }
     
     
@@ -46,9 +47,10 @@ class FavoriteViewModel: ObservableObject {
     ///In paremeter : `cuisine` -- the cuisine type to be checked
     ///Return: `RecipeByCuisineType` -- optional.  Only if the cuisine is in the favorite meals, return a list of recipes, otherwise return nil
     func hasCuisine(_ type: String) -> RecipeByCuisineType? {
-        return favorites.first(where: {$0.cuisineType == type})
+        let favoriteCuisineTypes = favorites.compactMap({$0.recipeByCuisineType})
+        return favoriteCuisineTypes.first(where: {$0.cuisineType == type})
     }
-   
+    
     func has(_ recipe: Recipe) -> Bool {
         guard let recipeByCuisineType = hasCuisine(recipe.mainCuisineType) else {
             return false
@@ -61,23 +63,17 @@ class FavoriteViewModel: ObservableObject {
         }
     }
     
-    func remove(_ cuisine: String) {
-        favorites.removeAll(where: {$0.cuisineType == cuisine})
-        
-    }
     
     func remove (_ recipe: Recipe) {
         for i in 0..<favorites.count {
-            if  recipe.mainCuisineType == favorites[i].cuisineType {
+            if  recipe.mainCuisineType == favorites[i].recipeByCuisineType.cuisineType {
                 // remove recipe from recipeByCuisine.recipes
-                favorites[i].recipes.removeAll(where : {$0 == recipe})
-                
-                //if nothing left for a cuisine type, remove the type entirely
-                if favorites[i].recipes.count == 0 {
-                    remove( favorites[i].cuisineType)
+                favorites[i].recipeByCuisineType.recipes.removeAll(where : {$0 == recipe})
+                if favorites[i].recipeByCuisineType.recipes.count == 0 {
+                    favoritesRepository.removeCuisineFromFavorites(favorites[i].recipeByCuisineType)
+                } else {
+                    favoritesRepository.updateFavoritesWith(favorites[i].recipeByCuisineType)
                 }
-                
-                //break for loop and return
                 return
             }
         }
@@ -85,8 +81,6 @@ class FavoriteViewModel: ObservableObject {
     }
     
     func emptyFavorites() {
-        favorites.removeAll()
+        favoritesRepository.emptyFavorites()
     }
-        
-    
 }

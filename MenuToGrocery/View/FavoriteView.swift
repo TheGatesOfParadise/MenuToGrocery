@@ -36,16 +36,16 @@ struct FavoriteView: View {
             }
             
             ScrollView(.vertical) {
-                ForEach(viewModel.favorites) { cuisine in
+                ForEach(viewModel.favorites) { cuisineViewModel in
                     VStack (alignment: .leading){
                         //cuisine type
-                        Text("\(cuisine.cuisineType.capitalized)")
+                        Text("\(cuisineViewModel.recipeByCuisineType.cuisineType.capitalized)")
                             .font(.system(size: 24, weight: .semibold))
                         
                         //recipes belong to the cuisine
                         ScrollView(.horizontal) {
                             HStack(spacing: 20) {
-                                ForEach(cuisine.recipes) { r in
+                                ForEach(cuisineViewModel.recipeByCuisineType.recipes) { r in
                                     
                                     VStack {
                                         Text("\(r.label)")
