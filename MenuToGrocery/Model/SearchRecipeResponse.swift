@@ -66,12 +66,10 @@ struct SelfClass: Codable {
 struct Recipe: Codable, Identifiable, Equatable {
     static func == (lhs: Recipe, rhs: Recipe) -> Bool {
         lhs.uri == rhs.uri &&
-        lhs.label == rhs.label &&
-        lhs.url == rhs.url &&
-        lhs.image == rhs.image
+        lhs.label == rhs.label
     }
     
-    @DocumentID var id: String? = UUID().uuidString
+    @DocumentID var id: String?
     let uri: String
     let label: String
     let image: String
@@ -89,6 +87,7 @@ struct Recipe: Codable, Identifiable, Equatable {
     let digest: [Digest]
     
     enum CodingKeys: String, CodingKey {
+        case id
         case uri, label, image, source, url, shareAs
         case images
         case yield, totalTime

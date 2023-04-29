@@ -139,7 +139,7 @@ struct AddToMealPlanAndFavoriteButtons: View {
     @ObservedObject var mealViewModel = MealPlanViewModel.shared
     @ObservedObject var favoriteViewModel = FavoriteViewModel.shared
     @ObservedObject var groceryViewModel = GroceryViewModel.shared
-    let recipe: Recipe
+    var recipe: Recipe
     
     var body: some View {
         //add to meal plan button

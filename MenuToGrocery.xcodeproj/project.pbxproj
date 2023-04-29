@@ -186,11 +186,10 @@
 		FD164FF029EDEC4900A9F5A8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				FD24C00E29FCCEC70047036F /* MealPlan */,
 				FD164FE529ECFD2500A9F5A8 /* SearchViewModel.swift */,
-				FD164FFE29EF76CB00A9F5A8 /* MealPlanViewModel.swift */,
 				FD16500029EF9C4500A9F5A8 /* FavoriteViewModel.swift */,
 				FD16500629F60DF900A9F5A8 /* GroceryViewModel.swift */,
-				FD24C00C29FCC5D70047036F /* RecipeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -203,6 +202,15 @@
 				FD24C00A29F8BBB50047036F /* AuthenticationService.swift */,
 			);
 			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		FD24C00E29FCCEC70047036F /* MealPlan */ = {
+			isa = PBXGroup;
+			children = (
+				FD164FFE29EF76CB00A9F5A8 /* MealPlanViewModel.swift */,
+				FD24C00C29FCC5D70047036F /* RecipeViewModel.swift */,
+			);
+			path = MealPlan;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
