@@ -10,18 +10,25 @@ import Combine
 
 class MealPlanViewModel: ObservableObject {
     @Published var mealRepository = FirebaseRepository()
-    @Published var mealPlan = [Recipe]()
+    @Published var mealPlan = [RecipeViewModel]()
     //@Published var mealPlan = [Recipe.sample(index: 1)]
     static let shared = MealPlanViewModel()
+    private var cancellables: Set<AnyCancellable> = []
     
     private init() {
+        
+        mealRepository.$mealPlan.map { recipes in
+          recipes.map(RecipeViewModel.init)
+        }
+        .assign(to: \.mealPlan, on: self)
+        .store(in: &cancellables)
     }
         
     func add(_ recipe: Recipe?) {
         guard let recipe =  recipe else {return}
 
-        mealPlan.append(recipe)
-        //mealRepository.add(recipe) //TODO:check
+        //mealPlan.append(recipe)
+        mealRepository.add(recipe) //TODO:check
     }
     
     ///Check if a cuisine is in the meal plan, if it's true, then return the recipe list that belong to the cuisine type
@@ -29,17 +36,18 @@ class MealPlanViewModel: ObservableObject {
     ///Return: `RecipeByCuisineType` -- optional.  Only if the cuisine is in the meal plan, return a list of recipes, otherwise return nil
     ///TODO; 
     func has(_ recipe: Recipe) -> Bool {
-        return mealPlan.contains(recipe)
+        let recipes = mealPlan.compactMap{$0.recipe}
+        return recipes.contains(recipe)
     }
 
     func remove (_ recipe: Recipe) {
-        mealRepository.removeFromMealPlan(recipe)
-        mealPlan.removeAll(where: {$0 == recipe})
+        //mealRepository.removeFromMealPlan(recipe)
+        //mealPlan.removeAll(where: {$0 == recipe})
     }
     
     func emptyRecipe() {
-        mealRepository.emptyMealPlan()
-        mealPlan.removeAll()
+        //mealRepository.emptyMealPlan()
+        //mealPlan.removeAll()
         
     }
 }

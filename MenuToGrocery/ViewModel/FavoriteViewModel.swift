@@ -8,7 +8,7 @@
 import Foundation
 
 class FavoriteViewModel: ObservableObject {
-    //@Published var favoritesRepository = FirebaseRepository()
+    @Published var favoritesRepository = FirebaseRepository()
     @Published var favorites = [RecipeByCuisineType]()
     /*@Published var favorites = [RecipeByCuisineType.sampleFrenchFood(),
                                RecipeByCuisineType.sampleChineseFood(),

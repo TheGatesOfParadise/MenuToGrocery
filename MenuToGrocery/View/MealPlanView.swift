@@ -56,15 +56,15 @@ struct RecipeGrid:  View {
     var body: some View {
         ScrollView(.vertical) {
             LazyVGrid(columns: layout, content: {
-                ForEach(viewModel.mealPlan, id: \.self) { recipe in
+                ForEach(viewModel.mealPlan, id: \.self) { recipeViewModel in
                     VStack {
-                        Text("\(recipe.label)")
+                        Text("\(recipeViewModel.recipe.label)")
                             .font(.system(size: 12))
                             .frame(width: recipeWidth, height: 20)
                             .truncationMode(.tail)
-                        RecipeSquareView(recipe:recipe)
+                        RecipeSquareView(recipe:recipeViewModel.recipe)
                             .onTapGesture {
-                                selectedRecipe = recipe
+                                selectedRecipe = recipeViewModel.recipe
                             }
                     }
                     .sheet(item: $selectedRecipe) { item in     // activated on selected item

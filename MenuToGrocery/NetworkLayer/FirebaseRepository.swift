@@ -35,8 +35,8 @@ class FirebaseRepository: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.getMealPlan()
-                self?.getFavorites()
-                self?.getGroceryList()
+                //self?.getFavorites()
+                //self?.getGroceryList()
             }
             .store(in: &cancellables)
     }

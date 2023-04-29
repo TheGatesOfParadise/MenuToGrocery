@@ -48,6 +48,7 @@
 		FD24C00729F799FB0047036F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = FD24C00629F799FB0047036F /* FirebaseStorage */; };
 		FD24C00929F799FB0047036F /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = FD24C00829F799FB0047036F /* FirebaseStorageCombine-Community */; };
 		FD24C00B29F8BBB50047036F /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD24C00A29F8BBB50047036F /* AuthenticationService.swift */; };
+		FD24C00D29FCC5D70047036F /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD24C00C29FCC5D70047036F /* RecipeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		FD16500929F77EDE00A9F5A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD16501A29F7919C00A9F5A8 /* FirebaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRepository.swift; sourceTree = "<group>"; };
 		FD24C00A29F8BBB50047036F /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		FD24C00C29FCC5D70047036F /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 				FD164FFE29EF76CB00A9F5A8 /* MealPlanViewModel.swift */,
 				FD16500029EF9C4500A9F5A8 /* FavoriteViewModel.swift */,
 				FD16500629F60DF900A9F5A8 /* GroceryViewModel.swift */,
+				FD24C00C29FCC5D70047036F /* RecipeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				FD164FD429ECFCC100A9F5A8 /* MenuToGroceryApp.swift in Sources */,
 				FD164FF529EE3AB600A9F5A8 /* TestView.swift in Sources */,
 				FD16500129EF9C4500A9F5A8 /* FavoriteViewModel.swift in Sources */,
+				FD24C00D29FCC5D70047036F /* RecipeViewModel.swift in Sources */,
 				FD164FFB29EF750700A9F5A8 /* GroceryView.swift in Sources */,
 				FD16500729F60DF900A9F5A8 /* GroceryViewModel.swift in Sources */,
 				FD164FEA29ECFD2500A9F5A8 /* EdamamNetworkManager.swift in Sources */,
