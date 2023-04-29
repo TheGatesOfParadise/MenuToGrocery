@@ -8,59 +8,6 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-// MARK: - RecipeResponse
-struct RecipeResponse: Codable {
-    let from, to, count: Int
-    let links: RecipeResponseLinks
-    let hits: [Hit]
-
-    enum CodingKeys: String, CodingKey {
-        case from, to, count
-        case links = "_links"
-        case hits
-    }
-    
-    static func sample() -> RecipeResponse {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        let jsonData = recipeResponseJson.data(using: .utf8)!
-        let recipe:RecipeResponse = try! decoder.decode(RecipeResponse.self, from: jsonData)
-        return recipe
-    }
-    
-    static func empty() -> RecipeResponse {
-        return RecipeResponse(from: 0, to: 0, count: 0, links: RecipeResponseLinks(), hits: [Hit]())
-    }
-}
-
-// MARK: - Hit
-struct Hit: Codable, Identifiable {
-    let id = UUID()
-    
-    let recipe: Recipe
-    let links: HitLinks
-
-    enum CodingKeys: String, CodingKey {
-        case recipe
-        case links = "_links"
-    }
-}
-
-// MARK: - HitLinks
-struct HitLinks: Codable {
-    let linksSelf: SelfClass
-
-    enum CodingKeys: String, CodingKey {
-        case linksSelf = "self"
-    }
-}
-
-// MARK: - SelfClass
-struct SelfClass: Codable {
-    let title: String
-    let href: String
-}
-
 // MARK: - Recipe
 ///Add ID Property on Struct Fetched From JSON comes from this post: https://stackoverflow.com/questions/70998275/add-id-property-on-struct-fetched-from-json
 struct Recipe: Codable, Identifiable, Equatable {
@@ -68,8 +15,8 @@ struct Recipe: Codable, Identifiable, Equatable {
         lhs.uri == rhs.uri &&
         lhs.label == rhs.label
     }
-    
-    @DocumentID var id: String?
+    //@DocumentID var id: String?
+    var id: String? = UUID().uuidString
     let uri: String
     let label: String
     let image: String
@@ -87,7 +34,7 @@ struct Recipe: Codable, Identifiable, Equatable {
     let digest: [Digest]
     
     enum CodingKeys: String, CodingKey {
-        case id
+        //case id
         case uri, label, image, source, url, shareAs
         case images
         case yield, totalTime
@@ -99,8 +46,13 @@ struct Recipe: Codable, Identifiable, Equatable {
        }
     
     static func sample(index: Int) -> Recipe {
-        return RecipeResponse.sample().hits[index].recipe
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        let jsonData = recipeResponseJson.data(using: .utf8)!
+        let recipe:RecipeResponse = try! decoder.decode(RecipeResponse.self, from: jsonData)
+        return recipe.hits[index].recipe
     }
+    
     
     var mainCuisineType: String {
         return cuisineType[0]
@@ -196,6 +148,62 @@ struct RecipeResponseLinks: Codable {
 }
 
 
+///////////////////////////////////////////////
+///Testing purpose
+
+
+// MARK: - RecipeResponse
+struct RecipeResponse: Codable {
+    let from, to, count: Int
+    let links: RecipeResponseLinks
+    let hits: [Hit]
+
+    enum CodingKeys: String, CodingKey {
+        case from, to, count
+        case links = "_links"
+        case hits
+    }
+    
+    static func sample() -> RecipeResponse {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        let jsonData = recipeResponseJson.data(using: .utf8)!
+        let recipe:RecipeResponse = try! decoder.decode(RecipeResponse.self, from: jsonData)
+        return recipe
+    }
+    
+    static func empty() -> RecipeResponse {
+        return RecipeResponse(from: 0, to: 0, count: 0, links: RecipeResponseLinks(), hits: [Hit]())
+    }
+}
+
+// MARK: - Hit
+struct Hit: Codable, Identifiable {
+    let id = UUID()
+    
+    let recipe: Recipe
+    let links: HitLinks
+
+    enum CodingKeys: String, CodingKey {
+        case recipe
+        case links = "_links"
+    }
+}
+
+// MARK: - HitLinks
+struct HitLinks: Codable {
+    let linksSelf: SelfClass
+
+    enum CodingKeys: String, CodingKey {
+        case linksSelf = "self"
+    }
+}
+
+// MARK: - SelfClass
+struct SelfClass: Codable {
+    let title: String
+    let href: String
+}
 
 
 let recipeResponseJson = """

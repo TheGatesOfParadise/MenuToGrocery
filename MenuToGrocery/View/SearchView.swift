@@ -75,8 +75,8 @@ struct SearchView: View {
             Spacer()
             
             List{
-                ForEach(searchViewModel.result.hits) { hit in
-                    smallRecipeView(item: hit, selectedRecipe: $selectedRecipe)
+                ForEach(searchViewModel.recipes) { recipe in
+                    smallRecipeView(recipe: recipe, selectedRecipe: $selectedRecipe)
                 }
             }
         }
@@ -88,7 +88,7 @@ struct SearchView: View {
 }
 
 struct smallRecipeView: View {
-    let item : Hit
+    let recipe : Recipe
     @Binding var selectedRecipe: Recipe?
     
     var body: some View {
@@ -96,7 +96,7 @@ struct smallRecipeView: View {
         HStack {
             HStack {
                 AsyncImage(
-                    url: URL(string: "\(item.recipe.image)"),
+                    url: URL(string: "\(recipe.image)"),
                     content: { image in
                         image.resizable()
                             .aspectRatio(contentMode: .fit)
@@ -111,20 +111,20 @@ struct smallRecipeView: View {
                 
                 Spacer()
                 VStack {
-                    Text("\(item.recipe.label)")
+                    Text("\(recipe.label)")
                         .bold()
-                    Text("Cuisine: \(item.recipe.mainCuisineType)") //TODO: check if this optional field
-                    Text("Calories: \(Int(item.recipe.calories))")
+                    Text("Cuisine: \(recipe.mainCuisineType)") //TODO: check if this optional field
+                    Text("Calories: \(Int(recipe.calories))")
                     
                 }
                 Spacer()
             }
             .onTapGesture {
-                selectedRecipe = item.recipe
+                selectedRecipe = recipe
             }
             
             VStack {
-                AddToMealPlanAndFavoriteButtons(recipe: item.recipe)
+                AddToMealPlanAndFavoriteButtons(recipe: recipe)
             }
             .padding(.trailing, 10)
         }

@@ -78,8 +78,8 @@
             filePath = "MenuToGrocery/NetworkLayer/FirebaseRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "emptyMealPlan()"
             landmarkType = "7">
             <Locations>
@@ -135,14 +135,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "75FFAFA5-7FD0-4FE4-B859-2B997C92B812"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MenuToGrocery/NetworkLayer/FirebaseRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "removeFromMealPlan(_:)"
             landmarkType = "7">
             <Locations>
@@ -176,53 +176,20 @@
                   endingLineNumber = "154"
                   offsetFromSymbolStart = "60">
                </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FB25D566-265C-4924-8FC3-C8AD801D77C0"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MenuToGrocery/NetworkLayer/FirebaseRepository.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "getMealPlan()"
-            landmarkType = "7">
-            <Locations>
                <Location
-                  uuid = "FB25D566-265C-4924-8FC3-C8AD801D77C0 - dcb0a3d533fbb662"
+                  uuid = "75FFAFA5-7FD0-4FE4-B859-2B997C92B812 - 95ebb0a3e1beb2e3"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in MenuToGrocery.FirebaseRepository.getMealPlan() -&gt; ()"
+                  symbolName = "MenuToGrocery.FirebaseRepository.removeFromMealPlan(MenuToGrocery.Recipe) -&gt; ()"
                   moduleName = "MenuToGrocery"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mom/XCodeProject/SwiftUI/Meimei_509/Term%20C/MenuToGrocery/MenuToGrocery/NetworkLayer/FirebaseRepository.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "140">
-               </Location>
-               <Location
-                  uuid = "FB25D566-265C-4924-8FC3-C8AD801D77C0 - ecb023f760d2c687"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.FIRQueryDocumentSnapshot) -&gt; Swift.Optional&lt;MenuToGrocery.Recipe&gt; in closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in MenuToGrocery.FirebaseRepository.getMealPlan() -&gt; ()"
-                  moduleName = "MenuToGrocery"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mom/XCodeProject/SwiftUI/Meimei_509/Term%20C/MenuToGrocery/MenuToGrocery/NetworkLayer/FirebaseRepository.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "64">
+                  startingLineNumber = "156"
+                  endingLineNumber = "156"
+                  offsetFromSymbolStart = "60">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -231,7 +198,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "95A8B12F-D661-4119-BCE5-E389CAE1A1A3"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MenuToGrocery/ViewModel/FavoriteViewModel.swift"
@@ -279,7 +246,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "2317100A-B5D1-482C-B852-93F2CEBFE26E"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MenuToGrocery/ViewModel/MealPlanViewModel.swift"
@@ -327,7 +294,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "0B7E3111-F5FA-49C5-BE2D-F33166BFCE7E"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MenuToGrocery/ViewModel/MealPlan/RecipeViewModel.swift"
@@ -343,7 +310,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "BC56518A-1F3B-4162-BDFC-051202D37D75"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MenuToGrocery/View/SearchView.swift"
@@ -359,7 +326,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "E90E7534-AAAB-4DA5-819D-B9183E6A9CBD"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MenuToGrocery/View/SearchView.swift"
@@ -375,7 +342,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "57C1F2FE-57D3-41B7-8054-710B5E15A0E0"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MenuToGrocery/ViewModel/MealPlan/MealPlanViewModel.swift"
@@ -423,7 +390,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "FB93FC09-C72D-4852-B7DA-5E73C6D54DD9"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MenuToGrocery/ViewModel/MealPlan/MealPlanViewModel.swift"
@@ -486,7 +453,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "54ABE1B8-C1BE-4B86-9803-2BF7AD71851A"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MenuToGrocery/ViewModel/MealPlan/MealPlanViewModel.swift"
@@ -533,17 +500,304 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "04CE2723-BC53-4AD9-8AC2-C4A67395D11B"
-            shouldBeEnabled = "Yes"
+            uuid = "D4C5BCB0-A1B3-4C06-8DBC-B1453DFF8F99"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MenuToGrocery/ViewModel/SearchViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "getRecipe(search:cuisineType:mealType:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D4C5BCB0-A1B3-4C06-8DBC-B1453DFF8F99 - fe018616dbb9af7a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MenuToGrocery.SearchViewModel.getRecipe(search: Swift.String, cuisineType: Swift.Optional&lt;Swift.String&gt;, mealType: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "MenuToGrocery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mom/XCodeProject/SwiftUI/Meimei_509/Term%20C/MenuToGrocery/MenuToGrocery/ViewModel/SearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "1896">
+               </Location>
+               <Location
+                  uuid = "D4C5BCB0-A1B3-4C06-8DBC-B1453DFF8F99 - 7fba3f02e4032bbd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Combine.Subscribers.Completion&lt;Swift.Error&gt;) -&gt; () in MenuToGrocery.SearchViewModel.getRecipe(search: Swift.String, cuisineType: Swift.Optional&lt;Swift.String&gt;, mealType: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "MenuToGrocery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mom/XCodeProject/SwiftUI/Meimei_509/Term%20C/MenuToGrocery/MenuToGrocery/ViewModel/SearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "527A4B22-457A-4116-9AC3-BDB062355FCB"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MenuToGrocery/NetworkLayer/FirebaseRepository.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "getMealPlan()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C48AE4E6-0E05-47D2-A8CF-739CEE7AE498"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MenuToGrocery/NetworkLayer/FirebaseRepository.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "getMealPlan()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1C85954E-9E09-4E5B-BB76-3B0C823C650E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MenuToGrocery/ViewModel/MealPlan/RecipeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "init(recipe:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5120F6B9-F831-46D3-A167-7BB9945B02E9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MenuToGrocery/View/MealPlanView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "5120F6B9-F831-46D3-A167-7BB9945B02E9 - 2554f60d1ce94025"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (MenuToGrocery.RecipeViewModel) -&gt; &lt;&lt;opaque return type of SwiftUI.View.sheet&lt;&#x3c4;_0_0, &#x3c4;_0_1 where &#x3c4;_1_0: Swift.Identifiable, &#x3c4;_1_1: SwiftUI.View&gt;(item: SwiftUI.Binding&lt;Swift.Optional&lt;&#x3c4;_1_0&gt;&gt;, onDismiss: Swift.Optional&lt;() -&gt; ()&gt;, content: (&#x3c4;_1_0) -&gt; &#x3c4;_1_1) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;MenuToGrocery.RecipeViewModel&gt;, MenuToGrocery.RecipeViewModel, &lt;&lt;opaque return type of SwiftUI.View.sheet&lt;&#x3c4;_0_0, &#x3c4;_0_1 where &#x3c4;_1_0: Swift.Identifiable, &#x3c4;_1_1: SwiftUI.View&gt;(item: SwiftUI.Binding&lt;Swift.Optional&lt;&#x3c4;_1_0&gt;&gt;, onDismiss: Swift.Optional&lt;() -&gt; ()&gt;, content: (&#x3c4;_1_0) -&gt; &#x3c4;_1_1) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.LazyVGrid&lt;SwiftUI.ForEach&lt;Swift.Array&lt;MenuToGrocery.RecipeViewModel&gt;, MenuToGrocery.RecipeViewModel, &lt;&lt;opaque return type of SwiftUI.View.sheet&lt;&#x3c4;_0_0, &#x3c4;_0_1 where &#x3c4;_1_0: Swift.Identifiable, &#x3c4;_1_1: SwiftUI.View&gt;(item: SwiftUI.Binding&lt;Swift.Optional&lt;&#x3c4;_1_0&gt;&gt;, onDismiss: Swift.Optional&lt;() -&gt; ()&gt;, content: (&#x3c4;_1_0) -&gt; &#x3c4;_1_1) -&gt; some&gt;&gt;.0&gt;&gt; in MenuToGrocery.RecipeGrid.body.getter : some"
+                  moduleName = "MenuToGrocery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mom/XCodeProject/SwiftUI/Meimei_509/Term%20C/MenuToGrocery/MenuToGrocery/View/MealPlanView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "968">
+               </Location>
+               <Location
+                  uuid = "5120F6B9-F831-46D3-A167-7BB9945B02E9 - 9bc91005f97cc343"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.truncationMode(SwiftUI.Text.TruncationMode) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0)&gt; in closure #1 (MenuToGrocery.RecipeViewModel) -&gt; &lt;&lt;opaque return type of SwiftUI.View.sheet&lt;&#x3c4;_0_0, &#x3c4;_0_1 where &#x3c4;_1_0: Swift.Identifiable, &#x3c4;_1_1: SwiftUI.View&gt;(item: SwiftUI.Binding&lt;Swift.Optional&lt;&#x3c4;_1_0&gt;&gt;, onDismiss: Swift.Optional&lt;() -&gt; ()&gt;, content: (&#x3c4;_1_0) -&gt; &#x3c4;_1_1) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;MenuToGrocery.RecipeViewModel&gt;, MenuToGrocery.RecipeViewModel, &lt;&lt;opaque return type of SwiftUI.View.sheet&lt;&#x3c4;_0_0, &#x3c4;_0_1 where &#x3c4;_1_0: Swift.Identifiable, &#x3c4;_1_1: SwiftUI.View&gt;(item: SwiftUI.Binding&lt;Swift.Optional&lt;&#x3c4;_1_0&gt;&gt;, onDismiss: Swift.Optional&lt;() -&gt; ()&gt;, content: (&#x3c4;_1_0) -&gt; &#x3c4;_1_1) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.LazyVGrid&lt;SwiftUI.ForEach&lt;Swift.Array&lt;MenuToGrocery.RecipeViewModel&gt;, MenuToGrocery.RecipeViewModel, &lt;&lt;opaque return type of SwiftUI.View.sheet&lt;&#x3c4;_0_0, &#x3c4;_0_1 where &#x3c4;_1_0: Swift.Identifiable, &#x3c4;_1_1: SwiftUI.View&gt;(item: SwiftUI.Binding&lt;Swift.Optional&lt;&#x3c4;_1_0&gt;&gt;, onDismiss: Swift.Optional&lt;() -&gt; ()&gt;, content: (&#x3c4;_1_0) -&gt; &#x3c4;_1_1) -&gt; some&gt;&gt;.0&gt;&gt; in MenuToGrocery.RecipeGrid.body.getter : some"
+                  moduleName = "MenuToGrocery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mom/XCodeProject/SwiftUI/Meimei_509/Term%20C/MenuToGrocery/MenuToGrocery/View/MealPlanView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "492">
+               </Location>
+               <Location
+                  uuid = "5120F6B9-F831-46D3-A167-7BB9945B02E9 - 9bc91005f97cc362"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.truncationMode(SwiftUI.Text.TruncationMode) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.onTapGesture(count: Swift.Int, perform: () -&gt; ()) -&gt; some&gt;&gt;.0)&gt; in closure #1 (MenuToGrocery.RecipeViewModel) -&gt; &lt;&lt;opaque return type of SwiftUI.View.sheet&lt;&#x3c4;_0_0, &#x3c4;_0_1 where &#x3c4;_1_0: Swift.Identifiable, &#x3c4;_1_1: SwiftUI.View&gt;(item: SwiftUI.Binding&lt;Swift.Optional&lt;&#x3c4;_1_0&gt;&gt;, onDismiss: Swift.Optional&lt;() -&gt; ()&gt;, content: (&#x3c4;_1_0) -&gt; &#x3c4;_1_1) -&gt; some&gt;&gt;.0 in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;MenuToGrocery.RecipeViewModel&gt;, MenuToGrocery.RecipeViewModel, &lt;&lt;opaque return type of SwiftUI.View.sheet&lt;&#x3c4;_0_0, &#x3c4;_0_1 where &#x3c4;_1_0: Swift.Identifiable, &#x3c4;_1_1: SwiftUI.View&gt;(item: SwiftUI.Binding&lt;Swift.Optional&lt;&#x3c4;_1_0&gt;&gt;, onDismiss: Swift.Optional&lt;() -&gt; ()&gt;, content: (&#x3c4;_1_0) -&gt; &#x3c4;_1_1) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.LazyVGrid&lt;SwiftUI.ForEach&lt;Swift.Array&lt;MenuToGrocery.RecipeViewModel&gt;, MenuToGrocery.RecipeViewModel, &lt;&lt;opaque return type of SwiftUI.View.sheet&lt;&#x3c4;_0_0, &#x3c4;_0_1 where &#x3c4;_1_0: Swift.Identifiable, &#x3c4;_1_1: SwiftUI.View&gt;(item: SwiftUI.Binding&lt;Swift.Optional&lt;&#x3c4;_1_0&gt;&gt;, onDismiss: Swift.Optional&lt;() -&gt; ()&gt;, content: (&#x3c4;_1_0) -&gt; &#x3c4;_1_1) -&gt; some&gt;&gt;.0&gt;&gt; in MenuToGrocery.RecipeGrid.body.getter : some"
+                  moduleName = "MenuToGrocery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mom/XCodeProject/SwiftUI/Meimei_509/Term%20C/MenuToGrocery/MenuToGrocery/View/MealPlanView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "1880">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "56A0B84E-22CA-4A1E-960A-030CC105856C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MenuToGrocery/View/MealPlanView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "711C94F0-9EAD-41B1-A964-21385D0784E8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MenuToGrocery/ViewModel/SearchViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "getRecipe(search:cuisineType:mealType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "98294393-88F4-4108-9596-3897EB1C7506"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MenuToGrocery/ViewModel/SearchViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "getRecipe(search:cuisineType:mealType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9B22B270-E5FA-4B7E-9EF2-9FD849839536"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MenuToGrocery/ViewModel/SearchViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "getRecipe(search:cuisineType:mealType:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9B22B270-E5FA-4B7E-9EF2-9FD849839536 - fe018616dbb9a825"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MenuToGrocery.SearchViewModel.getRecipe(search: Swift.String, cuisineType: Swift.Optional&lt;Swift.String&gt;, mealType: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "MenuToGrocery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mom/XCodeProject/SwiftUI/Meimei_509/Term%20C/MenuToGrocery/MenuToGrocery/ViewModel/SearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "1848">
+               </Location>
+               <Location
+                  uuid = "9B22B270-E5FA-4B7E-9EF2-9FD849839536 - 88cea5e51a1d56e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (MenuToGrocery.RecipeResponse) -&gt; () in MenuToGrocery.SearchViewModel.getRecipe(search: Swift.String, cuisineType: Swift.Optional&lt;Swift.String&gt;, mealType: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "MenuToGrocery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mom/XCodeProject/SwiftUI/Meimei_509/Term%20C/MenuToGrocery/MenuToGrocery/ViewModel/SearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C2A8DD3B-B043-4075-AD9A-166E7D8CCACF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MenuToGrocery/ViewModel/SearchViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "getRecipe(search:cuisineType:mealType:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C2A8DD3B-B043-4075-AD9A-166E7D8CCACF - 88cea5e51a1d54f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (MenuToGrocery.RecipeResponse) -&gt; () in MenuToGrocery.SearchViewModel.getRecipe(search: Swift.String, cuisineType: Swift.Optional&lt;Swift.String&gt;, mealType: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "MenuToGrocery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mom/XCodeProject/SwiftUI/Meimei_509/Term%20C/MenuToGrocery/MenuToGrocery/ViewModel/SearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "C2A8DD3B-B043-4075-AD9A-166E7D8CCACF - 3ed3c2017bd65870"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (MenuToGrocery.Hit) -&gt; Swift.Optional&lt;MenuToGrocery.Recipe&gt; in closure #2 (MenuToGrocery.RecipeResponse) -&gt; () in MenuToGrocery.SearchViewModel.getRecipe(search: Swift.String, cuisineType: Swift.Optional&lt;Swift.String&gt;, mealType: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "MenuToGrocery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mom/XCodeProject/SwiftUI/Meimei_509/Term%20C/MenuToGrocery/MenuToGrocery/ViewModel/SearchViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

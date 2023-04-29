@@ -12,7 +12,7 @@
 		FD164FD829ECFCC200A9F5A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD164FD729ECFCC200A9F5A8 /* Assets.xcassets */; };
 		FD164FDB29ECFCC200A9F5A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD164FDA29ECFCC200A9F5A8 /* Preview Assets.xcassets */; };
 		FD164FE729ECFD2500A9F5A8 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD164FE329ECFD2500A9F5A8 /* SearchView.swift */; };
-		FD164FE829ECFD2500A9F5A8 /* SearchRecipeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD164FE429ECFD2500A9F5A8 /* SearchRecipeResponse.swift */; };
+		FD164FE829ECFD2500A9F5A8 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD164FE429ECFD2500A9F5A8 /* Recipe.swift */; };
 		FD164FE929ECFD2500A9F5A8 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD164FE529ECFD2500A9F5A8 /* SearchViewModel.swift */; };
 		FD164FEA29ECFD2500A9F5A8 /* EdamamNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD164FE629ECFD2500A9F5A8 /* EdamamNetworkManager.swift */; };
 		FD164FED29EDE30900A9F5A8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD164FEC29EDE30900A9F5A8 /* Extensions.swift */; };
@@ -58,7 +58,7 @@
 		FD164FD729ECFCC200A9F5A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD164FDA29ECFCC200A9F5A8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FD164FE329ECFD2500A9F5A8 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		FD164FE429ECFD2500A9F5A8 /* SearchRecipeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRecipeResponse.swift; sourceTree = "<group>"; };
+		FD164FE429ECFD2500A9F5A8 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		FD164FE529ECFD2500A9F5A8 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		FD164FE629ECFD2500A9F5A8 /* EdamamNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdamamNetworkManager.swift; sourceTree = "<group>"; };
 		FD164FEC29EDE30900A9F5A8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -176,7 +176,7 @@
 		FD164FEF29EDEC4200A9F5A8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FD164FE429ECFD2500A9F5A8 /* SearchRecipeResponse.swift */,
+				FD164FE429ECFD2500A9F5A8 /* Recipe.swift */,
 				FD164FFC29EF756100A9F5A8 /* MealPlan.swift */,
 				FD16500429F6046500A9F5A8 /* Grocery.swift */,
 			);
@@ -323,7 +323,7 @@
 				FD16501B29F7919C00A9F5A8 /* FirebaseRepository.swift in Sources */,
 				FD164FFF29EF76CB00A9F5A8 /* MealPlanViewModel.swift in Sources */,
 				FD164FF729EF74C300A9F5A8 /* MealPlanView.swift in Sources */,
-				FD164FE829ECFD2500A9F5A8 /* SearchRecipeResponse.swift in Sources */,
+				FD164FE829ECFD2500A9F5A8 /* Recipe.swift in Sources */,
 				FD24C00B29F8BBB50047036F /* AuthenticationService.swift in Sources */,
 				FD164FF929EF74DB00A9F5A8 /* FavoriteView.swift in Sources */,
 				FD164FED29EDE30900A9F5A8 /* Extensions.swift in Sources */,

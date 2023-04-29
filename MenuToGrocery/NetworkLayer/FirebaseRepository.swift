@@ -51,7 +51,9 @@ class FirebaseRepository: ObservableObject {
           }
 
           self.mealPlan = querySnapshot?.documents.compactMap { document in
-            try? document.data(as: Recipe.self)
+              var recipe : Recipe? = try? document.data(as: Recipe.self)
+              recipe?.id = document.documentID
+              return recipe
           } ?? []
         }
     }
@@ -124,7 +126,7 @@ class FirebaseRepository: ObservableObject {
       guard let recipeId = recipe.id else { return }
 
       do {
-        try store.collection(mealPlanPath).document(recipeId).setData(from: recipe)
+          try store.collection(mealPlanPath).document(recipeId).setData(from: recipe)
       } catch {
           fatalError("Unable to update \(recipe.label) in Mealplan: \(error.localizedDescription).")
       }
