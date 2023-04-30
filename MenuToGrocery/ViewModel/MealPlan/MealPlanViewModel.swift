@@ -26,7 +26,8 @@ class MealPlanViewModel: ObservableObject {
     func add(_ recipe: Recipe?) {
         guard let recipe =  recipe else {return}
 
-        mealRepository.add(recipe)
+        //mealRepository.add(recipe)
+        mealRepository.addRecipeToMealPlan(recipe)
     }
     
     ///Check if a cuisine is in the meal plan, if it's true, then return the recipe list that belong to the cuisine type

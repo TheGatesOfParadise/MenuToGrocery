@@ -26,7 +26,7 @@
 		FD16500129EF9C4500A9F5A8 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16500029EF9C4500A9F5A8 /* FavoriteViewModel.swift */; };
 		FD16500329F4D91000A9F5A8 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16500229F4D91000A9F5A8 /* RecipeView.swift */; };
 		FD16500529F6046500A9F5A8 /* Grocery.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16500429F6046500A9F5A8 /* Grocery.swift */; };
-		FD16500729F60DF900A9F5A8 /* GroceryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16500629F60DF900A9F5A8 /* GroceryViewModel.swift */; };
+		FD16500729F60DF900A9F5A8 /* GroceryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16500629F60DF900A9F5A8 /* GroceryListViewModel.swift */; };
 		FD16500A29F77EDE00A9F5A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD16500929F77EDE00A9F5A8 /* GoogleService-Info.plist */; };
 		FD16501B29F7919C00A9F5A8 /* FirebaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD16501A29F7919C00A9F5A8 /* FirebaseRepository.swift */; };
 		FD24BFE729F799FB0047036F /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = FD24BFE629F799FB0047036F /* FirebaseAppCheck */; };
@@ -50,6 +50,8 @@
 		FD24C00B29F8BBB50047036F /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD24C00A29F8BBB50047036F /* AuthenticationService.swift */; };
 		FD24C00D29FCC5D70047036F /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD24C00C29FCC5D70047036F /* RecipeViewModel.swift */; };
 		FD24C01329FD6ECA0047036F /* RecipeByCuisineTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD24C01229FD6ECA0047036F /* RecipeByCuisineTypeViewModel.swift */; };
+		FD24C01629FD8C870047036F /* GroceryCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD24C01529FD8C870047036F /* GroceryCategoryViewModel.swift */; };
+		FD24C01829FEB98A0047036F /* Test2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD24C01729FEB98A0047036F /* Test2View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,13 +75,15 @@
 		FD16500029EF9C4500A9F5A8 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		FD16500229F4D91000A9F5A8 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		FD16500429F6046500A9F5A8 /* Grocery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery.swift; sourceTree = "<group>"; };
-		FD16500629F60DF900A9F5A8 /* GroceryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryViewModel.swift; sourceTree = "<group>"; };
+		FD16500629F60DF900A9F5A8 /* GroceryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListViewModel.swift; sourceTree = "<group>"; };
 		FD16500829F77E9300A9F5A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FD16500929F77EDE00A9F5A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD16501A29F7919C00A9F5A8 /* FirebaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseRepository.swift; sourceTree = "<group>"; };
 		FD24C00A29F8BBB50047036F /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		FD24C00C29FCC5D70047036F /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
 		FD24C01229FD6ECA0047036F /* RecipeByCuisineTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeByCuisineTypeViewModel.swift; sourceTree = "<group>"; };
+		FD24C01529FD8C870047036F /* GroceryCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryCategoryViewModel.swift; sourceTree = "<group>"; };
+		FD24C01729FEB98A0047036F /* Test2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +146,7 @@
 				FD164FD729ECFCC200A9F5A8 /* Assets.xcassets */,
 				FD164FD929ECFCC200A9F5A8 /* Preview Content */,
 				FD164FF429EE3AB600A9F5A8 /* TestView.swift */,
+				FD24C01729FEB98A0047036F /* Test2View.swift */,
 			);
 			path = MenuToGrocery;
 			sourceTree = "<group>";
@@ -188,10 +193,10 @@
 		FD164FF029EDEC4900A9F5A8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				FD24C01429FD8BEF0047036F /* GroceryList */,
 				FD24C01129FD6EB20047036F /* Favorites */,
 				FD24C00E29FCCEC70047036F /* MealPlan */,
 				FD164FE529ECFD2500A9F5A8 /* SearchViewModel.swift */,
-				FD16500629F60DF900A9F5A8 /* GroceryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -222,6 +227,15 @@
 				FD24C01229FD6ECA0047036F /* RecipeByCuisineTypeViewModel.swift */,
 			);
 			path = Favorites;
+			sourceTree = "<group>";
+		};
+		FD24C01429FD8BEF0047036F /* GroceryList */ = {
+			isa = PBXGroup;
+			children = (
+				FD16500629F60DF900A9F5A8 /* GroceryListViewModel.swift */,
+				FD24C01529FD8C870047036F /* GroceryCategoryViewModel.swift */,
+			);
+			path = GroceryList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,7 +344,8 @@
 				FD16500129EF9C4500A9F5A8 /* FavoriteViewModel.swift in Sources */,
 				FD24C00D29FCC5D70047036F /* RecipeViewModel.swift in Sources */,
 				FD164FFB29EF750700A9F5A8 /* GroceryView.swift in Sources */,
-				FD16500729F60DF900A9F5A8 /* GroceryViewModel.swift in Sources */,
+				FD24C01829FEB98A0047036F /* Test2View.swift in Sources */,
+				FD16500729F60DF900A9F5A8 /* GroceryListViewModel.swift in Sources */,
 				FD164FEA29ECFD2500A9F5A8 /* EdamamNetworkManager.swift in Sources */,
 				FD16501B29F7919C00A9F5A8 /* FirebaseRepository.swift in Sources */,
 				FD164FFF29EF76CB00A9F5A8 /* MealPlanViewModel.swift in Sources */,
@@ -339,6 +354,7 @@
 				FD24C00B29F8BBB50047036F /* AuthenticationService.swift in Sources */,
 				FD164FF929EF74DB00A9F5A8 /* FavoriteView.swift in Sources */,
 				FD164FED29EDE30900A9F5A8 /* Extensions.swift in Sources */,
+				FD24C01629FD8C870047036F /* GroceryCategoryViewModel.swift in Sources */,
 				FD16500329F4D91000A9F5A8 /* RecipeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

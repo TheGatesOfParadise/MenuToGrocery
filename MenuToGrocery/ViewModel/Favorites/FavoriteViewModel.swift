@@ -22,10 +22,6 @@ class FavoriteViewModel: ObservableObject {
         .store(in: &cancellables)
     }
     
-    func getFavorites() {
-        
-    }
-    
     func add(_ recipe: Recipe?) {
         guard let recipe =  recipe else {return}
         

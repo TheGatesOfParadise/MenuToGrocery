@@ -18,15 +18,7 @@ class RecipeByCuisineTypeViewModel: ObservableObject, Identifiable, Hashable {
             .assign(to: \.id, on: self)
             .store(in: &cancellables)
     }
- /*
-    func update(recipe: Recipe) {
-        //firebaseRepository.updateMealPlanWith(recipe)
-    }
     
-    func remove() {
-        //firebaseRepository.remove
-    }
-*/
     static func == (lhs: RecipeByCuisineTypeViewModel, rhs: RecipeByCuisineTypeViewModel) -> Bool {
         lhs.recipeByCuisineType.cuisineType ==  rhs.recipeByCuisineType.cuisineType
     }

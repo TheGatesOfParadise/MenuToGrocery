@@ -31,8 +31,9 @@ struct MealPlanView: View {
                 Button(action: {
                     alertPresented.toggle()
                 }, label: {
-                    Text("Empty")
-                        .bold()
+                    Image(systemName: "trash")
+                        .resizable()
+                        .frame(width:30, height: 30)
                 })
                 .disabled(viewModel.mealPlan.count == 0)
                 .alert(isPresented: $alertPresented, content: {

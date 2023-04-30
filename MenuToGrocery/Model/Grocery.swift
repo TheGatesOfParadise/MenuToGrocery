@@ -8,7 +8,13 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-struct GroceryItem : Identifiable, Codable{
+struct GroceryItem : Identifiable, Codable, Comparable{
+    static func < (lhs: GroceryItem, rhs: GroceryItem) -> Bool {
+        lhs.name == rhs.name &&
+        lhs.category == rhs.category &&
+        lhs.recipe == rhs.recipe
+    }
+    
     let id = UUID()
     let category: String
     let name: String
@@ -69,7 +75,7 @@ struct GroceryItem : Identifiable, Codable{
 }
 
 struct GroceryCategory: Identifiable, Codable {
-    @DocumentID var id: String? = UUID().uuidString
+    @DocumentID var id: String?
     let name: String
     var groceryItems: [GroceryItem]
     

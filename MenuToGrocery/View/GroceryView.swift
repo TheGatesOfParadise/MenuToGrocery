@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GroceryView: View {
     @ObservedObject var mealviewModel = MealPlanViewModel.shared
-    @ObservedObject var groceryViewModel = GroceryViewModel.shared
+    @ObservedObject var groceryListViewModel = GroceryListViewModel.shared
     @State var isOn = false  //TODO
     @State var selectedRecipe : Recipe? = nil
     @State var alertPresented = false
@@ -25,29 +25,30 @@ struct GroceryView: View {
                     Button(action: {
                         alertPresented.toggle()
                     }, label: {
-                        Text("Empty")
-                            .bold()
+                        Image(systemName: "trash")
+                            .resizable()
+                            .frame(width:30, height: 30)
                     })
-                    .disabled(groceryViewModel.groceryList.count == 0)
+                    .disabled(groceryListViewModel.groceryList.count == 0)
                     .alert(isPresented: $alertPresented, content: {
                         Alert(title: Text("Are you sure to empty grocery list?"),
                               primaryButton: .default(Text("Yes"),action: {
-                            groceryViewModel.empty()
+                            groceryListViewModel.empty()
                         }),
                               secondaryButton: .cancel(Text("Cancel")))
                     })
                 }
                 
                 List{
-                    ForEach(groceryViewModel.groceryList) { category in
-                        Section("\(category.name)") {
+                    ForEach(groceryListViewModel.groceryList) { categoryViewModel in
+                        Section("\(categoryViewModel.groceryCategory.name)") {
                             VStack (alignment: .leading){
                      
-                                ForEach(category.groceryItems) {item in
+                                ForEach(categoryViewModel.groceryCategory.groceryItems) {item in
                                    
                                         HStack{
                                             Button(action: {
-                                                groceryViewModel.toggle(item)
+                                                groceryListViewModel.toggle(item)
                                             },
                                                    label: {Image(systemName: item.bought ? "checkmark.square.fill" : "square")
                                             })
@@ -72,7 +73,7 @@ struct GroceryView: View {
                 Spacer()
             }
         .onAppear{
-            groceryViewModel.sortAndClean()
+            groceryListViewModel.sortAndClean()
         }
         .sheet(item: $selectedRecipe) { item in     // activated on selected item
             RecipeView(recipe: item)   //TODO: !

@@ -138,7 +138,7 @@ struct smallRecipeView: View {
 struct AddToMealPlanAndFavoriteButtons: View {
     @ObservedObject var mealViewModel = MealPlanViewModel.shared
     @ObservedObject var favoriteViewModel = FavoriteViewModel.shared
-    @ObservedObject var groceryViewModel = GroceryViewModel.shared
+    @ObservedObject var groceryListViewModel = GroceryListViewModel.shared
     var recipe: Recipe
     
     var body: some View {
@@ -146,10 +146,10 @@ struct AddToMealPlanAndFavoriteButtons: View {
         Button(action: {
             if mealViewModel.has(recipe) {
                 mealViewModel.remove(recipe)
-                groceryViewModel.remove(recipe)
+                groceryListViewModel.remove(recipe)
             } else {
                 mealViewModel.add(recipe)
-                groceryViewModel.add(recipe)
+                //groceryListViewModel.add(recipe)
             }
         }, label: {
             Image(mealViewModel.has(recipe) ? "mealPlan_red" : "mealPlan_green")

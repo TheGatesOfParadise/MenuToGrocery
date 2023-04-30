@@ -26,6 +26,7 @@ struct MenuToGroceryApp: App {
         WindowGroup {
             //SearchView()
             ContentView()
+            //Test2View()
         }
     }
 }
