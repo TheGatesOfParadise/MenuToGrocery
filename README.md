@@ -27,3 +27,4 @@ Done#############
 11. delete/add grocery item, individual checkbox  -- check GamifiedToDo/ToDoDetails/ToDoDetailsView.swift, line 206
 15. add drawer for instruction
 4. save to firebase
+6. added launch screen
