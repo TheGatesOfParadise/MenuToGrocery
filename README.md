@@ -28,3 +28,8 @@ Done#############
 15. add drawer for instruction
 4. save to firebase
 6. added launch screen
+
+
+
+Firecard reference: https://www.kodeco.com/11609977-getting-started-with-cloud-firestore-and-swiftui#toc-anchor-003
+
