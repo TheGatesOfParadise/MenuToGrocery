@@ -9,7 +9,7 @@ import SwiftUI
 
 let roundCircleButtonWidth = 30.0
 
-struct RecipeView: View {
+struct RecipeTopView: View {
     @ObservedObject var favoriteViewModel = FavoriteViewModel.shared
     @ObservedObject var mealViewModel = MealPlanViewModel.shared
     //@Environment(\.dismiss) var dismiss
@@ -43,47 +43,7 @@ struct RecipeView: View {
                 }
             )
             .padding()
-            
-    
-            List {
-                // 1
-                Section("Ingredients") {
-                    ForEach(recipe.ingredients) { ingredient in
-                        VStack{
-                            Text(ingredient.text.capitalized)
-                                .foregroundColor(.blue)
-                                .fixedSize(horizontal: false, vertical: true)
-                    /*
-                            Text(String(format: "%.2f", ingredient.quantity))
-                                .foregroundColor(.purple)
-                            
-                            Text(ingredient.measure ?? "empty")
-                                .foregroundColor(.brown)
-                            
-                            Text(ingredient.food)
-                                .foregroundColor(.pink)
-                            
-                            Text(String(format: "%.2f", ingredient.weight))
-                                .foregroundColor(.green)
-                            Text(ingredient.foodCategory)
-                                .foregroundColor(.red)
-                            Text(ingredient.foodID)
-                                .foregroundColor(.black) */
-                        }
-                    }
-                }
-            }
-            .padding([.leading,.trailing],10 )
-            
-            Spacer()
-            
-            
-            
-            Button("Instructions") {
-                    //TODO: show recipe instruciton
-            }
-           .buttonStyle(BackgroundButton(isDisabled: false))
-            
+
             Spacer()
         }
     }
@@ -106,8 +66,8 @@ struct BackgroundButton: ButtonStyle {
     }
 }
 
-struct RecipeView_Previews: PreviewProvider {
+struct RecipeTopView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(recipe: Recipe.sample(index: 0))
+        RecipeTopView(recipe: Recipe.sample(index: 0))
     }
 }
