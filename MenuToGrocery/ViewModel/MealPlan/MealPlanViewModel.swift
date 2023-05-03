@@ -49,7 +49,18 @@ class MealPlanViewModel: ObservableObject {
         mealRepository.emptyMealPlan()
     }
     
-    func getRecipesForAdvice() {
-        var recipeNames = mealPlan.compactMap({$0.recipe.label})
+    func getRecipesForAdvice() -> String {
+        
+        var recipeNames = ""
+        for meal in mealPlan {
+            recipeNames.append(meal.recipe.label)
+            recipeNames.append(",")
+        }
+       
+        if !recipeNames.isEmpty {
+            recipeNames = String(recipeNames.dropLast(1))
+        }
+        
+        return recipeNames
     }
 }
