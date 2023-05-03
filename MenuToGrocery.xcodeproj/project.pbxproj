@@ -53,6 +53,7 @@
 		FD24C01629FD8C870047036F /* GroceryCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD24C01529FD8C870047036F /* GroceryCategoryViewModel.swift */; };
 		FD24C01829FEB98A0047036F /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD24C01729FEB98A0047036F /* RecipeView.swift */; };
 		FD24C01B29FF78260047036F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD24C01A29FF78260047036F /* LaunchScreen.storyboard */; };
+		FD24C01D2A01CA210047036F /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD24C01C2A01CA210047036F /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		FD24C01529FD8C870047036F /* GroceryCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryCategoryViewModel.swift; sourceTree = "<group>"; };
 		FD24C01729FEB98A0047036F /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		FD24C01A29FF78260047036F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FD24C01C2A01CA210047036F /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 				FD24C01729FEB98A0047036F /* RecipeView.swift */,
 				FD16500229F4D91000A9F5A8 /* RecipeTopView.swift */,
 				FD164FF429EE3AB600A9F5A8 /* SplitView.swift */,
+				FD24C01C2A01CA210047036F /* TestView.swift */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				FD24C00D29FCC5D70047036F /* RecipeViewModel.swift in Sources */,
 				FD164FFB29EF750700A9F5A8 /* GroceryView.swift in Sources */,
 				FD24C01829FEB98A0047036F /* RecipeView.swift in Sources */,
+				FD24C01D2A01CA210047036F /* TestView.swift in Sources */,
 				FD16500729F60DF900A9F5A8 /* GroceryListViewModel.swift in Sources */,
 				FD164FEA29ECFD2500A9F5A8 /* EdamamNetworkManager.swift in Sources */,
 				FD16501B29F7919C00A9F5A8 /* FirebaseRepository.swift in Sources */,

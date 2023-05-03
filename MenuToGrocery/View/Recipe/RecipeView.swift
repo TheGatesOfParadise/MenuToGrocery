@@ -20,7 +20,7 @@ struct RecipeView: View {
                     // Blur
                     BlurView(style: .systemThinMaterialDark)
 
-                    SplitView(recipe: Recipe.sample(index: 0))
+                    SplitView(recipe: recipe)
                 }
             }
             .offset(y: offset)

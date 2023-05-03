@@ -11,7 +11,7 @@ ToDo#############
 
 16. add loading wheel
 17. chatgpt
-
+18. get rid of error -- AppCheck failed: 'The operation couldn’t be completed. (com.apple.devicecheck.error error 1.)'
 
 
 #############

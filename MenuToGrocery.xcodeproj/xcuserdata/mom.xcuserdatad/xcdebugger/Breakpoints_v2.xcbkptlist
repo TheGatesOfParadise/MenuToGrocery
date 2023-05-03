@@ -247,6 +247,21 @@
                   endingLineNumber = "254"
                   offsetFromSymbolStart = "4372">
                </Location>
+               <Location
+                  uuid = "F72DBD3C-C43F-4BFB-A4CC-30E9D6B354BE - 987266bd1687bda0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MenuToGrocery.FirebaseRepository.addRecipeToMealPlan(MenuToGrocery.Recipe) -&gt; ()"
+                  moduleName = "MenuToGrocery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mom/XCodeProject/SwiftUI/Meimei_509/Term%20C/MenuToGrocery/MenuToGrocery/NetworkLayer/FirebaseRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "254"
+                  endingLineNumber = "254"
+                  offsetFromSymbolStart = "4380">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -339,6 +354,69 @@
                   startingLineNumber = "230"
                   endingLineNumber = "230"
                   offsetFromSymbolStart = "3560">
+               </Location>
+               <Location
+                  uuid = "B69169BF-AB73-4A14-ABF5-8A1668C82FAE - 987266bd1687b088"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MenuToGrocery.FirebaseRepository.addRecipeToMealPlan(MenuToGrocery.Recipe) -&gt; ()"
+                  moduleName = "MenuToGrocery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mom/XCodeProject/SwiftUI/Meimei_509/Term%20C/MenuToGrocery/MenuToGrocery/NetworkLayer/FirebaseRepository.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "230"
+                  endingLineNumber = "230"
+                  offsetFromSymbolStart = "3568">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "828A7A83-812E-420C-8555-A3494C0955B9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MenuToGrocery/View/Recipe/SplitView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "828A7A83-812E-420C-8555-A3494C0955B9 - c2539077c8a37def"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;MenuToGrocery.Ingredient&gt;, Foundation.UUID, SwiftUI.VStack&lt;&lt;&lt;opaque return type of SwiftUI.View.fixedSize(horizontal: Swift.Bool, vertical: Swift.Bool) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; SwiftUI.Section&lt;SwiftUI.Text, SwiftUI.ForEach&lt;Swift.Array&lt;MenuToGrocery.Ingredient&gt;, Foundation.UUID, SwiftUI.VStack&lt;&lt;&lt;opaque return type of SwiftUI.View.fixedSize(horizontal: Swift.Bool, vertical: Swift.Bool) -&gt; some&gt;&gt;.0&gt;&gt;, SwiftUI.EmptyView&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0 in MenuToGrocery.FirstView.body.getter : some"
+                  moduleName = "MenuToGrocery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mom/XCodeProject/SwiftUI/Meimei_509/Term%20C/MenuToGrocery/MenuToGrocery/View/Recipe/SplitView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "828A7A83-812E-420C-8555-A3494C0955B9 - 9333a1576a1d6051"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (MenuToGrocery.Ingredient) -&gt; SwiftUI.VStack&lt;&lt;&lt;opaque return type of SwiftUI.View.fixedSize(horizontal: Swift.Bool, vertical: Swift.Bool) -&gt; some&gt;&gt;.0&gt; in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;MenuToGrocery.Ingredient&gt;, Foundation.UUID, SwiftUI.VStack&lt;&lt;&lt;opaque return type of SwiftUI.View.fixedSize(horizontal: Swift.Bool, vertical: Swift.Bool) -&gt; some&gt;&gt;.0&gt;&gt; in closure #1 () -&gt; SwiftUI.Section&lt;SwiftUI.Text, SwiftUI.ForEach&lt;Swift.Array&lt;MenuToGrocery.Ingredient&gt;, Foundation.UUID, SwiftUI.VStack&lt;&lt;&lt;opaque return type of SwiftUI.View.fixedSize(horizontal: Swift.Bool, vertical: Swift.Bool) -&gt; some&gt;&gt;.0&gt;&gt;, SwiftUI.EmptyView&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0 in MenuToGrocery.FirstView.body.getter : some"
+                  moduleName = "MenuToGrocery"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mom/XCodeProject/SwiftUI/Meimei_509/Term%20C/MenuToGrocery/MenuToGrocery/View/Recipe/SplitView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "120">
                </Location>
             </Locations>
          </BreakpointContent>

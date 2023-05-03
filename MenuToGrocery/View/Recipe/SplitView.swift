@@ -16,7 +16,7 @@ struct SplitView: View {
                 FirstView(recipe:recipe)
             }
             else {
-                SecondView()
+                SecondView(recipe:recipe)
             }
             Spacer()
         }
@@ -47,11 +47,13 @@ struct FirstView: View{
 }
 
 struct SecondView: View{
+    @State var showInstruction = true
+    let recipe:Recipe
     var body: some View{
         ZStack{
             Rectangle()
                 .foregroundColor(.yellow)
-            Text("Instructions")
+            WebView(url: URL(string: recipe.url)!, showWebView: $showInstruction)
         }
     }
 }
