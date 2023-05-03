@@ -51,6 +51,7 @@
 		FD24C01629FD8C870047036F /* GroceryCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD24C01529FD8C870047036F /* GroceryCategoryViewModel.swift */; };
 		FD24C01B29FF78260047036F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD24C01A29FF78260047036F /* LaunchScreen.storyboard */; };
 		FD3C35492A01FB93004E1F15 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3C35482A01FB93004E1F15 /* RecipeView.swift */; };
+		FD3C354B2A0202AF004E1F15 /* AdviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3C354A2A0202AF004E1F15 /* AdviceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		FD24C01529FD8C870047036F /* GroceryCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryCategoryViewModel.swift; sourceTree = "<group>"; };
 		FD24C01A29FF78260047036F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD3C35482A01FB93004E1F15 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
+		FD3C354A2A0202AF004E1F15 /* AdviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 				FD164FF829EF74DB00A9F5A8 /* FavoriteView.swift */,
 				FD164FFA29EF750700A9F5A8 /* GroceryView.swift */,
 				FD3C35482A01FB93004E1F15 /* RecipeView.swift */,
+				FD3C354A2A0202AF004E1F15 /* AdviceView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				FD24C00B29F8BBB50047036F /* AuthenticationService.swift in Sources */,
 				FD164FF929EF74DB00A9F5A8 /* FavoriteView.swift in Sources */,
 				FD164FED29EDE30900A9F5A8 /* Extensions.swift in Sources */,
+				FD3C354B2A0202AF004E1F15 /* AdviceView.swift in Sources */,
 				FD24C01629FD8C870047036F /* GroceryCategoryViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -24,7 +24,7 @@ struct FavoriteView: View {
                 }, label: {
                     Image(systemName: "trash")
                         .resizable()
-                        .frame(width:30, height: 30)
+                        .frame(width:25, height: 25)
                 })
                 .disabled(viewModel.favorites.count == 0)
                 .alert(isPresented: $alertPresented, content: {

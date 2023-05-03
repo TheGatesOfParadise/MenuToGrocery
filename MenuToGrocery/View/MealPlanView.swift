@@ -17,35 +17,49 @@ let layout = [
 
 struct MealPlanView: View {
     @ObservedObject var viewModel = MealPlanViewModel.shared
-    @State var alertPresented = false
+    @State var emptyAlertPresented = false
     
     var body: some View {
-        
-        VStack{
-            HStack {
-                Text("Meal Plan")
-                //.font(.custom("AmericanTypewriter-Bold", fixedSize: 36))
-                    .font(.system(size: 36, weight: .heavy, design: .rounded))
-                    .padding()
-                
-                Button(action: {
-                    alertPresented.toggle()
-                }, label: {
-                    Image(systemName: "trash")
-                        .resizable()
-                        .frame(width:30, height: 30)
-                })
-                .disabled(viewModel.mealPlan.count == 0)
-                .alert(isPresented: $alertPresented, content: {
-                    Alert(title: Text("Are you sure to empty meal plan?"),
-                          primaryButton: .default(Text("Yes"),action: {
-                        viewModel.emptyRecipe()
-                    }),
-                          secondaryButton: .cancel(Text("Cancel")))
-                })
-            }
-            RecipeGrid()
+        NavigationView {
+            VStack{
+                HStack {
+                    //get advice on the meal plan
+               /*     Button(action: {
+                        adviceAlertPresented.toggle()
+                    },
+                          
+                    })
+               */
+                    NavigationLink(destination: AdviceView()) {
+                        Image("advice")
+                            .resizable()
+                            .frame(width: 60, height: 60)
+                    }
 
+                    Text("Meal Plan")
+                    //.font(.custom("AmericanTypewriter-Bold", fixedSize: 36))
+                        .font(.system(size: 36, weight: .heavy, design: .rounded))
+                        .padding()
+                    
+                    //empty meal plan button, it invokes an alert
+                    Button(action: {
+                        emptyAlertPresented.toggle()
+                    }, label: {
+                        Image(systemName: "trash")
+                            .resizable()
+                            .frame(width:25, height: 25)
+                    })
+                    .disabled(viewModel.mealPlan.count == 0)
+                    .alert(isPresented: $emptyAlertPresented, content: {
+                        Alert(title: Text("Are you sure to empty meal plan?"),
+                              primaryButton: .default(Text("Yes"),action: {
+                            viewModel.emptyRecipe()
+                        }),
+                              secondaryButton: .cancel(Text("Cancel")))
+                    })
+                }
+                RecipeGrid()
+            }
         }
     }
 }
@@ -75,10 +89,6 @@ struct RecipeGrid:  View {
                 }
             })
         }
-        
-        
-        
-        
     }
 }
 

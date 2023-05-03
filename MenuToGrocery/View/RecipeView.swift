@@ -76,6 +76,7 @@ struct RecipeView: View {
     }
 }
 
+//code reference: https://medium.com/geekculture/how-to-use-webview-in-swiftui-and-also-detect-the-url-21d4fab2a9c1
 struct WebView: UIViewRepresentable {
  
     var url: URL

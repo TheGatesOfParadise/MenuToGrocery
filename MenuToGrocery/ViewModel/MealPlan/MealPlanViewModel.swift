@@ -11,7 +11,6 @@ import Combine
 class MealPlanViewModel: ObservableObject {
     @Published var mealRepository = FirebaseRepository()
     @Published var mealPlan = [RecipeViewModel]()
-    //@Published var mealPlan = [Recipe.sample(index: 1)]
     static let shared = MealPlanViewModel()
     private var cancellables: Set<AnyCancellable> = []
     
@@ -48,5 +47,9 @@ class MealPlanViewModel: ObservableObject {
     
     func emptyRecipe() {
         mealRepository.emptyMealPlan()
+    }
+    
+    func getRecipesForAdvice() {
+        var recipeNames = mealPlan.compactMap({$0.recipe.label})
     }
 }
