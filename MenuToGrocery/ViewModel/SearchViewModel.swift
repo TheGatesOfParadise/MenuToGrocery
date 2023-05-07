@@ -8,15 +8,12 @@ class SearchViewModel: ObservableObject {
     @Published var geoCode = "..."
     @Published var recipes = [Recipe]()
     static let shared = SearchViewModel()
-
-    private init() {
-    }
+    private init() {}
     
-    
-    //MARK: AccuWeather API services
+    //MARK: Edamam API services
     func getRecipe(search: String, cuisineType: String?, mealType: String?) {
                 
-        /*
+        /* sample data
          https://api.edamam.com/api/recipes/v2?type=public&
         beta=false&
          q=crawfish%20etouffee&
@@ -46,8 +43,8 @@ class SearchViewModel: ObservableObject {
         }
         
         EdamamNetworkManager.shared.getRecipe(endpoint: "\(EdamamNetworkManager.shared.recipeURL)",
-                                          query: query,
-                                          type: RecipeResponse.self)
+                                              query: query,
+                                              type: RecipeResponse.self)
         .sink { completion in
             switch completion {
             case .failure(let err):

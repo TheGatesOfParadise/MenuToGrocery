@@ -23,9 +23,8 @@ struct AdviceView_Previews: PreviewProvider {
 
 
 struct AdviceView: View {
-    @ObservedObject var viewModel = MealPlanViewModel.shared
-    @ObservedObject var apiRequestManager = ChatRequestManager()
-    @State private var inputText: String = ""
+    @ObservedObject var mealViewModel = MealPlanViewModel.shared
+    @ObservedObject var chatGPTViewModel = ChatGPTViewModel.shared
     @State private var age:Int = 18
     @State private var sexSelection = "Female"
     let sexList = ["Male", "Female"]
@@ -50,7 +49,7 @@ struct AdviceView: View {
             }
             .frame(height: 150)
             
-            Text("Your meal plan includes \(viewModel.getRecipesForAdvice())")
+            Text("Your meal plan includes \(mealViewModel.getRecipesForAdvice())")
                 .frame(height: 50)
             
       /*    Spacer()
@@ -62,7 +61,7 @@ struct AdviceView: View {
 
 
             Button(action: {
-                self.apiRequestManager.makeRequest(mealPlan: viewModel.getRecipesForAdvice(),
+                self.chatGPTViewModel.getMealPlanAdvice(mealPlan: mealViewModel.getRecipesForAdvice(),
                                                    age:age,
                                                    sex:sexSelection)
              }) {
@@ -79,21 +78,22 @@ struct AdviceView: View {
              }
              .background(Color.green)
              .cornerRadius(20)
-             .disabled(!viewModel.readyForAdvice())
+             .disabled(!mealViewModel.readyForAdvice())
             
-            Spacer()
-            Spacer()
-/*
-            if let data = apiRequestManager.responseData {
-                if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                    if let choices = json["choices"] as? [[String: Any]] {
-                        if let text = choices[0]["text"] as? String {
-                            Text(text)
-                        }
-                    }
-                }
-            }
- */
+            //chatGPT answer
+            Text("\(chatGPTViewModel.advice)")
+                //.frame(minWidth: 0, maxWidth: .infinity)
+                .frame(height: 400)
+                .font(.system(size: 18))
+                .fontWeight(.bold)
+                .padding()
+                //.foregroundColor(.white)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.white, lineWidth: 1)
+            )
+            
+        Spacer()
         }
         .frame(width:UIScreen.screenWidth - 20)
     }

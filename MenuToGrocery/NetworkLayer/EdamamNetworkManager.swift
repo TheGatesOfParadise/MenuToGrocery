@@ -75,8 +75,6 @@ class EdamamNetworkManager{
                     }
                 }, receiveValue: { promise(.success($0)) })
                 .store(in: &self.cancellables)
-
         }
     }
-
 }
