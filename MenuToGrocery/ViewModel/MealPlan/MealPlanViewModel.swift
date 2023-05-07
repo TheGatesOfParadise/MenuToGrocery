@@ -63,4 +63,12 @@ class MealPlanViewModel: ObservableObject {
         
         return recipeNames
     }
+    
+    func readyForAdvice() -> Bool {
+        if getRecipesForAdvice() == "" {
+            return false
+        } else {
+            return true
+        }
+    }
 }

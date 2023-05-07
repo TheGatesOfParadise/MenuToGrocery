@@ -15,10 +15,10 @@ class ChatRequestManager: ObservableObject {
     @Published var responseData: Data?
     @Published var responseError: Error?
 
-    func makeRequest(text: String) {
+    func makeRequest(mealPlan: String, age: Int, sex: String) {
         let apiKey = "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"
         let model = "text-davinci-003"
-        let prompt = text
+        let prompt = "I am \(age) year old \(sex), here is my mealplan: \(mealPlan), please give brief comment on it, no need to list individual recipe, just overal impression"
         let temperature = 0.9
         let maxTokens = 1024
         let topP = 1

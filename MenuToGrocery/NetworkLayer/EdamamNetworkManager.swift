@@ -17,8 +17,6 @@ class EdamamNetworkManager{
         "X-RapidAPI-Host": "edamam-food-and-grocery-database.p.rapidapi.com"
     ]
 
-
-
     let recipeURL = "https://api.edamam.com/api/recipes/v2"
     let recipeAPIKey =  "4ed5ca518b3756cbc0701d7501264aa8" //"e95a4e68efaa40b692aa7e156348e8f"
     let recipeAPIID = "60774aad"//"4f2d15f6"
