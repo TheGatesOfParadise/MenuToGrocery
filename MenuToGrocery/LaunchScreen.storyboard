@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,36 +16,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="rwdevcon-bg" translatesAutoresizingMaskIntoConstraints="NO" id="thr-yb-z25">
-                                <rect key="frame" x="-24" y="0.0" width="375" height="812"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rwdevcon-bg" translatesAutoresizingMaskIntoConstraints="NO" id="thr-yb-z25">
+                                <rect key="frame" x="51" y="0.0" width="375" height="812"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="rw-logo" translatesAutoresizingMaskIntoConstraints="NO" id="skm-4Q-SEq">
-                                <rect key="frame" x="16" y="149" width="335" height="335"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lUv-Yt-0VI">
+                                <rect key="frame" x="89" y="452" width="210" height="4"/>
+                            </progressView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mealPlan_green" translatesAutoresizingMaskIntoConstraints="NO" id="Qr1-NF-foh">
+                                <rect key="frame" x="76" y="214" width="223" height="218"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="skm-4Q-SEq" secondAttribute="height" multiplier="1:1" id="F6J-6J-J5s"/>
+                                    <constraint firstAttribute="height" constant="218" id="Ltj-U9-9TI"/>
+                                    <constraint firstAttribute="width" secondItem="Qr1-NF-foh" secondAttribute="height" multiplier="223:218" id="kj7-o7-9Q8"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Scarlett is a piggy" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZlE-rQ-Mva">
-                                <rect key="frame" x="98" y="556" width="178" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="from a grocery list!" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yct-pO-Oht">
+                                <rect key="frame" x="117.00000000000001" y="532" width="141.33333333333337" height="20"/>
+                                <fontDescription key="fontDescription" name="WhiteDreamPERSONALUSEONLY-Regular" family="White Dream PERSONAL USE ONLY" pointSize="17"/>
+                                <color key="textColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a meal plan and shop straight" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vof-NS-nH2">
+                                <rect key="frame" x="48" y="504" width="305" height="20"/>
+                                <fontDescription key="fontDescription" name="WhiteDreamPERSONALUSEONLY-Regular" family="White Dream PERSONAL USE ONLY" pointSize="17"/>
+                                <color key="textColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="thr-yb-z25" secondAttribute="trailing" id="0Yk-op-Sbr"/>
-                            <constraint firstItem="skm-4Q-SEq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0tf-Kh-S2U"/>
-                            <constraint firstItem="skm-4Q-SEq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="20" id="45c-ps-A1j"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="skm-4Q-SEq" secondAttribute="trailing" constant="20" id="Aji-Ek-k2q"/>
-                            <constraint firstAttribute="bottom" secondItem="thr-yb-z25" secondAttribute="bottom" id="FXS-f4-xfH"/>
-                            <constraint firstItem="skm-4Q-SEq" firstAttribute="width" secondItem="skm-4Q-SEq" secondAttribute="height" multiplier="1:1" id="Q4h-h8-kju"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="skm-4Q-SEq" secondAttribute="bottom" constant="20" id="TPw-KF-H85"/>
-                            <constraint firstItem="thr-yb-z25" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="bHm-5w-uXH"/>
-                            <constraint firstItem="thr-yb-z25" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="mnU-3N-lrW"/>
-                            <constraint firstItem="skm-4Q-SEq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" id="uY3-7w-Cr7"/>
-                            <constraint firstItem="skm-4Q-SEq" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="wkC-oo-tPK"/>
+                            <constraint firstItem="Qr1-NF-foh" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="CCj-cv-QKS"/>
+                            <constraint firstItem="Qr1-NF-foh" firstAttribute="trailing" secondItem="lUv-Yt-0VI" secondAttribute="trailing" id="HXc-Lb-adv"/>
+                            <constraint firstItem="lUv-Yt-0VI" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="89" id="V1Q-kv-5MU"/>
+                            <constraint firstItem="Qr1-NF-foh" firstAttribute="centerX" secondItem="yct-pO-Oht" secondAttribute="centerX" id="WWd-jy-QDL"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="yct-pO-Oht" secondAttribute="bottom" constant="226" id="YDw-C7-gq7"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="Vof-NS-nH2" secondAttribute="trailing" constant="22" id="a3c-Oo-4DU"/>
+                            <constraint firstItem="Vof-NS-nH2" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="48" id="eGE-ac-pbT"/>
+                            <constraint firstItem="Qr1-NF-foh" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="164" id="kdc-hm-yEV"/>
+                            <constraint firstItem="lUv-Yt-0VI" firstAttribute="top" secondItem="Qr1-NF-foh" secondAttribute="bottom" constant="20" id="raZ-Kf-fuz"/>
+                            <constraint firstItem="yct-pO-Oht" firstAttribute="top" secondItem="Vof-NS-nH2" secondAttribute="bottom" constant="8" symbolic="YES" id="unS-rP-EUx"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -54,7 +65,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="rw-logo" width="512" height="512"/>
+        <image name="mealPlan_green" width="150" height="150"/>
         <image name="rwdevcon-bg" width="1104" height="1104"/>
+        <systemColor name="secondarySystemGroupedBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
