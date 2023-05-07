@@ -10,6 +10,7 @@ ToDo#############
 16. add loading wheel -- delete favorites, chatgpt response is slow
 18. get rid of error -- AppCheck failed: 'The operation couldn’t be completed. (com.apple.devicecheck.error error 1.)'
 19. next time image is not loading
+20. change a new firebase accout for 30 day no authentication?
 
 #############
 Done#############
