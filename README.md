@@ -31,3 +31,7 @@ Done#############
 
 Firecard reference: https://www.kodeco.com/11609977-getting-started-with-cloud-firestore-and-swiftui#toc-anchor-003
 
+for scar:
+- adviceview to full-sheet
+- 
+

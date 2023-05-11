@@ -30,14 +30,8 @@
                                     <constraint firstAttribute="width" secondItem="Qr1-NF-foh" secondAttribute="height" multiplier="223:218" id="kj7-o7-9Q8"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="from a grocery list!" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yct-pO-Oht">
-                                <rect key="frame" x="117.00000000000001" y="532" width="141.33333333333337" height="20"/>
-                                <fontDescription key="fontDescription" name="WhiteDreamPERSONALUSEONLY-Regular" family="White Dream PERSONAL USE ONLY" pointSize="17"/>
-                                <color key="textColor" systemColor="secondarySystemGroupedBackgroundColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a meal plan and shop straight" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vof-NS-nH2">
-                                <rect key="frame" x="48" y="504" width="305" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plan and Shop!" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vof-NS-nH2">
+                                <rect key="frame" x="48" y="504" width="295" height="20"/>
                                 <fontDescription key="fontDescription" name="WhiteDreamPERSONALUSEONLY-Regular" family="White Dream PERSONAL USE ONLY" pointSize="17"/>
                                 <color key="textColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
@@ -48,14 +42,12 @@
                         <constraints>
                             <constraint firstItem="Qr1-NF-foh" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="CCj-cv-QKS"/>
                             <constraint firstItem="Qr1-NF-foh" firstAttribute="trailing" secondItem="lUv-Yt-0VI" secondAttribute="trailing" id="HXc-Lb-adv"/>
+                            <constraint firstItem="Vof-NS-nH2" firstAttribute="top" secondItem="lUv-Yt-0VI" secondAttribute="bottom" constant="48" id="KiJ-9T-yos"/>
                             <constraint firstItem="lUv-Yt-0VI" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="89" id="V1Q-kv-5MU"/>
-                            <constraint firstItem="Qr1-NF-foh" firstAttribute="centerX" secondItem="yct-pO-Oht" secondAttribute="centerX" id="WWd-jy-QDL"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="yct-pO-Oht" secondAttribute="bottom" constant="226" id="YDw-C7-gq7"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="Vof-NS-nH2" secondAttribute="trailing" constant="22" id="a3c-Oo-4DU"/>
                             <constraint firstItem="Vof-NS-nH2" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="48" id="eGE-ac-pbT"/>
                             <constraint firstItem="Qr1-NF-foh" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="164" id="kdc-hm-yEV"/>
                             <constraint firstItem="lUv-Yt-0VI" firstAttribute="top" secondItem="Qr1-NF-foh" secondAttribute="bottom" constant="20" id="raZ-Kf-fuz"/>
-                            <constraint firstItem="yct-pO-Oht" firstAttribute="top" secondItem="Vof-NS-nH2" secondAttribute="bottom" constant="8" symbolic="YES" id="unS-rP-EUx"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="Vof-NS-nH2" secondAttribute="trailing" constant="32" id="zKu-tq-gPu"/>
                         </constraints>
                     </view>
                 </viewController>
