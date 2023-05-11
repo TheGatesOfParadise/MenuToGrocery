@@ -20,9 +20,6 @@
                                 <rect key="frame" x="51" y="0.0" width="375" height="812"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lUv-Yt-0VI">
-                                <rect key="frame" x="89" y="452" width="210" height="4"/>
-                            </progressView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mealPlan_green" translatesAutoresizingMaskIntoConstraints="NO" id="Qr1-NF-foh">
                                 <rect key="frame" x="76" y="214" width="223" height="218"/>
                                 <constraints>
@@ -30,8 +27,9 @@
                                     <constraint firstAttribute="width" secondItem="Qr1-NF-foh" secondAttribute="height" multiplier="223:218" id="kj7-o7-9Q8"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plan and Shop!" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vof-NS-nH2">
-                                <rect key="frame" x="48" y="504" width="295" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Plan and Shop!" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vof-NS-nH2">
+                                <rect key="frame" x="40" y="480" width="295" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="WhiteDreamPERSONALUSEONLY-Regular" family="White Dream PERSONAL USE ONLY" pointSize="17"/>
                                 <color key="textColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,13 +39,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Qr1-NF-foh" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="CCj-cv-QKS"/>
-                            <constraint firstItem="Qr1-NF-foh" firstAttribute="trailing" secondItem="lUv-Yt-0VI" secondAttribute="trailing" id="HXc-Lb-adv"/>
-                            <constraint firstItem="Vof-NS-nH2" firstAttribute="top" secondItem="lUv-Yt-0VI" secondAttribute="bottom" constant="48" id="KiJ-9T-yos"/>
-                            <constraint firstItem="lUv-Yt-0VI" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="89" id="V1Q-kv-5MU"/>
-                            <constraint firstItem="Vof-NS-nH2" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="48" id="eGE-ac-pbT"/>
                             <constraint firstItem="Qr1-NF-foh" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="164" id="kdc-hm-yEV"/>
-                            <constraint firstItem="lUv-Yt-0VI" firstAttribute="top" secondItem="Qr1-NF-foh" secondAttribute="bottom" constant="20" id="raZ-Kf-fuz"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="Vof-NS-nH2" secondAttribute="trailing" constant="32" id="zKu-tq-gPu"/>
                         </constraints>
                     </view>
                 </viewController>
