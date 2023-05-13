@@ -33,7 +33,7 @@ struct GroceryView: View {
                     .alert(isPresented: $alertPresented, content: {
                         Alert(title: Text("Are you sure to empty grocery list?"),
                               primaryButton: .default(Text("Yes"),action: {
-                            groceryListViewModel.empty()
+                            groceryListViewModel.emptyGroceryList()
                         }),
                               secondaryButton: .cancel(Text("Cancel")))
                     })

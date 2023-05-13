@@ -89,7 +89,7 @@ class GroceryListViewModel: ObservableObject {
         }
     }
     
-    func empty() {
+    func emptyGroceryList() {
         groceryListRepository.emptyGroceryList()
     }
     

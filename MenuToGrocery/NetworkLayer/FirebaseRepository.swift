@@ -7,7 +7,7 @@ import Combine
 
 
 class FirebaseRepository: ObservableObject {
-    
+    @Published var loading = false
     private let mealPlanPath: String = "mealPlan"
     private let favoritesPath: String = "favorites"
     private let groceryListPath: String = "groceryList"
@@ -68,8 +68,18 @@ class FirebaseRepository: ObservableObject {
     }
     
     func emptyMealPlan(){
+        let batch = store.batch()
         for recipe in mealPlan{
-            removeFromMealPlan(recipe)
+            guard let recipeId = recipe.id else { return }
+            let document = store.collection(mealPlanPath).document(recipeId)
+            batch.deleteDocument(document)
+        }
+        batch.commit(){ err in
+            if let err = err {
+                print("Error emptying meal plan- \(err)")
+            } else {
+                print("Batch operation for emptying meal plan succeeded.")
+            }
         }
     }
     
@@ -138,8 +148,19 @@ class FirebaseRepository: ObservableObject {
     }
     
     func emptyFavorites(){
+        let batch = store.batch()
         for favoriteCuisine in favorites{
-            removeCuisineFromFavorites(favoriteCuisine)
+            guard let recipeByCuisineId = favoriteCuisine.id else { return }
+            
+            let document = store.collection(favoritesPath).document(recipeByCuisineId)
+            batch.deleteDocument(document)
+        }
+        batch.commit() { err in
+            if let err = err {
+                print("Error emptying favorites - \(err)")
+            } else {
+                print("Batch operation for emptying favorites succeeded.")
+            }
         }
     }
     
@@ -207,11 +228,11 @@ class FirebaseRepository: ObservableObject {
         //translate recipe to groceryItems, then add it to a temporary grocery list
         let groceryItems = recipe.ingredients.compactMap { GroceryItem(category: $0.foodCategory, name: $0.food, quantity: $0.quantity, measure: $0.measure, recipe: recipe)}
         var tempGroceryList = groceryList
-    outerloop: for item in groceryItems {
-    innerloop: for index in 0..<tempGroceryList.count {
+        outerloop: for item in groceryItems {
+            innerloop: for index in 0..<tempGroceryList.count {
                 if tempGroceryList[index].name == item.category {
                     tempGroceryList[index].groceryItems.append(item)
-                    break outerloop
+                    break innerloop
                 }
             }
             tempGroceryList.append(GroceryCategory(name: item.category, groceryItems: [item]))
@@ -222,33 +243,18 @@ class FirebaseRepository: ObservableObject {
             if let exisingCategory = groceryList.first(where: {$0.name == tempGroceryList[index].name}) {
                 if exisingCategory.groceryItems.count == tempGroceryList[index].groceryItems.count {continue}
                 
-                
-               // let newItems = tempGroceryList[index].groceryItems.filter { !exisingCategory.groceryItems.contains($0) }
-                
-                
                 //existing category with new grocery items
                 let groceryRef = store.collection(groceryListPath).document(exisingCategory.id!)
                 //batch.updateData(["groceryItems": FieldValue.arrayUnion({...newItems}())], forDocument: groceryRef)
                 batch.deleteDocument(groceryRef)
-          /*      do {
-                    try _ = batch.setData(from: tempGroceryList[index], forDocument: groceryRef)
-                } catch {
-                    fatalError("Unable to update \(exisingCategory.name) to grocery list: \(error.localizedDescription).")
-                } */
-                //batch.updateData(<#T##fields: [AnyHashable : Any]##[AnyHashable : Any]#>, forDocument: groceryRef)
-          
             }
-           // else {
-                //brand new category in grocery list
                 let groceryRef = store.collection(groceryListPath).document()
                 do {
                     try _ = batch.setData(from: tempGroceryList[index], forDocument: groceryRef)
                 } catch {
                     fatalError("Unable to add \(recipe.label) to Mealplan: \(error.localizedDescription).")
                 }
-            //}
         }
-        
         
         // Commit the batch
         batch.commit() { err in
@@ -261,12 +267,79 @@ class FirebaseRepository: ObservableObject {
         
     }
     
-    func emptyGroceryList() {
-        for category in groceryList {
-            removeGroceryCategory(category)
+    func removeRecipe(_ recipe: Recipe) {
+        guard let recipeId = recipe.id else {return}
+        
+        //batch
+        // Get new write batch
+        let batch = store.batch()
+        
+        //delete recipe from mealPlan
+        let recipeRef = store.collection(mealPlanPath).document(recipeId)
+        batch.deleteDocument(recipeRef)
+
+        //translate recipe to groceryItems, then delete it to a temporary grocery list
+        let groceryItems = recipe.ingredients.compactMap { GroceryItem(category: $0.foodCategory, name: $0.food, quantity: $0.quantity, measure: $0.measure, recipe: recipe)}
+        var tempGroceryList = groceryList
+        outerloop: for item in groceryItems {
+            innerloop: for index in 0..<tempGroceryList.count {
+                if tempGroceryList[index].name == item.category {
+                    tempGroceryList[index].groceryItems.removeAll(where: {$0 == item})
+                    break innerloop
+                }
+            }
         }
+        
+        //update/delete category to repository's grocery list
+        for index in 0..<tempGroceryList.count{
+            if let exisingCategory = groceryList.first(where: {$0.name == tempGroceryList[index].name}) {
+                if exisingCategory.groceryItems.count == tempGroceryList[index].groceryItems.count {continue}
+                
+                //existing category with delete grocery items
+                let groceryRef = store.collection(groceryListPath).document(exisingCategory.id!)
+                batch.deleteDocument(groceryRef)
+            }
+                let groceryRef = store.collection(groceryListPath).document()
+                do {
+                    try _ = batch.setData(from: tempGroceryList[index], forDocument: groceryRef)
+                } catch {
+                    fatalError("Unable to delete \(recipe.label) from grocery list: \(error.localizedDescription).")
+                }
+        }
+        
+        // Commit the batch
+        batch.commit() { err in
+            if let err = err {
+                print("Error deleting recipe - \(err)")
+            } else {
+                print("Batch operation for deleting recipe succeeded.")
+            }
+        }
+        
     }
     
+    //delete all docs in a colleciton using batch is referenced from this post:
+    //https://stackoverflow.com/questions/53089517/how-to-delete-all-documents-in-collection-in-firestore-with-flutter
+    func emptyGroceryList() {
+        let batch = store.batch()
+        
+        //empty a category from grocery list
+        for category in groceryList {
+            guard let groceryCategoryId = category.id else { return }
+            
+            let document = store.collection(groceryListPath).document(groceryCategoryId)
+            batch.deleteDocument(document)
+        }
+        batch.commit(){ err in
+            if let err = err {
+                print("Error to empty grocey list - \(err)")
+            } else {
+                print("Batch operation for emptying grocery list succeeded.")
+            }
+        }
+
+    }
+
     func sortAndCleanGroceryList() {
         for index in 0..<groceryList.count {
             if groceryList[index].groceryItems.count == 0 {
@@ -280,7 +353,7 @@ class FirebaseRepository: ObservableObject {
     }
     
     func toggleGroceryItem(item:GroceryItem, category:GroceryCategory){
-        let groceryRef = store.collection(groceryListPath).document(category.id!)
+        let groceryRef = store.collection(groceryListPath).document(category.id!) //TODO: !
         
         var newCategory = category
         var newItem = item

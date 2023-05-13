@@ -41,7 +41,8 @@ class MealPlanViewModel: ObservableObject {
     func remove (_ recipe: Recipe) {
         let recipes = mealPlan.compactMap{$0.recipe}
         if let existingRecipe = recipes.first(where: {$0 == recipe}) {
-            mealRepository.removeFromMealPlan(existingRecipe)
+            //mealRepository.removeFromMealPlan(existingRecipe)
+            mealRepository.removeRecipe(existingRecipe)
         }
     }
     

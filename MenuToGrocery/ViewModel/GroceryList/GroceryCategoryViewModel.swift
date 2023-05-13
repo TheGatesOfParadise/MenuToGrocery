@@ -9,8 +9,7 @@ import Combine
 
 class GroceryCategoryViewModel: ObservableObject, Identifiable, Hashable {
     
-    
-    private let groceryListRepository = FirebaseRepository()
+    //private let groceryListRepository = FirebaseRepository()
     @Published var groceryCategory: GroceryCategory
     private var cancellables: Set<AnyCancellable> = []
     

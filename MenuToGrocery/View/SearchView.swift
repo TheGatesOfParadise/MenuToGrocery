@@ -146,7 +146,7 @@ struct AddToMealPlanAndFavoriteButtons: View {
         Button(action: {
             if mealViewModel.has(recipe) {
                 mealViewModel.remove(recipe)
-                groceryListViewModel.remove(recipe)
+                //groceryListViewModel.remove(recipe)
             } else {
                 mealViewModel.add(recipe)
                 //groceryListViewModel.add(recipe)
