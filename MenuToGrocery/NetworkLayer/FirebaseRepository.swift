@@ -225,35 +225,60 @@ class FirebaseRepository: ObservableObject {
             fatalError("Unable to add \(recipe.label) to Mealplan: \(error.localizedDescription).")
         }
         
-        //translate recipe to groceryItems, then add it to a temporary grocery list
-        let groceryItems = recipe.ingredients.compactMap { GroceryItem(category: $0.foodCategory, name: $0.food, quantity: $0.quantity, measure: $0.measure, recipe: recipe)}
-        var tempGroceryList = groceryList
-        outerloop: for item in groceryItems {
-            innerloop: for index in 0..<tempGroceryList.count {
-                if tempGroceryList[index].name == item.category {
-                    tempGroceryList[index].groceryItems.append(item)
-                    break innerloop
-                }
-            }
-            tempGroceryList.append(GroceryCategory(name: item.category, groceryItems: [item]))
+        print("lalala---before translation of recipe -----------")
+        for indi in recipe.ingredients {
+            print("   \(indi.foodCategory):\(indi.food) - \(indi.quantity)")
         }
         
-        //update/add category to repository's grocery list
-        for index in 0..<tempGroceryList.count{
-            if let exisingCategory = groceryList.first(where: {$0.name == tempGroceryList[index].name}) {
-                if exisingCategory.groceryItems.count == tempGroceryList[index].groceryItems.count {continue}
-                
-                //existing category with new grocery items
-                let groceryRef = store.collection(groceryListPath).document(exisingCategory.id!)
-                //batch.updateData(["groceryItems": FieldValue.arrayUnion({...newItems}())], forDocument: groceryRef)
-                batch.deleteDocument(groceryRef)
+        
+        //translate recipe to groceryItems, then add it to a temporary grocery list
+        let groceryItems = recipe.ingredients.compactMap { GroceryItem(category: $0.foodCategory, name: $0.food, quantity: $0.quantity, measure: $0.measure, recipe: recipe)}
+        
+        let groceryDictionary = Dictionary(grouping: groceryItems, by: { (element: GroceryItem) in
+            return element.category
+        })
+        
+        print("lalala---dictionary test start")
+        for (key,value) in groceryDictionary {
+            print("\(key)")
+            for item in value {
+                print("     \(item.name)")
             }
-                let groceryRef = store.collection(groceryListPath).document()
-                do {
-                    try _ = batch.setData(from: tempGroceryList[index], forDocument: groceryRef)
-                } catch {
-                    fatalError("Unable to add \(recipe.label) to Mealplan: \(error.localizedDescription).")
-                }
+        }
+        
+        print("lalala---array test start")
+        //let arr = myDict.map { "\($0.key) \($0.value)" }
+        var newRecipeGroceryList = groceryDictionary.compactMap{GroceryCategory(name: "\($0.key)", groceryItems: $0.value)}
+        
+        for category in newRecipeGroceryList {
+            print("\(category.name)")
+            for item in category.groceryItems {
+                print("     \(item.name)")
+            }
+        }
+        
+        
+        //update/add category to repository's grocery list
+        for index in 0..<newRecipeGroceryList.count{
+            if let exisingCategory = groceryList.first(where: {$0.name == newRecipeGroceryList[index].name}) {
+                
+                //delete existing category
+                let groceryRef = store.collection(groceryListPath).document(exisingCategory.id!)
+                batch.deleteDocument(groceryRef)
+                
+                //merge grocery items in the same category
+                newRecipeGroceryList[index].groceryItems = newRecipeGroceryList[index].groceryItems + exisingCategory.groceryItems
+            }
+            
+            //add new category back to store
+            let groceryRef = store.collection(groceryListPath).document()
+            do {
+                try _ = batch.setData(from: newRecipeGroceryList[index], forDocument: groceryRef)
+            } catch {
+                fatalError("Unable to add \(recipe.label) to Mealplan: \(error.localizedDescription).")
+            }
+            
+            
         }
         
         // Commit the batch
@@ -265,6 +290,13 @@ class FirebaseRepository: ObservableObject {
             }
         }
         
+        print("lalala---finally groceryList looks like this-----------")
+        for index in 0..<groceryList.count{
+            print("\(groceryList[index].name):\(groceryList[index].groceryItems.count)")
+            for item in groceryList[index].groceryItems {
+                print("     \(item.name) - \(item.quantity)")
+            }
+        }
     }
     
     func removeRecipe(_ recipe: Recipe) {
@@ -282,14 +314,22 @@ class FirebaseRepository: ObservableObject {
         let groceryItems = recipe.ingredients.compactMap { GroceryItem(category: $0.foodCategory, name: $0.food, quantity: $0.quantity, measure: $0.measure, recipe: recipe)}
         var tempGroceryList = groceryList
         outerloop: for item in groceryItems {
-            innerloop: for index in 0..<tempGroceryList.count {
-                if tempGroceryList[index].name == item.category {
+            innerloop: for index in 0..<groceryList.count {
+                if groceryList[index].name == item.category {
                     tempGroceryList[index].groceryItems.removeAll(where: {$0 == item})
+                    let oldgroceryRef = store.collection(groceryListPath).document(groceryList[index].id!) //TODO: !
+                    batch.deleteDocument(oldgroceryRef)
+                    let newGroceryRef = store.collection(groceryListPath).document()
+                    do {
+                        try _ = batch.setData(from: tempGroceryList[index], forDocument: newGroceryRef)
+                    } catch {
+                        fatalError("Unable to delete \(recipe.label) from grocery list: \(error.localizedDescription).")
+                    }
                     break innerloop
                 }
             }
         }
-        
+/*
         //update/delete category to repository's grocery list
         for index in 0..<tempGroceryList.count{
             if let exisingCategory = groceryList.first(where: {$0.name == tempGroceryList[index].name}) {
@@ -312,7 +352,7 @@ class FirebaseRepository: ObservableObject {
                 }
             
         }
-        
+  */
         // Commit the batch
         batch.commit() { err in
             if let err = err {
@@ -386,6 +426,8 @@ class FirebaseRepository: ObservableObject {
                 print("Batch operation for toggle \(item.name) succeeded.")
             }
         }
+        
+        sortAndCleanGroceryList()
     }
     
 }

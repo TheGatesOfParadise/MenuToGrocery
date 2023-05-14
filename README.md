@@ -6,7 +6,9 @@ ToDo#############
 7. check all ! 
 16. add loading wheel -- delete favorites, chatgpt response is slow
 18. get rid of error -- AppCheck failed: 'The operation couldn’t be completed. (com.apple.devicecheck.error error 1.)'
-20. change a new firebase accout for 30 day no authentication?
+20. change a new firebase accout for 30 day no authentication?、
+21. remove recipe has bugs
+22. check grocery item -- tomato, 1st recipe, remove one item -- order changed. 
 
 
 #############
