@@ -342,10 +342,12 @@ class FirebaseRepository: ObservableObject {
 
     func sortAndCleanGroceryList() {
         for index in 0..<groceryList.count {
-            if groceryList[index].groceryItems.count == 0 {
-                groceryList.remove(at: index)
-            } else {
-                groceryList[index].groceryItems.sort(by: {$0.name < $1.name})
+            if index < groceryList.count {
+                if groceryList[index].groceryItems.count == 0 {
+                    groceryList.remove(at: index)
+                } else {
+                    groceryList[index].groceryItems.sort(by: {$0.name < $1.name})
+                }
             }
         }
         groceryList.sort(by: {$0.name.capitalized < $1.name.capitalized})

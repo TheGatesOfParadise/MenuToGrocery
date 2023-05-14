@@ -14,14 +14,6 @@ struct AdviceView_Previews: PreviewProvider {
 }
 
 
-//
-//  ContentView.swift
-//  MobGPT
-//
-//  Created by Furkan Hanci on 12/23/22.
-//
-
-
 struct AdviceView: View {
     @ObservedObject var mealViewModel = MealPlanViewModel.shared
     @ObservedObject var chatGPTViewModel = ChatGPTViewModel.shared
@@ -40,55 +32,50 @@ struct AdviceView: View {
                 Picker(selection: $sexSelection, label: Text("Sex")) {
                     ForEach(sexList, id: \.self) {
                         Text($0)
+
                     }
+                    .pickerStyle(.menu)
                 }
-                .pickerStyle(.menu)
-                
-                Picker(selection: $age, label: Text("Your age")) {
-                    ForEach(1...100, id: \.self) { number in
-                        Text("\(number)")
+                ScrollView{
+                    Picker(selection: $age, label: Text("Your age")) {
+                        ForEach(1...100, id: \.self) { number in
+                            Text("\(number)")
+                        }
                     }
+                    .pickerStyle(.menu)
+                    
                 }
-                .pickerStyle(.menu)
             }
-            .frame(height: 150)
-            .padding(.top, 50)
-            
-            Button(action: {
-                self.chatGPTViewModel.getMealPlanAdvice(mealPlan: mealViewModel.getRecipesForAdvice(),
-                                                        age:age,
-                                                        sex:sexSelection)
-            }) {
-                //Text("Consult chatGPT on your meal plan")
-                Text(chatGPTViewModel.hasAdvice() ? "Answer" : "Consult chatGPT on your meal plan")
-                    //.frame(minWidth: 0, maxWidth: .infinity)
-                    .font(.system(size: 18))
-                    .fontWeight(.bold)
-                    .padding()
-                    .foregroundColor(.white)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.white, lineWidth: 1)
-                    )
-            }
-            .background(chatGPTViewModel.hasAdvice() ? .green: .blue)
-            .cornerRadius(20)
-            .disabled(!mealViewModel.readyForAdvice() || chatGPTViewModel.hasAdvice())
-            
-            //chatGPT answer
-            ZStack{
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color.blue, lineWidth: 1)
+                Button(action: {
+                    self.chatGPTViewModel.getMealPlanAdvice(mealPlan: mealViewModel.getRecipesForAdvice(),
+                                                            age:age,
+                                                            sex:sexSelection)
+                }) {
+                    //Text("Consult chatGPT on your meal plan")
+                    Text(chatGPTViewModel.hasAdvice() ? "Answer" : "Consult ChatGPT on your meal plan")
+                        .font(.system(size: 18))
+                        .fontWeight(.bold)
+                        .padding()
+                        .foregroundColor(.white)
+//                        .overlay(
+//                            RoundedRectangle(cornerRadius: 20)
+//                                .stroke(Color.red, lineWidth: 1)
+//                        )
+                }
+                .background(chatGPTViewModel.hasAdvice() ? .green: .blue)
+                .cornerRadius(20)
+                .position(x: 195, y:-40)
+                .disabled(!mealViewModel.readyForAdvice() || chatGPTViewModel.hasAdvice())
                 
+                //chatGPT answer
                 VStack{
                     Text("\(chatGPTViewModel.advice)")
                         .frame(width: UIScreen.screenWidth - 80)
                         .font(.system(size: 18))
                         .fontWeight(.bold)
+                        .position(x: 195, y:-50)
                     Spacer()
                 }
-            }
-            .frame(width:UIScreen.screenWidth - 50,height: 400)
             
             Spacer()
             Spacer()
@@ -97,6 +84,7 @@ struct AdviceView: View {
         .frame(width:UIScreen.screenWidth - 20)
         .onAppear{
             chatGPTViewModel.emptyAdvice()
+
         }
     }
 }

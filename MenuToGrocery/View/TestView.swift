@@ -3,7 +3,7 @@
 //  MenuToGrocery
 //
 //  Created by Scarlett Ruan on 5/7/23.
-//
+
 
 import SwiftUI
 
@@ -30,6 +30,7 @@ struct TestView: View {
             .frame(width: 30, height: 3)
             .padding(10)
         
+
     }
 }
 

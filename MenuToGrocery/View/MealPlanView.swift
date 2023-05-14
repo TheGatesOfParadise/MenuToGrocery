@@ -17,6 +17,7 @@ let layout = [
 
 struct MealPlanView: View {
     @ObservedObject var viewModel = MealPlanViewModel.shared
+    @ObservedObject var groceryListViewModel = GroceryListViewModel.shared
     @State var emptyAlertPresented = false
     @State var isPresented = false
     
@@ -24,25 +25,19 @@ struct MealPlanView: View {
         NavigationView {
             VStack{
                 HStack {
-                    //get advice on the meal plan
-               /*     Button(action: {
-                        adviceAlertPresented.toggle()
-                    },
-                          
-                    })
-               */
+                    
                     Button {
-                        isPresented = true
+                        isPresented.toggle()
                     } label: {
-                        Image("advice")
+                        Image ("advice")
                             .resizable()
                             .frame(width: 60, height: 60)
                     }
                     .sheet(isPresented: $isPresented) {
                         AdviceView()
-                            .presentationDetents([.large])
+                            .presentationDetents([.medium])
                     }
-
+                    
                     Text("Meal Plan")
                     //.font(.custom("AmericanTypewriter-Bold", fixedSize: 36))
                         .font(.system(size: 36, weight: .heavy, design: .rounded))
@@ -58,9 +53,10 @@ struct MealPlanView: View {
                     })
                     .disabled(viewModel.mealPlan.count == 0)
                     .alert(isPresented: $emptyAlertPresented, content: {
-                        Alert(title: Text("Are you sure to empty meal plan?"),
+                        Alert(title: Text("Both meal plan and favorites are going to be deleted, are you sure of about it?"),
                               primaryButton: .default(Text("Yes"),action: {
                             viewModel.emptyRecipe()
+                            groceryListViewModel.emptyGroceryList()
                         }),
                               secondaryButton: .cancel(Text("Cancel")))
                     })

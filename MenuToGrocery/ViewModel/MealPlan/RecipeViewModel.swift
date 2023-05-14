@@ -27,10 +27,12 @@ class RecipeViewModel: ObservableObject, Identifiable, Hashable {
     }
     
     static func == (lhs: RecipeViewModel, rhs: RecipeViewModel) -> Bool {
-        lhs.recipe == rhs.recipe
+        lhs.recipe == rhs.recipe &&
+        lhs.id == rhs.id
     }
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(recipe)
+        hasher.combine(id)
     }
 }
