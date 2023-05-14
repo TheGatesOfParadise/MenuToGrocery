@@ -3,15 +3,11 @@
 #############
 ToDo#############
 
-5. use NSCache to store image
 7. check all ! 
-13. simplify recipe class
-14. update firebase by recipe/small item
 16. add loading wheel -- delete favorites, chatgpt response is slow
 18. get rid of error -- AppCheck failed: 'The operation couldn’t be completed. (com.apple.devicecheck.error error 1.)'
-19. next time image is not loading
 20. change a new firebase accout for 30 day no authentication?
-21. remove a recipe, also remove its grocery
+
 
 #############
 Done#############
@@ -29,6 +25,11 @@ Done#############
 6. added launch screen
 12. instructions for recipe
 17. chatgpt
+21. remove a recipe, also remove its grocery
+5. use NSCache to store image   -- no need
+13. simplify recipe class  -- no need
+14. update firebase by recipe/small item  -- done
+19. next time image is not loading  -- no need to fix, since teacher is not going to run it
 
 Firecard reference: https://www.kodeco.com/11609977-getting-started-with-cloud-firestore-and-swiftui#toc-anchor-003
 
