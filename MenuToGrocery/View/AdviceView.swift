@@ -31,7 +31,11 @@ struct AdviceView: View {
     @State private var number: Int = 1
     
     var body: some View {
-        VStack(spacing: 25) {
+        VStack {
+            Capsule()
+                .fill(Color.secondary)
+                .frame(width: 30, height: 3)
+            
             Form{
                 Picker(selection: $sexSelection, label: Text("Sex")) {
                     ForEach(sexList, id: \.self) {
@@ -88,6 +92,7 @@ struct AdviceView: View {
             
             Spacer()
             Spacer()
+            
         }
         .frame(width:UIScreen.screenWidth - 20)
         .onAppear{

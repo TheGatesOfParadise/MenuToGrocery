@@ -18,6 +18,7 @@ let layout = [
 struct MealPlanView: View {
     @ObservedObject var viewModel = MealPlanViewModel.shared
     @State var emptyAlertPresented = false
+    @State var isPresented = false
     
     var body: some View {
         NavigationView {
@@ -30,10 +31,16 @@ struct MealPlanView: View {
                           
                     })
                */
-                    NavigationLink(destination: AdviceView()) {
+                    Button {
+                        isPresented = true
+                    } label: {
                         Image("advice")
                             .resizable()
                             .frame(width: 60, height: 60)
+                    }
+                    .sheet(isPresented: $isPresented) {
+                        AdviceView()
+                            .presentationDetents([.large])
                     }
 
                     Text("Meal Plan")
