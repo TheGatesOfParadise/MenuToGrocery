@@ -210,7 +210,7 @@ class FirebaseRepository: ObservableObject {
     }
     
     //MARK: combined operations, such as add recipe, it also add its ingredients to grocery list
-    func addRecipeToMealPlan(_ recipe: Recipe) {
+    func addRecipe(_ recipe: Recipe) {
         guard let _ = recipe.id else {return}
         
         //batch
@@ -293,18 +293,24 @@ class FirebaseRepository: ObservableObject {
         //update/delete category to repository's grocery list
         for index in 0..<tempGroceryList.count{
             if let exisingCategory = groceryList.first(where: {$0.name == tempGroceryList[index].name}) {
-                if exisingCategory.groceryItems.count == tempGroceryList[index].groceryItems.count {continue}
+                if exisingCategory.groceryItems.count > 0 &&
+                    exisingCategory.groceryItems.count == tempGroceryList[index].groceryItems.count {continue}
                 
                 //existing category with delete grocery items
-                let groceryRef = store.collection(groceryListPath).document(exisingCategory.id!)
+                let groceryRef = store.collection(groceryListPath).document(exisingCategory.id!) //TODO: !
                 batch.deleteDocument(groceryRef)
+                //skip adding the updated grocery list under this catgofy if there is no item in this category
+                if tempGroceryList[index].groceryItems.count == 0 { continue}
             }
+            
+
                 let groceryRef = store.collection(groceryListPath).document()
                 do {
                     try _ = batch.setData(from: tempGroceryList[index], forDocument: groceryRef)
                 } catch {
                     fatalError("Unable to delete \(recipe.label) from grocery list: \(error.localizedDescription).")
                 }
+            
         }
         
         // Commit the batch

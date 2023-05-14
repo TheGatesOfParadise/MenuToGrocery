@@ -26,56 +26,51 @@ struct AdviceView: View {
         VStack {
             Capsule()
                 .fill(Color.secondary)
-                .frame(width: 30, height: 3)
+                .frame(width: 50, height: 3)
             
-            Form{
-                Picker(selection: $sexSelection, label: Text("Sex")) {
-                    ForEach(sexList, id: \.self) {
-                        Text($0)
-
+            if !chatGPTViewModel.hasAdvice() {
+                Form {
+                    Picker(selection: $sexSelection, label: Text("Sex")) {
+                        ForEach(sexList, id: \.self) {
+                            Text($0)
+                        }
+                        .pickerStyle(.menu)
                     }
-                    .pickerStyle(.menu)
-                }
-                ScrollView{
                     Picker(selection: $age, label: Text("Your age")) {
                         ForEach(1...100, id: \.self) { number in
                             Text("\(number)")
                         }
+                        .pickerStyle(.menu)
                     }
-                    .pickerStyle(.menu)
-                    
                 }
+                .frame(height: 140)
             }
-                Button(action: {
-                    self.chatGPTViewModel.getMealPlanAdvice(mealPlan: mealViewModel.getRecipesForAdvice(),
-                                                            age:age,
-                                                            sex:sexSelection)
-                }) {
-                    //Text("Consult chatGPT on your meal plan")
-                    Text(chatGPTViewModel.hasAdvice() ? "Answer" : "Consult ChatGPT on your meal plan")
-                        .font(.system(size: 18))
-                        .fontWeight(.bold)
-                        .padding()
-                        .foregroundColor(.white)
-//                        .overlay(
-//                            RoundedRectangle(cornerRadius: 20)
-//                                .stroke(Color.red, lineWidth: 1)
-//                        )
-                }
-                .background(chatGPTViewModel.hasAdvice() ? .green: .blue)
-                .cornerRadius(20)
-                .position(x: 195, y:-40)
-                .disabled(!mealViewModel.readyForAdvice() || chatGPTViewModel.hasAdvice())
-                
-                //chatGPT answer
-                VStack{
-                    Text("\(chatGPTViewModel.advice)")
-                        .frame(width: UIScreen.screenWidth - 80)
-                        .font(.system(size: 18))
-                        .fontWeight(.bold)
-                        .position(x: 195, y:-50)
-                    Spacer()
-                }
+            
+            Button(action: {
+                self.chatGPTViewModel.getMealPlanAdvice(mealPlan: mealViewModel.getRecipesForAdvice(),
+                                                        age:age,
+                                                        sex:sexSelection)
+            }) {
+                //Text("Consult chatGPT on your meal plan")
+                Text(chatGPTViewModel.hasAdvice() ? "Answer" : "Consult ChatGPT on your meal plan")
+                    .font(.system(size: 18))
+                    .fontWeight(.bold)
+                    .padding()
+                    .foregroundColor(.white)
+            }
+            .background(chatGPTViewModel.hasAdvice() ? .green: .blue)
+            .cornerRadius(20)
+            .disabled(!mealViewModel.readyForAdvice() || chatGPTViewModel.hasAdvice())
+            .padding(.top, chatGPTViewModel.hasAdvice() ? 10 : 5)
+         
+            
+            //chatGPT answer
+            
+            Text("\(chatGPTViewModel.advice)")
+                .frame(width: UIScreen.screenWidth - 80)
+                .font(.system(size: 18))
+                .fontWeight(.bold)
+               // .border(.black, width:5)
             
             Spacer()
             Spacer()
