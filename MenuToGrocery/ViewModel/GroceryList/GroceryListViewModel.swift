@@ -125,4 +125,8 @@ class GroceryListViewModel: ObservableObject {
     func refresh() {
         groceryListRepository.updateView()
     }
+    
+    func isToggleReady() -> Bool{
+        return groceryListRepository.toggleIsReady
+    }
 }

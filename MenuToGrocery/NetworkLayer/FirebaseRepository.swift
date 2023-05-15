@@ -20,6 +20,7 @@ class FirebaseRepository: ObservableObject {
     var userId = ""
     private let authenticationService = AuthenticationService()
     private var cancellables: Set<AnyCancellable> = []
+    @Published var toggleIsReady = true
     
     init() {
         authenticationService.$user
@@ -439,6 +440,7 @@ class FirebaseRepository: ObservableObject {
     func toggleGroceryItem(item:GroceryItem, category:GroceryCategory){
         var groceryRef = store.collection(groceryListPath).document(category.id!) //TODO: !
         
+        toggleIsReady = false
         var groceryItems:[GroceryItem] = category.groceryItems
         var newItem = item
         newItem.bought.toggle()
@@ -448,11 +450,13 @@ class FirebaseRepository: ObservableObject {
         
 
         let batch = store.batch()
-        //let encodedGroceryItems = groceryItems.compactMap { try? Firestore.Encoder().encode($0) }
+       // let encodedGroceryItems = groceryItems.compactMap { try? Firestore.Encoder().encode($0) }
         batch.deleteDocument(groceryRef)
         groceryRef = store.collection(groceryListPath).document()
         do {
             try _ = batch.setData(from: GroceryCategory(name: category.name, groceryItems: groceryItems), forDocument: groceryRef)
+            
+           // try _ = batch.updateData(["groceryItems":encodedGroceryItems], forDocument: groceryRef)
         } catch {
             fatalError("Unable to toggle \(item.name) to grocery list: \(error.localizedDescription).")
         }
@@ -461,11 +465,12 @@ class FirebaseRepository: ObservableObject {
             if let err = err {
                 print("Error toggling grocery item- \(err)")
             } else {
-                print("#3")
+          /*      print("#3")
                 for index in 0..<self.groceryList.count {
                     print("   \(self.groceryList[index].name):\(self.groceryList[index].groceryItems.count)")
-                }
+                } */
                 self.sortAndCleanGroceryList()
+                self.toggleIsReady = true
                 print("Batch operation for toggle grocery item succeeded.")
             }
         }

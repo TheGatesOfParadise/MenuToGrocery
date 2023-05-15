@@ -72,6 +72,7 @@ struct categoryView: View {
                                 groceryListViewModel.toggle(item)
                             },
                                    label: {Image(systemName: item.bought ? "checkmark.square.fill" : "square")
+                                   //label: {Image(systemName: isBought(item) ? "checkmark.square.fill" : "square")
                             })
                             .buttonStyle(.borderless)
                             
@@ -88,7 +89,18 @@ struct categoryView: View {
                 }
             }
         }
-        
+    }
+    
+    func isBought(_ item: GroceryItem) -> Bool {
+        if groceryListViewModel.isToggleReady() {
+            return item.bought
+        } else {
+            if item.bought {
+                return false
+            } else {
+                return true
+            }
+        }
     }
 }
 
