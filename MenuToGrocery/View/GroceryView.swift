@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct GroceryView: View {
-    @ObservedObject var mealviewModel = MealPlanViewModel.shared
     @ObservedObject var groceryListViewModel = GroceryListViewModel.shared
     @State var isOn = false  //TODO
     @State var selectedRecipe : Recipe? = nil
@@ -24,6 +23,7 @@ struct GroceryView: View {
                     
                     Button(action: {
                         alertPresented.toggle()
+                        groceryListViewModel.refresh()
                     }, label: {
                         Image(systemName: "trash")
                             .resizable()
@@ -49,6 +49,7 @@ struct GroceryView: View {
                                         HStack{
                                             Button(action: {
                                                 groceryListViewModel.toggle(item)
+                                                groceryListViewModel.refresh()
                                             },
                                                    label: {Image(systemName: item.bought ? "checkmark.square.fill" : "square")
                                             })

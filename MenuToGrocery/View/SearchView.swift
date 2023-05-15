@@ -44,7 +44,7 @@ struct SearchView: View {
             .padding(30)
             
             HStack {
-                Text("Cuisine stype:")
+                Text("Cuisine Type:")
                     .padding(.leading, 40)
                 Spacer()
                 
@@ -59,7 +59,7 @@ struct SearchView: View {
             
             
             HStack {
-                Text("Meal stype:")
+                Text("Meal Type:")
                     .padding(.leading, 40)
                 Spacer()
                 

@@ -114,14 +114,15 @@ class GroceryListViewModel: ObservableObject {
     func toggle(_ grocery: GroceryItem) {
         if !has(grocery) {return }
         
-        for index in 0..<groceryList.count {
-            for i in 0..<groceryList[index].groceryCategory.groceryItems.count {
-                if groceryList[index].groceryCategory.groceryItems[i] == grocery {
-                    //groceryList[index].groceryCategory.groceryItems[i].bought.toggle()
-                    groceryListRepository.toggleGroceryItem(item: groceryList[index].groceryCategory.groceryItems[i], category: groceryList[index].groceryCategory)
-                    return
-                }
-            }
-        }
+        let selectedCategoryVM = groceryList.filter{$0.groceryCategory.name == grocery.category}
+        
+        let selectedGrocertyItem = selectedCategoryVM[0].groceryCategory.groceryItems.filter{$0 == grocery}
+        
+        groceryListRepository.toggleGroceryItem(item:selectedGrocertyItem[0], category: selectedCategoryVM[0].groceryCategory)
+        
+    }
+    
+    func refresh() {
+        groceryListRepository.updateView()
     }
 }

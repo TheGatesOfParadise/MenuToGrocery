@@ -414,6 +414,11 @@ class FirebaseRepository: ObservableObject {
     }
 
     func sortAndCleanGroceryList() {
+        print("#1")
+        for index in 0..<groceryList.count {
+            print("   \(groceryList[index].name):\(groceryList[index].groceryItems.count)")
+        }
+        
         for index in 0..<groceryList.count {
             if index < groceryList.count {
                 if groceryList[index].groceryItems.count == 0 {
@@ -425,36 +430,64 @@ class FirebaseRepository: ObservableObject {
         }
         groceryList.sort(by: {$0.name.capitalized < $1.name.capitalized})
         
+        print("#2")
+        for index in 0..<groceryList.count {
+            print("   \(groceryList[index].name):\(groceryList[index].groceryItems.count)")
+        }
+        
+        updateView()
+        
     }
     
     func toggleGroceryItem(item:GroceryItem, category:GroceryCategory){
-        let groceryRef = store.collection(groceryListPath).document(category.id!) //TODO: !
+        var groceryRef = store.collection(groceryListPath).document(category.id!) //TODO: !
         
-        var newCategory = category
+        var groceryItems:[GroceryItem] = category.groceryItems
         var newItem = item
         newItem.bought.toggle()
-        newCategory.groceryItems.removeAll(where: {$0 == item})
-        newCategory.groceryItems.append(newItem)
         
+        groceryItems = groceryItems.filter( {$0 != item})
+        groceryItems.append(newItem)
+        
+
         let batch = store.batch()
-        
+        //let encodedGroceryItems = groceryItems.compactMap { try? Firestore.Encoder().encode($0) }
         batch.deleteDocument(groceryRef)
+        groceryRef = store.collection(groceryListPath).document()
         do {
-            try _ = batch.setData(from: newCategory, forDocument: groceryRef)
+            try _ = batch.setData(from: GroceryCategory(name: category.name, groceryItems: groceryItems), forDocument: groceryRef)
         } catch {
             fatalError("Unable to toggle \(item.name) to grocery list: \(error.localizedDescription).")
         }
         
-        // Commit the batch
-        batch.commit() { err in
+        batch.commit(){ err in
             if let err = err {
-                print("Error toggle \(item.name) - \(err)")
+                print("Error toggling grocery item- \(err)")
             } else {
-                print("Batch operation for toggle \(item.name) succeeded.")
+                print("Batch operation for toggle grocery item succeeded.")
             }
+        }
+        /*
+        groceryRef.updateData([
+            "groceryItems" : FieldValue.arrayUnion(encodedGroceryItems)
+        ]){ err in
+            if let err = err {
+                print("Error to toggle grocey list - \(err)")
+            } else {
+                print("Toggle operation for a grocery item succeeded.")
+            }
+        }
+        */
+        print("#3")
+        for index in 0..<groceryList.count {
+            print("   \(groceryList[index].name):\(groceryList[index].groceryItems.count)")
         }
         
         sortAndCleanGroceryList()
+    }
+    
+    func updateView(){
+        self.objectWillChange.send()
     }
     
 }
