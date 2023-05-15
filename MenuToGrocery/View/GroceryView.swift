@@ -9,12 +9,11 @@ import SwiftUI
 
 struct GroceryView: View {
     @ObservedObject var groceryListViewModel = GroceryListViewModel.shared
-    @State var isOn = false  //TODO
     @State var selectedRecipe : Recipe? = nil
     @State var alertPresented = false
     
     var body: some View {
-        //ScrollView{
+
             VStack {
                 HStack{
                     Text("Grocery List")
@@ -23,7 +22,6 @@ struct GroceryView: View {
                     
                     Button(action: {
                         alertPresented.toggle()
-                        groceryListViewModel.refresh()
                     }, label: {
                         Image(systemName: "trash")
                             .resizable()
@@ -40,36 +38,11 @@ struct GroceryView: View {
                 }
                 
                 List{
-                    ForEach(groceryListViewModel.groceryList) { categoryViewModel in
-                        Section("\(categoryViewModel.groceryCategory.name)") {
-                            VStack (alignment: .leading){
-                     
-                                ForEach(categoryViewModel.groceryCategory.groceryItems) {item in
-                                   
-                                        HStack{
-                                            Button(action: {
-                                                groceryListViewModel.toggle(item)
-                                                groceryListViewModel.refresh()
-                                            },
-                                                   label: {Image(systemName: item.bought ? "checkmark.square.fill" : "square")
-                                            })
-                                            .buttonStyle(.borderless)
-                                            
-                                            Text(item.name)
-                                            Spacer()
-                                            Text(item.quantityDisplay)
-                                            Text(item.measure ?? "")
-                                        }
-                                    
-                                    .foregroundColor(.black)
-                                    .onTapGesture {
-                                        selectedRecipe = item.recipe
-                                    }
-                                }
-                            }
-                        }
+                    //ForEach(groceryListViewModel.groceryList) { categoryViewModel in
+                    //for index in 0..<groceryListViewModel.groceryList.count {
+                    ForEach(groceryListViewModel.groceryList.indices, id: \.self) { index in
+                            categoryView(categoryViewModel: groceryListViewModel.groceryList[index], selectedRecipe: $selectedRecipe)
                     }
-                    
                 }
                 Spacer()
             }
@@ -83,24 +56,39 @@ struct GroceryView: View {
     }
 }
 
-//https://sarunw.com/posts/swiftui-checkbox/#:~:text=Checkbox%20in%20SwiftUI%20is%20just,checkbox)%20.
-struct iOSCheckboxToggleStyle: ToggleStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        // 1
-        Button(action: {
-
-            // 2
-            configuration.isOn.toggle()
-
-        }, label: {
-            HStack {
-                // 3
-                Image(systemName: configuration.isOn ? "checkmark.square" : "square")
+struct categoryView: View {
+    @ObservedObject var groceryListViewModel = GroceryListViewModel.shared
+    var categoryViewModel:GroceryCategoryViewModel
+    @Binding var selectedRecipe: Recipe?
+    
+    var body: some View {
+        Section("\(categoryViewModel.groceryCategory.name)") {
+            VStack (alignment: .leading){
+     
+                ForEach(categoryViewModel.groceryCategory.groceryItems) {item in
+                   
+                        HStack{
+                            Button(action: {
+                                groceryListViewModel.toggle(item)
+                            },
+                                   label: {Image(systemName: item.bought ? "checkmark.square.fill" : "square")
+                            })
+                            .buttonStyle(.borderless)
+                            
+                            Text(item.name)
+                            Spacer()
+                            Text(item.quantityDisplay)
+                            Text(item.measure ?? "")
+                        }
+                    
                     .foregroundColor(.black)
-
-                configuration.label
+                    .onTapGesture {
+                        selectedRecipe = item.recipe
+                    }
+                }
             }
-        })
+        }
+        
     }
 }
 

@@ -434,9 +434,6 @@ class FirebaseRepository: ObservableObject {
         for index in 0..<groceryList.count {
             print("   \(groceryList[index].name):\(groceryList[index].groceryItems.count)")
         }
-        
-        updateView()
-        
     }
     
     func toggleGroceryItem(item:GroceryItem, category:GroceryCategory){
@@ -464,36 +461,18 @@ class FirebaseRepository: ObservableObject {
             if let err = err {
                 print("Error toggling grocery item- \(err)")
             } else {
+                print("#3")
+                for index in 0..<self.groceryList.count {
+                    print("   \(self.groceryList[index].name):\(self.groceryList[index].groceryItems.count)")
+                }
+                self.sortAndCleanGroceryList()
                 print("Batch operation for toggle grocery item succeeded.")
             }
         }
-        /*
-        groceryRef.updateData([
-            "groceryItems" : FieldValue.arrayUnion(encodedGroceryItems)
-        ]){ err in
-            if let err = err {
-                print("Error to toggle grocey list - \(err)")
-            } else {
-                print("Toggle operation for a grocery item succeeded.")
-            }
-        }
-        */
-        print("#3")
-        for index in 0..<groceryList.count {
-            print("   \(groceryList[index].name):\(groceryList[index].groceryItems.count)")
-        }
-        
-        sortAndCleanGroceryList()
     }
     
     func updateView(){
         self.objectWillChange.send()
     }
     
-}
-
-
-struct SimpleCategory {
-    let id:String
-    let name:String
 }
