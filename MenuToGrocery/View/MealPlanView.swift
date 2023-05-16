@@ -1,10 +1,16 @@
 //
 //  MealPlanView.swift
-//  MenuToGrocery
 //
-//  Created by Mom macbook air on 4/18/23.
 //
-
+///This view shows user's meal plan.  it displays list of recipes selected from search screen.
+///The recipe is not grouped by any category, it's shown in the order as they are added.
+///
+///By clicking on any recipe image, it leads to a detailed recipe screen.
+///User can empty meal plan by clicking on top right trash can image.
+///
+///The view also allows user to consult ChatGPT on the selected meal plan by clicking on "Advice" image.   The chatgpt screen is showns as
+///half sheet.
+///
 import SwiftUI
 let recipeWidth = 120.0
 let deleteSignWidth = 15.0
@@ -67,6 +73,7 @@ struct MealPlanView: View {
     }
 }
 
+///This view shows selected recipes in a grid.   Each recipe is shown as an image.
 struct RecipeGrid:  View {
     @ObservedObject var viewModel = MealPlanViewModel.shared
     @State var selectedRecipe : Recipe? = nil
@@ -95,6 +102,9 @@ struct RecipeGrid:  View {
     }
 }
 
+///This view shows a single recipe in meal plan screen, it's the smallest component of RecipeGrid.
+///For each recipe, there is a "x" at the right top corner, by clicking it the recipe is deleted from the meal plan
+///
 struct RecipeSquareView: View {
     @ObservedObject var viewModel = MealPlanViewModel.shared
     let recipe: Recipe

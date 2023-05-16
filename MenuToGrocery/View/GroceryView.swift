@@ -1,10 +1,14 @@
 //
 //  GroceryView.swift
-//  MenuToGrocery
 //
-//  Created by Mom macbook air on 4/18/23.
 //
-
+///This view shows grocery items from meal plan.
+///It lists grocery item by category and list them alphabetically.
+///When a  recipe is added/deleted from the meal plan, its ingredients are added/deleted from the grocery list.
+///If user empty meal plan, then grocey list is emptied too.   However to empty grocery list does not affect mealplan.
+///User can check which recipe the grocery item belongs to by clicking on the item.
+///user can also check if an item is ready by clicking on the check box next to the item.
+///
 import SwiftUI
 
 struct GroceryView: View {
@@ -56,6 +60,9 @@ struct GroceryView: View {
     }
 }
 
+///This view displays a single category of groceries
+///The category is displayed in captial letters, each grocery item belongs to it is displayed alphabetically under it.
+///
 struct categoryView: View {
     @ObservedObject var groceryListViewModel = GroceryListViewModel.shared
     var categoryViewModel:GroceryCategoryViewModel

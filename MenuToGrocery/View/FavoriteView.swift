@@ -1,10 +1,14 @@
 //
 //  FavoriteView.swift
-//  MenuToGrocery
 //
-//  Created by Mom macbook air on 4/18/23.
 //
-
+///This view shows favorite recipes.
+///The recipes in this view is grouped by cuisine type,  Each recipe is represented as a small image.
+///User can empty favorite recipes by clicking on trash can image at the top right of screen
+///
+///By clicking on an individual recipe image, it leads to a detailed recipe screen. From there user can add/remove
+///the recipe from meal plan.
+///
 import SwiftUI
 
 struct FavoriteView: View {
@@ -15,7 +19,7 @@ struct FavoriteView: View {
         
         VStack{
             HStack {
-                Text("Favorite Meals")
+                Text("Favorite Recipes")
                     .font(.system(size: 36, weight: .heavy, design: .rounded))
                     .padding()
                 
@@ -116,7 +120,7 @@ struct FavoriteView: View {
             Spacer()
         }
         .sheet(item: $selectedRecipe) { item in     // activated on selected item
-            RecipeView(recipe: item)   //TODO: !
+            RecipeView(recipe: item)
                 .presentationDetents([.large])
         }
     }

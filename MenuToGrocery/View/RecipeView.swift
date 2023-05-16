@@ -1,10 +1,18 @@
 //
 //  SwiftUIView.swift
-//  MenuToGrocery
 //
-//  Created by Mom macbook air on 4/22/23.
 //
-
+///This view displaye a single recipe in details.
+///For each recipe, the following information is displayed vertically:
+/// name, cuisine type, total calories, prepare time, a bigger picture and ingredients.
+///
+/// At the bottom of the screen, it has "Instruciton" button, it opens up an external  webpage.
+/// At the top fo the screen, 2 buttons are shown, one for meal pland, the other favorite recipes.
+/// If the recipe is in meal plan, then meal plan icon is shown red, otherwise green.
+/// If the recipe is in favorite recipes, a red heart is shown, otherwrise heart icon is green.
+/// User can toggle these 2 icons to add/remove from meal plan or favorite recipes.
+///
+///
 import SwiftUI
 import WebKit
 

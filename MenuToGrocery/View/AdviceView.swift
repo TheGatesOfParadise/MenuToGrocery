@@ -1,18 +1,15 @@
 //
 //  AdviceView.swift
-//  MenuToGrocery
 //
-//  Created by Mom macbook air on 5/2/23.
 //
-
+///This views allows user to consult chatGPT on their meal plan.
+///The view allows user to choose sex and age, then by cicking on the blue button, user's mealplan is sent to chatGPT for consulation.
+///Whie waiting for chatGPT response, a loading indicator is shown.  Once response is back,  the loading indicator disappears
+///and existing screen is replaced with chatGPT answer.
+///User can ask chatGPT once when the half sheet is presented.  If user wants to ask again, the advice screen has to be reinvoked by clicking
+///on "Advice" image on Meal Plan screen. 
+///
 import SwiftUI
-
-struct AdviceView_Previews: PreviewProvider {
-    static var previews: some View {
-        AdviceView()
-    }
-}
-
 
 struct AdviceView: View {
     @ObservedObject var mealViewModel = MealPlanViewModel.shared
@@ -98,5 +95,11 @@ struct AdviceView: View {
                 isChecking = false
             }
         }
+    }
+}
+
+struct AdviceView_Previews: PreviewProvider {
+    static var previews: some View {
+        AdviceView()
     }
 }

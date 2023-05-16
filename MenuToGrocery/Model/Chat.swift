@@ -1,7 +1,14 @@
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
 //
-//   let chatResponse = try? JSONDecoder().decode(ChatResponse.self, from: jsonData)
+//Chat.swift
+//
+//
+///Model for chatGPT response
+///
+/// I used sample data from chatGPT response to generate the file.
+/// This file was generated from JSON Schema using quicktype, do not modify it directly.
+/// To parse the JSON, add this file to your project and do:
+///
+///   let chatResponse = try? JSONDecoder().decode(ChatResponse.self, from: jsonData)
 
 import Foundation
 

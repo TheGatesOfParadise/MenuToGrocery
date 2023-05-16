@@ -2,7 +2,6 @@
 //  MenuToGroceryApp.swift
 //  MenuToGrocery
 //
-//  Created by Mom macbook air on 4/17/23.
 //
 
 import SwiftUI
@@ -24,9 +23,7 @@ struct MenuToGroceryApp: App {
     
     var body: some Scene {
         WindowGroup {
-            //SearchView()
             ContentView()
-            //Test2View()
         }
     }
 }
