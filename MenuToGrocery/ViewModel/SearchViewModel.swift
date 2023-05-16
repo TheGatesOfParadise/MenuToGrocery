@@ -7,6 +7,7 @@ class SearchViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     @Published var geoCode = "..."
     @Published var recipes = [Recipe]()
+    @Published var searched = false
     static let shared = SearchViewModel()
     private init() {}
     
@@ -56,6 +57,7 @@ class SearchViewModel: ObservableObject {
         }
     receiveValue: { [weak self] response in
         self?.recipes = response.hits.compactMap{$0.recipe}
+        self?.searched = true
     }
     .store(in: &self.cancellables)
     }

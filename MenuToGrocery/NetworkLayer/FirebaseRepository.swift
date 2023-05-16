@@ -179,6 +179,8 @@ class FirebaseRepository: ObservableObject {
                     try? document.data(as: GroceryCategory.self)
                 } ?? []
             }
+        
+        //self.sortAndCleanGroceryList()
     }
     
     //Add GroceryCategory to grocery list
@@ -450,13 +452,13 @@ class FirebaseRepository: ObservableObject {
         
 
         let batch = store.batch()
-       // let encodedGroceryItems = groceryItems.compactMap { try? Firestore.Encoder().encode($0) }
-        batch.deleteDocument(groceryRef)
-        groceryRef = store.collection(groceryListPath).document()
+        let encodedGroceryItems = groceryItems.compactMap { try? Firestore.Encoder().encode($0) }
+       // batch.deleteDocument(groceryRef)
+        //groceryRef = store.collection(groceryListPath).document()
         do {
-            try _ = batch.setData(from: GroceryCategory(name: category.name, groceryItems: groceryItems), forDocument: groceryRef)
+           // try _ = batch.setData(from: GroceryCategory(name: category.name, groceryItems: groceryItems), forDocument: groceryRef)
             
-           // try _ = batch.updateData(["groceryItems":encodedGroceryItems], forDocument: groceryRef)
+           try _ = batch.updateData(["groceryItems":encodedGroceryItems], forDocument: groceryRef)
         } catch {
             fatalError("Unable to toggle \(item.name) to grocery list: \(error.localizedDescription).")
         }

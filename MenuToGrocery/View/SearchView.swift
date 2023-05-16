@@ -72,13 +72,26 @@ struct SearchView: View {
                 .frame(width: 200)
             }
             
-            Spacer()
+            //Spacer()
             
-            List{
-                ForEach(searchViewModel.recipes) { recipe in
-                    smallRecipeView(recipe: recipe, selectedRecipe: $selectedRecipe)
+            if searchViewModel.recipes.count > 0 {
+                List{
+                    ForEach(searchViewModel.recipes) { recipe in
+                        smallRecipeView(recipe: recipe, selectedRecipe: $selectedRecipe)
+                    }
+                }
+            }else {if searchViewModel.searched {
+                Text("No recipe is found with your search")
+                    //.bold()
+                    .font(.system(size:20, weight: .heavy, design: .rounded))
+                    .foregroundColor(.red)
+                    .padding(.top, 20)
+                    //.border(.pink, width:5)
                 }
             }
+            
+            Spacer()
+            Spacer()
         }
         .sheet(item: $selectedRecipe) { item in     // activated on selected item
             RecipeView(recipe: item)   //TODO: !
