@@ -1,5 +1,35 @@
 # MenuToGrocery
 
+It uses Edamam Recipe API to get recipes based on search criteria.
+Add recipe to meal plan and/or favorite recipe list
+Everytime a recipe is added to/deleted from a meal plan, its corresponding ingredients are added to/removed from grocery list. 
+The 3 list - meal plan, favorite recipes and grocery list are persisted in Firestore so that next time user comes back previously saved data is retrieved.
+The above 3 list can be emptied.  By emptying meal plan, grocery list is emptied too.  This is a one directional impact.  Emptying favorite recipes or grocery list does not have impact to other list.
+After user seledct at least one recipe to the meal plan, user can consult with chatGPT to comment on the meal plan.
+
+#Search screen#
+     - search without any filter
+     - search with fitler(s)
+     - if non-empty search result comes back
+     - if empty search result comes back
+     - for each recipe, user can add/remove it to meal plan/favorite recipes
+     - by clicking on individual recipe, ....
+
+#Meal plan screen#
+
+#Favorite recipe screen#
+
+#Grocery list screen#
+     
+#Single recipe screen#
+
+#ChatGPT half sheet#
+
+
+
+
+==========================================================================================
+
 #############
 ToDo#############
 
