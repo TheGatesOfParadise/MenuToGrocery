@@ -1,7 +1,13 @@
-
+//
+// EdamamNetworkManager.swift
+//
+//
+///This class is responsible to talk to Edamam API to get recipes. It uses Combine to conduct async fetch from Edamam.
+///Edamam recipe search API website is https://developer.edamam.com/edamam-recipe-api
+///The recipe search accepts a query as a string dictionary, returns a generic type defined by the caller.
+///
 import Foundation
 import Combine
-import MapKit
 
 class EdamamNetworkManager{
     
@@ -21,6 +27,13 @@ class EdamamNetworkManager{
     let recipeAPIKey =  "4ed5ca518b3756cbc0701d7501264aa8" //"e95a4e68efaa40b692aa7e156348e8f"
     let recipeAPIID = "60774aad"//"4f2d15f6"
     
+    ///Search recipe based on passed-in query, returns a generic type defined by the caller
+    ///In parameter:
+    ///         `endpoint`:String - the endpoint of search API for Emamam
+    ///         `query`: [String:String] - a list of string dictionary, e.g. APIkey, cuisine type, meal type..etc
+    ///         `type`: <T: Decodable> - a generic return type defined by the caller
+    /// Return:
+    ///         `Future<T, Error>`: a generic return type defined by the caller
     func getRecipe<T: Decodable>(endpoint: String, query: [String:String], type: T.Type) -> Future<T, Error> {
         return Future<T, Error> { [weak self] promise in
 

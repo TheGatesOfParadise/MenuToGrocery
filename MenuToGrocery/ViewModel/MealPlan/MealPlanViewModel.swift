@@ -1,10 +1,10 @@
 //
 //  MealPlanViewModel.swift
-//  MenuToGrocery
 //
-//  Created by Mom macbook air on 4/18/23.
 //
-
+///This class is the view model for meal plan screen. It bridges meal plan screen and the network layer to get meal plan from Firestore.
+///It uses Combine to asynchronously get data from Firestore then asseble a usable list of meal plan consumed by the view
+///
 import Foundation
 import Combine
 
@@ -41,7 +41,6 @@ class MealPlanViewModel: ObservableObject {
     func remove (_ recipe: Recipe) {
         let recipes = mealPlan.compactMap{$0.recipe}
         if let existingRecipe = recipes.first(where: {$0 == recipe}) {
-            //mealRepository.removeFromMealPlan(existingRecipe)
             mealRepository.removeRecipe(existingRecipe)
         }
     }

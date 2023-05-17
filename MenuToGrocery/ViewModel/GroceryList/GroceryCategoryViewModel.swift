@@ -1,9 +1,10 @@
 //
 //  GroceryCategoryViewModel.swift
-//  MenuToGrocery
 //
-//  Created by Mom macbook air on 4/29/23.
 //
+/// This class is the view model for  a single grocery category in grocery list
+/// The purpose of this class is to help decoding GroceryCategory when a grocery list is retrieved from Firestore.
+///
 import Foundation
 import Combine
 
