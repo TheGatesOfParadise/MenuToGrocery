@@ -1,4 +1,10 @@
-
+//
+// RecipeViewModel.swift
+//
+//
+/// This class is the view model for  a single grocery category in grocery list
+/// The purpose of this class is to help decoding GroceryCategory when a grocery list is retrieved from Firestore.
+///
 import Foundation
 import Combine
 
@@ -15,15 +21,6 @@ class RecipeViewModel: ObservableObject, Identifiable, Hashable {
             .compactMap { $0.id }
             .assign(to: \.id, on: self)
             .store(in: &cancellables)
-    }
-    
-    //TODO: following 2 methods are not used, check
-    func update(recipe: Recipe) {
-        firebaseRepository.updateMealPlanWith(recipe)
-    }
-    
-    func remove() {
-        firebaseRepository.removeFromMealPlan(recipe)
     }
     
     static func == (lhs: RecipeViewModel, rhs: RecipeViewModel) -> Bool {

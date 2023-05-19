@@ -1,21 +1,23 @@
 //
 //  GroceryView.swift
-//  MenuToGrocery
 //
-//  Created by Mom macbook air on 4/18/23.
 //
-
+///This view shows grocery items from meal plan.
+///It lists grocery item by category and list them alphabetically.
+///When a  recipe is added/deleted from the meal plan, its ingredients are added/deleted from the grocery list.
+///If user empty meal plan, then grocey list is emptied too.   However to empty grocery list does not affect mealplan.
+///User can check which recipe the grocery item belongs to by clicking on the item.
+///user can also check if an item is ready by clicking on the check box next to the item.
+///
 import SwiftUI
 
 struct GroceryView: View {
-    @ObservedObject var mealviewModel = MealPlanViewModel.shared
     @ObservedObject var groceryListViewModel = GroceryListViewModel.shared
-    @State var isOn = false  //TODO
     @State var selectedRecipe : Recipe? = nil
     @State var alertPresented = false
     
     var body: some View {
-        //ScrollView{
+
             VStack {
                 HStack{
                     Text("Grocery List")
@@ -40,35 +42,11 @@ struct GroceryView: View {
                 }
                 
                 List{
-                    ForEach(groceryListViewModel.groceryList) { categoryViewModel in
-                        Section("\(categoryViewModel.groceryCategory.name)") {
-                            VStack (alignment: .leading){
-                     
-                                ForEach(categoryViewModel.groceryCategory.groceryItems) {item in
-                                   
-                                        HStack{
-                                            Button(action: {
-                                                groceryListViewModel.toggle(item)
-                                            },
-                                                   label: {Image(systemName: item.bought ? "checkmark.square.fill" : "square")
-                                            })
-                                            .buttonStyle(.borderless)
-                                            
-                                            Text(item.name)
-                                            Spacer()
-                                            Text(item.quantityDisplay)
-                                            Text(item.measure ?? "")
-                                        }
-                                    
-                                    .foregroundColor(.black)
-                                    .onTapGesture {
-                                        selectedRecipe = item.recipe
-                                    }
-                                }
-                            }
-                        }
+                    //ForEach(groceryListViewModel.groceryList) { categoryViewModel in
+                    //for index in 0..<groceryListViewModel.groceryList.count {
+                    ForEach(groceryListViewModel.groceryList.indices, id: \.self) { index in
+                            categoryView(categoryViewModel: groceryListViewModel.groceryList[index], selectedRecipe: $selectedRecipe)
                     }
-                    
                 }
                 Spacer()
             }
@@ -82,24 +60,54 @@ struct GroceryView: View {
     }
 }
 
-//https://sarunw.com/posts/swiftui-checkbox/#:~:text=Checkbox%20in%20SwiftUI%20is%20just,checkbox)%20.
-struct iOSCheckboxToggleStyle: ToggleStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        // 1
-        Button(action: {
-
-            // 2
-            configuration.isOn.toggle()
-
-        }, label: {
-            HStack {
-                // 3
-                Image(systemName: configuration.isOn ? "checkmark.square" : "square")
+///This view displays a single category of groceries
+///The category is displayed in captial letters, each grocery item belongs to it is displayed alphabetically under it.
+///
+struct categoryView: View {
+    @ObservedObject var groceryListViewModel = GroceryListViewModel.shared
+    var categoryViewModel:GroceryCategoryViewModel
+    @Binding var selectedRecipe: Recipe?
+    
+    var body: some View {
+        Section("\(categoryViewModel.groceryCategory.name)") {
+            VStack (alignment: .leading){
+     
+                ForEach(categoryViewModel.groceryCategory.groceryItems) {item in
+                   
+                        HStack{
+                            Button(action: {
+                                groceryListViewModel.toggle(item)
+                            },
+                                   label: {Image(systemName: item.bought ? "checkmark.square.fill" : "square")
+                                   //label: {Image(systemName: isBought(item) ? "checkmark.square.fill" : "square")
+                            })
+                            .buttonStyle(.borderless)
+                            
+                            Text(item.name)
+                            Spacer()
+                            Text(item.quantityDisplay)
+                            Text(item.measure ?? "")
+                        }
+                    
                     .foregroundColor(.black)
-
-                configuration.label
+                    .onTapGesture {
+                        selectedRecipe = item.recipe
+                    }
+                }
             }
-        })
+        }
+    }
+    
+    func isBought(_ item: GroceryItem) -> Bool {
+        if groceryListViewModel.isToggleReady() {
+            return item.bought
+        } else {
+            if item.bought {
+                return false
+            } else {
+                return true
+            }
+        }
     }
 }
 

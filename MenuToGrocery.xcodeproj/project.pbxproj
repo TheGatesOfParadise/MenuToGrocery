@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B2E18882A089DA5008BACB3 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2E18872A089DA5008BACB3 /* TestView.swift */; };
 		FD164FD429ECFCC100A9F5A8 /* MenuToGroceryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD164FD329ECFCC100A9F5A8 /* MenuToGroceryApp.swift */; };
 		FD164FD629ECFCC100A9F5A8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD164FD529ECFCC100A9F5A8 /* ContentView.swift */; };
 		FD164FD829ECFCC200A9F5A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD164FD729ECFCC200A9F5A8 /* Assets.xcassets */; };
@@ -59,7 +58,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2B2E18872A089DA5008BACB3 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		FD164FD029ECFCC100A9F5A8 /* MenuToGrocery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenuToGrocery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD164FD329ECFCC100A9F5A8 /* MenuToGroceryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuToGroceryApp.swift; sourceTree = "<group>"; };
 		FD164FD529ECFCC100A9F5A8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 				FD164FFA29EF750700A9F5A8 /* GroceryView.swift */,
 				FD3C35482A01FB93004E1F15 /* RecipeView.swift */,
 				FD3C354A2A0202AF004E1F15 /* AdviceView.swift */,
-				2B2E18872A089DA5008BACB3 /* TestView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -370,7 +367,6 @@
 				FD164FF929EF74DB00A9F5A8 /* FavoriteView.swift in Sources */,
 				FD164FED29EDE30900A9F5A8 /* Extensions.swift in Sources */,
 				FD3C354B2A0202AF004E1F15 /* AdviceView.swift in Sources */,
-				2B2E18882A089DA5008BACB3 /* TestView.swift in Sources */,
 				FD24C01629FD8C870047036F /* GroceryCategoryViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

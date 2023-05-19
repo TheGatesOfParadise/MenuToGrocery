@@ -2,9 +2,11 @@
 import Foundation
 import Combine
 
+/// This class is the view model for  a single cuisine type in favorite recipe list
+/// The purpose of this class is to help decoding RecipeByCuisineType when a favorite recipe list is retrieved from Firestore.
+///
 class RecipeByCuisineTypeViewModel: ObservableObject, Identifiable, Hashable {
-    
-    
+
     private let firebaseRepository = FirebaseRepository()
     @Published var recipeByCuisineType: RecipeByCuisineType
     private var cancellables: Set<AnyCancellable> = []

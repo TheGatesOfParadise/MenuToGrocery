@@ -1,4 +1,10 @@
-
+//
+//SearchViewModel.swift
+//
+//
+///This is the view model to search recipes.
+///It uses Combine to get data from Edamam API site.  The API response is translated to an array of Recipe consumed by Search view.
+///
 import Foundation
 import Combine
 
@@ -7,6 +13,7 @@ class SearchViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     @Published var geoCode = "..."
     @Published var recipes = [Recipe]()
+    @Published var searched = false
     static let shared = SearchViewModel()
     private init() {}
     
@@ -29,9 +36,6 @@ class SearchViewModel: ObservableObject {
         var query:[String:String] = ["beta": "false",
                                      "q":search,
                                      "ingr":"5-8",
-                                     //"diet":"high-protein",
-                                     //"cuisineType":"American",
-                                     //"mealType":"Dinner",
                                      "calories":"100-300",
                                      "imageSize":"THUMBNAIL"]
         if let t = cuisineType, !t.isEmpty, t != "empty" {
@@ -51,11 +55,11 @@ class SearchViewModel: ObservableObject {
                 print("getRecipe Error is \(err.localizedDescription)")
             case .finished:
                 print("getRecipe Finished")
-                
             }
         }
     receiveValue: { [weak self] response in
         self?.recipes = response.hits.compactMap{$0.recipe}
+        self?.searched = true
     }
     .store(in: &self.cancellables)
     }

@@ -1,10 +1,9 @@
 //
 //  Extensions.swift
-//  MenuToGrocery
 //
-//  Created by Mom macbook air on 4/17/23.
 //
-
+///Convenient extensions
+///
 import Foundation
 import SwiftUI
 
@@ -60,6 +59,4 @@ extension String {
             }
         }
     }
-    
-
 }

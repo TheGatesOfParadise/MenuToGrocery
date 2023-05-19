@@ -1,9 +1,9 @@
 //
+// ChatRequestManager.swift
 //
 //
-///
-///
-///
+///This class is responsible to send a meal plan question to chatGPT and get chatGPT's comment on the meal plan.
+///It uses Combine to fetch response from chatGPT
 ///
 import Foundation
 import Combine
@@ -18,9 +18,15 @@ class ChatRequestManager: ObservableObject {
     
     private var cancellables = Set<AnyCancellable>()
     
-    //@Published var responseData: Data?
-    //@Published var responseError: Error?
     
+    ///Get chatGPT comment on selected meal plan
+    ///In Parameter:
+    ///         `mealPlan`:String - a list of recipes seperated by comma
+    ///         `age`:Int - meal plan owner's age
+    ///         `sex`: String - meal plan owner's sex
+    ///         `type`: <T: Decodable> - a decodable generic response from ChatGPT
+    ///Return:
+    ///     `Future<T, Error>`  -- a decodable generic response from ChatGPT
     func makeRequest<T: Decodable>(mealPlan: String, age: Int, sex: String, type: T.Type) -> Future<T, Error> {
         return Future<T, Error> { [weak self] promise in
             

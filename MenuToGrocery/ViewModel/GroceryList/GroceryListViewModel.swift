@@ -1,10 +1,10 @@
 //
 //  GroceryListViewModel.swift
-//  MenuToGrocery
 //
-//  Created by Mom macbook air on 4/23/23.
 //
-
+///This class is the view model for grocery list screen. It bridges the view and network layer to retrieve data from Firestore.
+///It uses Combine to asynchronously get data from Firestore then asseble a usable grocery list consumed by the view
+///
 import Foundation
 import Combine
 
@@ -14,6 +14,8 @@ class GroceryListViewModel: ObservableObject {
     static let shared = GroceryListViewModel()
     private var cancellables: Set<AnyCancellable> = []
     
+    //Initialier
+    //It gets response from Firestore, then use the data to assemble a groceryList
     private init() {
         groceryListRepository.$groceryList.map { groceryList in
             groceryList.map(GroceryCategoryViewModel.init)
@@ -21,8 +23,6 @@ class GroceryListViewModel: ObservableObject {
         .assign(to: \.groceryList, on: self)
         .store(in: &cancellables)
     }
-    
-    
     
     //Check if the grocery item from same recipe is already in the grocery list
     func has(_ groceryItem: GroceryItem) -> Bool {
@@ -34,13 +34,7 @@ class GroceryListViewModel: ObservableObject {
         return false
     }
 
-    /*
-    func hasCategory(_ category: String) -> GroceryCategory? {
-        let groceryCategories = groceryList.compactMap({$0.groceryCategory.name})
-        return groceryList.first(where: {$0.groceryCategory.name == category})
-    }
-  */
-    
+    //Add a grocery item to grocery list
     func add(_ grocery: GroceryItem) {
         if has(grocery) {return}
         
@@ -51,13 +45,11 @@ class GroceryListViewModel: ObservableObject {
                 return
             }
         }
-        
         groceryListRepository.add(GroceryCategory(name: grocery.category, groceryItems: [grocery]))
     }
-    
 
+    //Add a recipe's ingredients to grocery list
     func add(_ recipe: Recipe){
-        
         //generate grocelistItem list from recipe
         let groceryItems = recipe.ingredients.compactMap { GroceryItem(category: $0.foodCategory, name: $0.food, quantity: $0.quantity, measure: $0.measure, recipe: recipe)}
         
@@ -66,7 +58,7 @@ class GroceryListViewModel: ObservableObject {
         }
     }
 
-    
+    //Remove a single grocery item from grocery list
     func remove(_ grocery: GroceryItem) {
         for index in 0..<groceryList.count {
             if groceryList[index].groceryCategory.name == grocery.category {
@@ -81,6 +73,7 @@ class GroceryListViewModel: ObservableObject {
         }
     }
     
+    //Remove a recipe's ingredients from grocery list
     func remove(_ recipe:Recipe) {
         let groceryItems = recipe.ingredients.compactMap { GroceryItem(category: $0.foodCategory, name: $0.food, quantity: $0.quantity, measure: $0.measure, recipe: recipe)}
         
@@ -89,10 +82,10 @@ class GroceryListViewModel: ObservableObject {
         }
     }
     
+    //Empty grocery list
     func emptyGroceryList() {
         groceryListRepository.emptyGroceryList()
     }
-    
     
     
     //rearrange grocery list
@@ -102,26 +95,25 @@ class GroceryListViewModel: ObservableObject {
         groceryListRepository.sortAndCleanGroceryList()
     }
 
-    /*
-    func translateMealPlan(_ mealPlan: [Recipe]) {
-        empty()
-        for recipe in mealPlan {
-            add(recipe)
-        }
-    }
-*/
-    
+    //Toggle a grocery item's status between bought and not-bought
     func toggle(_ grocery: GroceryItem) {
         if !has(grocery) {return }
         
-        for index in 0..<groceryList.count {
-            for i in 0..<groceryList[index].groceryCategory.groceryItems.count {
-                if groceryList[index].groceryCategory.groceryItems[i] == grocery {
-                    //groceryList[index].groceryCategory.groceryItems[i].bought.toggle()
-                    groceryListRepository.toggleGroceryItem(item: groceryList[index].groceryCategory.groceryItems[i], category: groceryList[index].groceryCategory)
-                    return
-                }
-            }
-        }
+        let selectedCategoryVM = groceryList.filter{$0.groceryCategory.name == grocery.category}
+        
+        let selectedGrocertyItem = selectedCategoryVM[0].groceryCategory.groceryItems.filter{$0 == grocery}
+        
+        groceryListRepository.toggleGroceryItem(item:selectedGrocertyItem[0], category: selectedCategoryVM[0].groceryCategory)
+        
+    }
+    
+    //Force any view that uses this class as an ObervedObject to refresh
+    func refresh() {
+        groceryListRepository.updateView()
+    }
+    
+    //Check if toggle an item is made to the Firestore
+    func isToggleReady() -> Bool{
+        return groceryListRepository.toggleIsReady
     }
 }

@@ -1,24 +1,25 @@
 //
 //  SearchView.swift
-//  Unit 9 Content
 //
-//  Created by Mom macbook air on 3/29/23.
 //
-
+///This view allows user to search for recipes.
+///It's has a keyword search text ,  search button, two search criterias.
+///User has to click "Search" button to see recipes.
+///By default, the 2 search search criteira has no selection.  In this condition, the recipe contains all cuisine types and all meal types.
+///If user wants to narrow down result, select a choice from Cuisine type and/or meal type.
+///If no result is returned, a message is displayed to notify user there is no search result.
+///If non-empty recipe result comes back, the view shows a list of recipes.
+///
 import SwiftUI
 
 struct SearchView: View {
     @ObservedObject var searchViewModel = SearchViewModel.shared
-    
-    
     @State var recipeSearchPhrase = ""
     @State var selectedCuisineType = "empty"
     let cuisineOptions = ["empty", "American", "Asian", "British"]
     @State var selectedMealType = "empty"
     let mealOptions = ["empty", "Dinner", "Lunch", "Breakfast","Snack"]
-    //@State var singleMenuSheetIsPresented = false
     @State var selectedRecipe : Recipe? = nil
-    //@State private var singleMenuSheetIsPresented: String? = nil
     
     var body: some View {
         VStack(alignment: .center) {
@@ -44,7 +45,7 @@ struct SearchView: View {
             .padding(30)
             
             HStack {
-                Text("Cuisine stype:")
+                Text("Cuisine Type:")
                     .padding(.leading, 40)
                 Spacer()
                 
@@ -59,7 +60,7 @@ struct SearchView: View {
             
             
             HStack {
-                Text("Meal stype:")
+                Text("Meal Type:")
                     .padding(.leading, 40)
                 Spacer()
                 
@@ -72,13 +73,26 @@ struct SearchView: View {
                 .frame(width: 200)
             }
             
-            Spacer()
+            //Spacer()
             
-            List{
-                ForEach(searchViewModel.recipes) { recipe in
-                    smallRecipeView(recipe: recipe, selectedRecipe: $selectedRecipe)
+            if searchViewModel.recipes.count > 0 {
+                List{
+                    ForEach(searchViewModel.recipes) { recipe in
+                        smallRecipeView(recipe: recipe, selectedRecipe: $selectedRecipe)
+                    }
                 }
+            }else {if searchViewModel.searched {
+                Text("No recipe is found with your search")
+                //.bold()
+                    .font(.system(size:20, weight: .heavy, design: .rounded))
+                    .foregroundColor(.red)
+                    .padding(.top, 20)
+                //.border(.pink, width:5)
             }
+            }
+            
+            Spacer()
+            Spacer()
         }
         .sheet(item: $selectedRecipe) { item in     // activated on selected item
             RecipeView(recipe: item)   //TODO: !
@@ -87,6 +101,11 @@ struct SearchView: View {
     }
 }
 
+///This view displays a single recipe for search screen
+///The view shows a small image of the recipe, recipe name, cuisine type and total calories
+///At the right side of the view, it has 2 buttons that allows the recipe to be added to the mealPlan and favorite list.
+///The view is tappable, once tapped, it leads to the detailed recipe view
+///
 struct smallRecipeView: View {
     let recipe : Recipe
     @Binding var selectedRecipe: Recipe?
@@ -133,8 +152,15 @@ struct smallRecipeView: View {
     }
 }
 
-///single out this view not only for  reduce redundacy of code between search view and recipe view
+///This view has 2 buttons only, one for mealPlan, the other favorite list.
+///If the button is not clicked, it's green.  Once clicked the red color indicates the recipe is added to the corresponding list.
+///
+///The view can be seen in search view, recipe view.  In search view, for each recipe,
+///the 2 buttons are displayed vertically; in recipe view, the buttons are displayed horizontally.
+///
+///To single out this view not only to reduce redundacy of code between search view and recipe view
 ///it also helps to centralize the location where mealplan and grocery list are updated
+///
 struct AddToMealPlanAndFavoriteButtons: View {
     @ObservedObject var mealViewModel = MealPlanViewModel.shared
     @ObservedObject var favoriteViewModel = FavoriteViewModel.shared
@@ -146,10 +172,8 @@ struct AddToMealPlanAndFavoriteButtons: View {
         Button(action: {
             if mealViewModel.has(recipe) {
                 mealViewModel.remove(recipe)
-                //groceryListViewModel.remove(recipe)
             } else {
                 mealViewModel.add(recipe)
-                //groceryListViewModel.add(recipe)
             }
         }, label: {
             Image(mealViewModel.has(recipe) ? "mealPlan_red" : "mealPlan_green")
