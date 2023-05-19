@@ -1,4 +1,10 @@
-# MenuToGrocery
+Friday tasks for SCARLETT:
+1. finish this readme manual, each sentence might not be complete,  read and update it. 
+2. based on this readme manual,  design script for video demo,  you need to cover all these functions with concrete test data so that your video steps are reproducible. 
+
+==================================================================
+
+# MenuToGrocery User Manual #
 
 It uses Edamam Recipe API to get recipes based on search criteria.
 Add recipe to meal plan and/or favorite recipe list
@@ -10,25 +16,45 @@ After user seledct at least one recipe to the meal plan, user can consult with c
 #Search screen#
      - search without any filter
      - search with fitler(s)
-     - if non-empty search result comes back
-     - if empty search result comes back
+     - if non-empty search result comes back, show a list of recipes
+     - if empty search result comes back, a message is shown to notify users 
      - for each recipe, user can add/remove it to meal plan/favorite recipes
-     - by clicking on individual recipe, ....
+     - by clicking on individual recipe, goes to Single recipe screen
 
 #Meal plan screen#
+    - a list of recipes are put here as they are added. 
+    - click on a recipe, goes to Single recipe screen
+    - delete a recipe from meal plan
+    - empty meal plan
+    - consult chatGPT on meal plan
 
 #Favorite recipe screen#
+    - a list of recipes grouped by cuisine type
+    - click on a recipe, goes to Single recipe screen
+    - delete a recipe from favorite recipe list
+    - empty favorite reicpe list
 
 #Grocery list screen#
+    - the grocery item is entered through meal plan,  when a recipe is added to meal plan, its ingredients are added to grocery list
+    - it's not allowed to enter a new grocery item on this screen -- TODO: see if this function can be added
+    - user can check/uncheck a grocery item to mark it as bought/not-bought
+    - it's not allowed to delete grocery items on this screen -- TODO: see if this function can be added
+    - empty grocery list  (if the meal plan is emptied, grocery list is emptied too)
+    - by clickin on a grocery item, it goes to Single recipe screen.  This reminds users which recipe is associated with the grocery item
      
 #Single recipe screen#
+    - A detailed recipe screen is shown:  calroies, cuisine type, ingrdients...
+    - Use can add/remove the recipe from meal plan or favorite recipe list
+    - this screen is presented as full sheet invoked from all 4 screens above
 
 #ChatGPT half sheet#
+    - This screen is presented as half sheet from meal plan screen
+    - It allows users to choose age and sex, then consult chatGPT on the meal plan
 
 
 
 
-==========================================================================================
+====================================================================================================
 
 #############
 ToDo#############
@@ -36,6 +62,9 @@ ToDo#############
 7. check all ! 
 18. get rid of error -- AppCheck failed: 'The operation couldn’t be completed. (com.apple.devicecheck.error error 1.)'
 20. change a new firebase accout for 30 day no authentication?、
+21. hide keyboard when focus is not on textfield in search screen
+22. check toggle function in grocery screen
+23. add/remove a grocery item
 
 
 
@@ -66,8 +95,4 @@ Done#############
 
 
 Firecard reference: https://www.kodeco.com/11609977-getting-started-with-cloud-firestore-and-swiftui#toc-anchor-003
-
-for scar:
-- adviceview to full-sheet
-- 
 
