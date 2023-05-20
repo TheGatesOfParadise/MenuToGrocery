@@ -6,7 +6,6 @@
 ///It uses Combine to talk to chatGPT, get response back and put it to a published variable named "advice".
 ///Advice view checks "advice" value and display it to user. 
 ///
-///
 import Foundation
 import Combine
 

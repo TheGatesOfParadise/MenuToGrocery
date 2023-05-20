@@ -42,8 +42,6 @@ struct GroceryView: View {
                 }
                 
                 List{
-                    //ForEach(groceryListViewModel.groceryList) { categoryViewModel in
-                    //for index in 0..<groceryListViewModel.groceryList.count {
                     ForEach(groceryListViewModel.groceryList.indices, id: \.self) { index in
                             categoryView(categoryViewModel: groceryListViewModel.groceryList[index], selectedRecipe: $selectedRecipe)
                     }
@@ -62,7 +60,6 @@ struct GroceryView: View {
 
 ///This view displays a single category of groceries
 ///The category is displayed in captial letters, each grocery item belongs to it is displayed alphabetically under it.
-///
 struct categoryView: View {
     @ObservedObject var groceryListViewModel = GroceryListViewModel.shared
     var categoryViewModel:GroceryCategoryViewModel

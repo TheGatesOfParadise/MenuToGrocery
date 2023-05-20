@@ -6,7 +6,7 @@
 ///The cotent is referenced from this tutoria: https://www.kodeco.com/11609977-getting-started-with-cloud-firestore-and-swiftui#toc-anchor-017
 ///
 ///For this project, no authentication is used.  Anonymouse user is used as the test user. 
-
+///
 import Foundation
 import Firebase
 

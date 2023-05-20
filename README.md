@@ -48,11 +48,7 @@ This half-sheet can be accessed from the meal plan screen by pressing on the sti
 
 #############
 ToDo#############
-
 7. check all ! 
-18. get rid of error -- AppCheck failed: 'The operation couldn’t be completed. (com.apple.devicecheck.error error 1.)'
-20. change a new firebase accout for 30 day no authentication?、
-
 
 
 #############
@@ -79,7 +75,8 @@ Done#############
 21. remove recipe has bugs
 22. check grocery item -- tomato, 1st recipe, remove one item -- order changed. 
 16. add loading wheel -- delete favorites, chatgpt response is slow
-
+18. get rid of error -- AppCheck failed: 'The operation couldn’t be completed. (com.apple.devicecheck.error error 1.)'  -- don't need to
+20. change a new firebase accout for 30 day no authentication?、  -- account seems to be fine after 30 days
 
 Firecard reference: https://www.kodeco.com/11609977-getting-started-with-cloud-firestore-and-swiftui#toc-anchor-003
 

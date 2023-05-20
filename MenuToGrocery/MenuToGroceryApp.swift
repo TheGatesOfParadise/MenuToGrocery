@@ -2,7 +2,6 @@
 //  MenuToGroceryApp.swift
 //  MenuToGrocery
 //
-//
 
 import SwiftUI
 import FirebaseCore

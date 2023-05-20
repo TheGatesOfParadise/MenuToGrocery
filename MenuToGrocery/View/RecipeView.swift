@@ -12,7 +12,6 @@
 /// If the recipe is in favorite recipes, a red heart is shown, otherwrise heart icon is green.
 /// User can toggle these 2 icons to add/remove from meal plan or favorite recipes.
 ///
-///
 import SwiftUI
 import WebKit
 
@@ -21,7 +20,6 @@ let roundCircleButtonWidth = 30.0
 struct RecipeView: View {
     @ObservedObject var favoriteViewModel = FavoriteViewModel.shared
     @ObservedObject var mealViewModel = MealPlanViewModel.shared
-    //@Environment(\.dismiss) var dismiss
     @State var showInstruction = true
     
     var recipe: Recipe
@@ -55,14 +53,12 @@ struct RecipeView: View {
                 .padding()
                 
                 List {
-                    // 1
                     Section("Ingredients") {
                         ForEach(recipe.ingredients) { ingredient in
                             VStack{
                                 Text(ingredient.text.capitalized)
                                     .foregroundColor(.blue)
                                     .fixedSize(horizontal: false, vertical: true)
-                                
                             }
                         }
                     }
@@ -84,9 +80,10 @@ struct RecipeView: View {
     }
 }
 
-//code reference: https://medium.com/geekculture/how-to-use-webview-in-swiftui-and-also-detect-the-url-21d4fab2a9c1
+///This view presents a web page from a passed in URL
+///In parameter: `url`: URL -- url for the web page
+///code reference: https://medium.com/geekculture/how-to-use-webview-in-swiftui-and-also-detect-the-url-21d4fab2a9c1
 struct WebView: UIViewRepresentable {
- 
     var url: URL
     @Binding var showWebView: Bool
  

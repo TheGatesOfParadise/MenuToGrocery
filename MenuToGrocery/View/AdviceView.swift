@@ -78,12 +78,10 @@ struct AdviceView: View {
                 
                 
                 //chatGPT answer
-                
                 Text("\(chatGPTViewModel.advice)")
                     .frame(width: UIScreen.screenWidth - 80)
                     .font(.system(size: 18))
                     .fontWeight(.bold)
-                // .border(.black, width:5)
                 
                 Spacer()
                 Spacer()

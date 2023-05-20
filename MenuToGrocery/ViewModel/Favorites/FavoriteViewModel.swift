@@ -1,8 +1,6 @@
 //
 //  FavoriteViewModel.swift
-//  MenuToGrocery
 //
-//  Created by Mom macbook air on 4/18/23.
 //
 //////This class is the view model for favorite recipes screen. It bridges favorite recipes screen and the network layer to get favorite recipes  from Firestore.
 ///It uses Combine to asynchronously get data from Firestore then asseble a usable list of favorite recipes consumed by the view

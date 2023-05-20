@@ -1,10 +1,13 @@
-
-import Foundation
-import Combine
-
+//
+// RecipeByCuisineTypeViewModel.swift
+//
+//
 /// This class is the view model for  a single cuisine type in favorite recipe list
 /// The purpose of this class is to help decoding RecipeByCuisineType when a favorite recipe list is retrieved from Firestore.
 ///
+import Foundation
+import Combine
+
 class RecipeByCuisineTypeViewModel: ObservableObject, Identifiable, Hashable {
 
     private let firebaseRepository = FirebaseRepository()
