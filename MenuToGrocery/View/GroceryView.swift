@@ -68,15 +68,16 @@ struct categoryView: View {
     var body: some View {
         Section("\(categoryViewModel.groceryCategory.name)") {
             VStack (alignment: .leading){
-     
-                ForEach(categoryViewModel.groceryCategory.groceryItems) {item in
-                   
+                
+                if groceryListViewModel.isToggleReady() {
+                    ForEach(categoryViewModel.groceryCategory.groceryItems) {item in
+                        
                         HStack{
                             Button(action: {
                                 groceryListViewModel.toggle(item)
                             },
                                    label: {Image(systemName: item.bought ? "checkmark.square.fill" : "square")
-                                   //label: {Image(systemName: isBought(item) ? "checkmark.square.fill" : "square")
+                                //label: {Image(systemName: isBought(item) ? "checkmark.square.fill" : "square")
                             })
                             .buttonStyle(.borderless)
                             
@@ -85,10 +86,11 @@ struct categoryView: View {
                             Text(item.quantityDisplay)
                             Text(item.measure ?? "")
                         }
-                    
-                    .foregroundColor(.black)
-                    .onTapGesture {
-                        selectedRecipe = item.recipe
+                        
+                        .foregroundColor(.black)
+                        .onTapGesture {
+                            selectedRecipe = item.recipe
+                        }
                     }
                 }
             }
