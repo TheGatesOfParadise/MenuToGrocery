@@ -4,7 +4,7 @@
 //
 ///This class is responsible to talk to Edamam API to get recipes. It uses Combine to conduct async fetch from Edamam.
 ///Edamam recipe search API website is https://developer.edamam.com/edamam-recipe-api
-///The recipe search accepts a query as a string dictionary, returns a generic type defined by the caller.
+///The recipe search accepts a query as a string dictionary, returns the default response type defined by Edamam .
 ///
 import Foundation
 import Combine
