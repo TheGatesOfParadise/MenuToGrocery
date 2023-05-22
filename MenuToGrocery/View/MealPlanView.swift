@@ -59,7 +59,7 @@ struct MealPlanView: View {
                     })
                     .disabled(viewModel.mealPlan.count == 0)
                     .alert(isPresented: $emptyAlertPresented, content: {
-                        Alert(title: Text("Both meal plan and favorites are going to be deleted, are you sure of about it?"),
+                        Alert(title: Text("Both meal plan and grocery list are going to be deleted, are you sure of about it?"),
                               primaryButton: .default(Text("Yes"),action: {
                             viewModel.emptyRecipe()
                             groceryListViewModel.emptyGroceryList()
