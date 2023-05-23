@@ -17,15 +17,10 @@ class EdamamNetworkManager{
     }
     
     private var cancellables = Set<AnyCancellable>()
-    
-    let headers = [
-        "X-RapidAPI-Key": "c1f3a182camshb8b34476135e4aap1cb869jsn5e45a3d2028d",
-        "X-RapidAPI-Host": "edamam-food-and-grocery-database.p.rapidapi.com"
-    ]
 
     let recipeURL = "https://api.edamam.com/api/recipes/v2"
-    let recipeAPIKey =  "4ed5ca518b3756cbc0701d7501264aa8" //"e95a4e68efaa40b692aa7e156348e8f"
-    let recipeAPIID = "60774aad"//"4f2d15f6"
+    let recipeAPIKey =  "ec15d9485c640350d358f7c6c4cd2816"//"4ed5ca518b3756cbc0701d7501264aa8"
+    let recipeAPIID = "d41cb358"//"60774aad" //"6b423b50"
     
     ///Search recipe based on passed-in query, returns a generic type defined by the caller
     ///In parameter:
@@ -47,7 +42,7 @@ class EdamamNetworkManager{
             urlComponents.queryItems=[URLQueryItem(name:"type", value:"public"),
                                       URLQueryItem(name:"beta", value:"false"),
                                       URLQueryItem(name:"app_key",value:self.recipeAPIKey),
-                                      URLQueryItem(name:"app_id", value:"60774aad")]
+                                      URLQueryItem(name:"app_id", value:self.recipeAPIID)]
            
             for (key, value)  in query {
                 let item = URLQueryItem(name: key, value:value)

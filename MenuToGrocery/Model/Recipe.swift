@@ -35,7 +35,8 @@ struct Recipe: Codable, Identifiable, Equatable {
     let yield: Double
     let dietLabels, healthLabels, cautions, ingredientLines: [String]
     let ingredients: [Ingredient]
-    let calories, totalWeight: Double
+    let calories, totalCO2Emissions,totalWeight: Double
+    let co2EmissionsClass: String
     let totalTime: Int
     let cuisineType, mealType, dishType: [String]
     let totalNutrients, totalDaily: [String: Total]
@@ -45,10 +46,12 @@ struct Recipe: Codable, Identifiable, Equatable {
         //case id
         case uri, label, image, source, url, shareAs
         case images
-        case yield, totalTime
+        case yield
+        case totalTime
         case dietLabels, healthLabels, cautions, ingredientLines, cuisineType, mealType, dishType
         case ingredients
-        case calories, totalWeight
+        case calories, totalCO2Emissions,totalWeight
+        case co2EmissionsClass
         case totalNutrients, totalDaily
         case digest
        }
@@ -134,7 +137,8 @@ struct Ingredient: Codable,Identifiable {
     let measure: String?
     let food: String
     let weight: Double
-    let foodCategory, foodID: String
+    let foodCategory: String?
+    let foodID: String
     let image: String?
 
     enum CodingKeys: String, CodingKey {
@@ -200,19 +204,23 @@ struct Hit: Codable, Identifiable {
 
 // MARK: - HitLinks
 struct HitLinks: Codable {
-    let linksSelf: SelfClass
+    let linksSelf: Next
 
     enum CodingKeys: String, CodingKey {
         case linksSelf = "self"
     }
 }
 
-// MARK: - SelfClass
-struct SelfClass: Codable {
-    let title: String
+// MARK: - Next
+struct Next: Codable {
     let href: String
+    let title: Title
 }
 
+enum Title: String, Codable {
+    case nextPage = "Next page"
+    case titleSelf = "Self"
+}
 
 let recipeResponseJson = """
 

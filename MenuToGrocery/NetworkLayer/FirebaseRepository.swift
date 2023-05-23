@@ -261,7 +261,7 @@ class FirebaseRepository: ObservableObject {
         
         
         //translate recipe to groceryItems, then add it to a temporary grocery list
-        let groceryItems = recipe.ingredients.compactMap { GroceryItem(category: $0.foodCategory, name: $0.food, quantity: $0.quantity, measure: $0.measure, recipe: recipe)}
+        let groceryItems = recipe.ingredients.compactMap { GroceryItem(category: $0.foodCategory ?? "Optinal", name: $0.food, quantity: $0.quantity, measure: $0.measure, recipe: recipe)}
         
         let groceryDictionary = Dictionary(grouping: groceryItems, by: { (element: GroceryItem) in
             return element.category
@@ -343,7 +343,7 @@ class FirebaseRepository: ObservableObject {
         batch.deleteDocument(recipeRef)
         
         //translate recipe to groceryItems, then add it to a temporary grocery list
-        let groceryItems = recipe.ingredients.compactMap { GroceryItem(category: $0.foodCategory, name: $0.food, quantity: $0.quantity, measure: $0.measure, recipe: recipe)}
+        let groceryItems = recipe.ingredients.compactMap { GroceryItem(category: $0.foodCategory ?? "Optional", name: $0.food, quantity: $0.quantity, measure: $0.measure, recipe: recipe)}
         
         let groceryDictionary = Dictionary(grouping: groceryItems, by: { (element: GroceryItem) in
             return element.category

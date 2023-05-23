@@ -51,7 +51,7 @@ class GroceryListViewModel: ObservableObject {
     //Add a recipe's ingredients to grocery list
     func add(_ recipe: Recipe){
         //generate grocelistItem list from recipe
-        let groceryItems = recipe.ingredients.compactMap { GroceryItem(category: $0.foodCategory, name: $0.food, quantity: $0.quantity, measure: $0.measure, recipe: recipe)}
+        let groceryItems = recipe.ingredients.compactMap { GroceryItem(category: $0.foodCategory ?? "Optional", name: $0.food, quantity: $0.quantity, measure: $0.measure, recipe: recipe)}
         
         for item in groceryItems {
             add(item)
@@ -75,7 +75,7 @@ class GroceryListViewModel: ObservableObject {
     
     //Remove a recipe's ingredients from grocery list
     func remove(_ recipe:Recipe) {
-        let groceryItems = recipe.ingredients.compactMap { GroceryItem(category: $0.foodCategory, name: $0.food, quantity: $0.quantity, measure: $0.measure, recipe: recipe)}
+        let groceryItems = recipe.ingredients.compactMap { GroceryItem(category: $0.foodCategory ?? "Optional", name: $0.food, quantity: $0.quantity, measure: $0.measure, recipe: recipe)}
         
         for item in groceryItems {
             remove(item)
