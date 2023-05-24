@@ -111,7 +111,7 @@ class FirebaseRepository: ObservableObject {
         }
     }
     
-    //MARK: gavorite recipes operations
+    //MARK: favorite recipes operations
     
     ///This function get favorite recipes from Firestore by adding a snapshot listener to the root of favorite recipe collection.
     ///Whenever the favorite recipies  are changed in Firestore, the list will be automatically retrieved by this function.
@@ -234,7 +234,7 @@ class FirebaseRepository: ObservableObject {
         }
     }
     
-    //MARK: combined operations, such as add recipe, it also add its ingredients to grocery list
+    //MARK: combined operations, such as add recipe which also add its ingredients to grocery list
     
     ///Add a recipe to meal plan.  When a recipe is added  to meal plan, its ingredients are added to grocery list.
     ///In parameter: `recipe`:Recipe -- the recipe to be added
@@ -254,12 +254,6 @@ class FirebaseRepository: ObservableObject {
             fatalError("Unable to add \(recipe.label) to Mealplan: \(error.localizedDescription).")
         }
         
-        print("lalala---before translation of recipe -----------")
-        for indi in recipe.ingredients {
-            print("   \(indi.foodCategory):\(indi.food) - \(indi.quantity)")
-        }
-        
-        
         //translate recipe to groceryItems, then add it to a temporary grocery list
         let groceryItems = recipe.ingredients.compactMap { GroceryItem(category: $0.foodCategory ?? "Optinal", name: $0.food, quantity: $0.quantity, measure: $0.measure, recipe: recipe)}
         
@@ -267,25 +261,8 @@ class FirebaseRepository: ObservableObject {
             return element.category
         })
         
-        print("lalala---dictionary test start")
-        for (key,value) in groceryDictionary {
-            print("\(key)")
-            for item in value {
-                print("     \(item.name)")
-            }
-        }
-        
-        print("lalala---array test start")
         //let arr = myDict.map { "\($0.key) \($0.value)" }
         var newRecipeGroceryList = groceryDictionary.compactMap{GroceryCategory(name: "\($0.key)", groceryItems: $0.value)}
-        
-        for category in newRecipeGroceryList {
-            print("\(category.name)")
-            for item in category.groceryItems {
-                print("     \(item.name)")
-            }
-        }
-        
         
         //update/add category to repository's grocery list
         for index in 0..<newRecipeGroceryList.count{
@@ -306,8 +283,6 @@ class FirebaseRepository: ObservableObject {
             } catch {
                 fatalError("Unable to add \(recipe.label) to Mealplan: \(error.localizedDescription).")
             }
-            
-            
         }
         
         // Commit the batch
@@ -316,14 +291,6 @@ class FirebaseRepository: ObservableObject {
                 print("Error adding recipe - \(err)")
             } else {
                 print("Batch operation for adding recipe succeeded.")
-            }
-        }
-        
-        print("lalala---finally groceryList looks like this-----------")
-        for index in 0..<groceryList.count{
-            print("\(groceryList[index].name):\(groceryList[index].groceryItems.count)")
-            for item in groceryList[index].groceryItems {
-                print("     \(item.name) - \(item.quantity)")
             }
         }
     }

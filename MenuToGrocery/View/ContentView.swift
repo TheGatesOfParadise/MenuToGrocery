@@ -17,7 +17,6 @@ struct ContentView: View {
            MealPlanView()
                 .tabItem {
                     Label("Mean Plan", systemImage: "book")
-                    
                 }
             
             FavoriteView()
