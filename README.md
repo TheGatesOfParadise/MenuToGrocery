@@ -13,13 +13,18 @@ The search screen allows users to search for recipes from the Edamam Recipe Data
 
 A recipe can be expanded by clicking on a recipe, that leads to Single recipe screen.
 
-![Simulator Screenshot - iPhone 15 - 2024-02-09 at 01 00 00](https://github.com/axruan/MenuToGrocery/assets/109245867/664bd7f4-ae22-46f2-aa4d-e1186c1091cd)
+
+<img src='https://github.com/axruan/MenuToGrocery/assets/109245867/664bd7f4-ae22-46f2-aa4d-e1186c1091cd' width='150'>
+<img src='https://github.com/axruan/MenuToGrocery/assets/109245867/e1c95fea-eeff-4c22-9f4e-1e0a8fde8c18' width='150'>
 
 
 #Meal plan screen#
 
 The meal plan screen holds the recipes users add to their meal plan. They are not categorized and ordered by recently added; users can remove the recipe once they are done. Individual recipes can be clicked on and viewed. The ChatGPT Advice button sits to the left of the title.
 When a recipe is added to the meal plan, its ingredients are automatically added to the grocery list. When a recipe is removed, its ingredients are also removed from the grocery list.
+
+<img src='https://github.com/axruan/MenuToGrocery/assets/109245867/0bdece02-ea14-4d66-bb86-8a4aa78edc83' width='150'>
+
 
 #Favorite recipe screen#
 
