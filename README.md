@@ -41,6 +41,14 @@ The grocery list screen are all the ingredients from the user's meal plan that i
 
 The single recipe screen contains a picture of the dish, cuisine, calories, prep time, and ingredients. At the top, users can add the recipe to their meal plan or their favorites. The instructions button at the bottom leads users to an external link. 
 
+<img src='https://github.com/axruan/MenuToGrocery/assets/109245867/873aec6a-e191-4487-934d-77f7f4104ec1' width='150'>
+
 #ChatGPT advice half-sheet#
 
 This half-sheet can be accessed from the meal plan screen by pressing on the sticky. Users can input their sex and age, then click on the button to receive information about their meal based on their information by ChatGPT. Advice will only be generated if at least one recipe is in the meal plan. 
+
+<img src='https://github.com/axruan/MenuToGrocery/assets/109245867/0bdece02-ea14-4d66-bb86-8a4aa78edc83' width='150'>
+<img src='https://github.com/axruan/MenuToGrocery/assets/109245867/cae3e947-1d64-4438-9685-a430a67b6946' width='150'>
+<img src='https://github.com/axruan/MenuToGrocery/assets/109245867/ddc1d00e-ccbd-4de7-99a8-c89c3d1ba46b' width='150'>
+
+
