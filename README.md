@@ -1,4 +1,4 @@
-# CS590 Final App - MenuToGrocery
+Mean planner
 
 This app uses Edamam Recipe API to get recipes based on search criteria.
 Users can add recipes to their meal plan or favorites.
@@ -12,6 +12,9 @@ After the user selects at least one recipe to the meal plan, users can consult w
 The search screen allows users to search for recipes from the Edamam Recipe Database. They can search with or without the cuisine and meal type filter. If the search is non-empty, a list of recipes come back. The recipes can be added to and removed from the meal plan and favorite recipes.
 
 A recipe can be expanded by clicking on a recipe, that leads to Single recipe screen.
+
+![Simulator Screenshot - iPhone 15 - 2024-02-09 at 01 00 00](https://github.com/axruan/MenuToGrocery/assets/109245867/664bd7f4-ae22-46f2-aa4d-e1186c1091cd)
+
 
 #Meal plan screen#
 
