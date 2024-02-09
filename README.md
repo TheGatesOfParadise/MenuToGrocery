@@ -30,8 +30,12 @@ When a recipe is added to the meal plan, its ingredients are automatically added
 
 The favorite recipes screen holds the recipes users like the most. It is sorted by cuisine type and can be emptied. The favorites screen do not affect the meal plan or the grocery list. Individual recipes can be clicked on and viewed.
 
+<img src='https://github.com/axruan/MenuToGrocery/assets/109245867/e8dbf30f-8eff-4281-971b-f3b86e4020d8' width='150'>
+
 #Grocery list screen#
 The grocery list screen are all the ingredients from the user's meal plan that is automatically loaded. The list is sorted by type and can be checked off. Users can press on an ingredient to see what recipe it belongs to.
+
+<img src='https://github.com/axruan/MenuToGrocery/assets/109245867/46895c15-4813-41fc-9114-b2e28874f5f9' width='150'>
      
 #Single recipe screen#
 
