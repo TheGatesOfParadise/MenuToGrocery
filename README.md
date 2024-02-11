@@ -47,8 +47,8 @@ The single recipe screen contains a picture of the dish, cuisine, calories, prep
 
 This half-sheet can be accessed from the meal plan screen by pressing on the sticky. Users can input their sex and age, then click on the button to receive information about their meal based on their information by ChatGPT. Advice will only be generated if at least one recipe is in the meal plan. 
 
-<img src='https://github.com/axruan/MenuToGrocery/assets/109245867/0bdece02-ea14-4d66-bb86-8a4aa78edc83' width='150'>
+
+<img src='https://github.com/axruan/MenuToGrocery/assets/109245867/2a56cec6-243a-4962-a60e-9ac76320ee08' width='150'>
 <img src='https://github.com/axruan/MenuToGrocery/assets/109245867/cae3e947-1d64-4438-9685-a430a67b6946' width='150'>
-<img src='https://github.com/axruan/MenuToGrocery/assets/109245867/ddc1d00e-ccbd-4de7-99a8-c89c3d1ba46b' width='150'>
 
 
